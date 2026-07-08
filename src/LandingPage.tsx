@@ -11,6 +11,7 @@ import safeDealImage from '../6.png';
 import tripFinanceImage from '../7.png';
 import bigBusinessToolsImage from '../8.png';
 import digitalEcosystemImage from '../9.png';
+import heroImage from '../hero1.png';
 import portalRequestsImage from '../a1.png';
 import portalTripCardImage from '../a2.png';
 import portalDocumentsImage from '../a3.png';
@@ -250,26 +251,24 @@ export default function LandingPage() {
             <div className="relative flex justify-center lg:justify-end">
               <div className="absolute -inset-4 -z-10 rounded-[48px] bg-gradient-to-br from-purple-main/10 to-lime/10 blur-3xl" />
 
-              <div className="relative flex h-96 w-full max-w-lg flex-col items-center justify-center rounded-[36px] border border-gray-200 bg-white p-6 text-center text-gray-400 shadow-xl">
-                <span className="text-xl font-semibold text-gray-900">
-                  [PNG_PLACEHOLDER: hero-catalon-ecosystem.png]
-                </span>
-                <span className="mt-4 max-w-xs text-sm text-gray-500">
-                  Место под PNG: коты Catalon, портал, маршруты, фуры, контейнеры и сервисы
-                  экосистемы.
-                </span>
+              <div className="relative aspect-square w-full max-w-[42rem]">
+                <img
+                  src={heroImage}
+                  alt="Главный экран Catalon"
+                  className="block h-full w-full object-contain"
+                />
               </div>
 
-              <div className="absolute -left-6 -top-6 rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
+              <div className="hidden absolute -left-6 -top-6 rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
                 FTL / LTL
               </div>
-              <div className="absolute -right-6 top-1/4 rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
+              <div className="hidden absolute -right-6 top-1/4 rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
                 Финансирование
               </div>
-              <div className="absolute -left-6 bottom-1/4 rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
+              <div className="hidden absolute -left-6 bottom-1/4 rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
                 Документы онлайн
               </div>
-              <div className="absolute -bottom-6 -right-6 rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
+              <div className="hidden absolute -bottom-6 -right-6 rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
                 Сервисы
               </div>
             </div>
