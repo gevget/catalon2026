@@ -368,7 +368,7 @@ export default function LandingPage() {
           className="mx-auto max-w-7xl rounded-[36px] bg-[#7133D0] px-4 py-16 text-white lg:px-8 lg:py-24"
           id="safe-deal"
         >
-          <h2 className="text-center text-3xl font-bold"><span className="text-[#B7FF2A]">Безопасная сделка</span> - ключевое отличие Catalon</h2>
+              <h2 className="text-center text-3xl font-bold sm:text-4xl"><span className="text-[#B7FF2A]">Безопасная сделка</span> - ключевое отличие Catalon</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-white/70">
             На рынке грузоперевозок многое до сих пор держится на звонках, переписках и личных
             договоренностях. Catalon переводит сделку в прозрачный онлайн-контур.
@@ -425,7 +425,7 @@ export default function LandingPage() {
                   </span>
                 ))}
               </div>
-              <h2 className="text-4xl font-bold"><span className="text-[#241047]">Финансирование поездки</span> <span className="text-white">под конкретный рейс</span></h2>
+              <h2 className="text-3xl font-bold sm:text-4xl"><span className="text-[#241047]">Финансирование поездки</span> <span className="text-white">под конкретный рейс</span></h2>
               <p className="mt-6 text-sm text-white/80">
                 Перевозчику не всегда удобно ждать оплату неделями. Catalon помогает закрывать
                 расходы на рейс: топливо, дорогу, обслуживание и другие операционные затраты.
@@ -603,7 +603,7 @@ export default function LandingPage() {
         <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
           <div className="grid grid-cols-1 items-center gap-12 rounded-[48px] bg-[#350375] p-12 text-white lg:grid-cols-2 lg:p-16">
             <div>
-              <h2 className="text-4xl font-bold">
+              <h2 className="text-3xl font-bold sm:text-4xl">
                 <span className="text-[#B7FF2A]">Возможности</span> больших компаний - для малого и среднего бизнеса
               </h2>
               <p className="mt-6 text-sm text-white/80">
@@ -723,7 +723,7 @@ export default function LandingPage() {
           <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[#8B5CF6]/20 blur-3xl" />
           <div className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-white/8 blur-3xl" />
           <div className="relative text-center">
-            <h2 className="text-4xl font-bold">Начните работать в Catalon</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl">Начните работать в Catalon</h2>
             <p className="mx-auto mt-6 max-w-xl text-sm text-white/80">
               Выберите решение, зарегистрируйтесь в портале и подключайте сервисы для
               заработка, безопасности и экономии.
@@ -737,19 +737,19 @@ export default function LandingPage() {
               </button>
             </div>
           </div>
-          <div className="absolute left-10 top-10 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+          <div className="absolute left-10 top-10 hidden rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white lg:block">
             Зарабатывать
           </div>
-          <div className="absolute bottom-10 right-10 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+          <div className="absolute bottom-10 right-10 hidden rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white lg:block">
             Экономить
           </div>
-          <div className="absolute right-20 top-1/4 rounded-full border border-white/10 bg-[#3D1180] px-4 py-2 text-sm font-semibold text-white">
+          <div className="absolute right-20 top-1/4 hidden rounded-full border border-white/10 bg-[#3D1180] px-4 py-2 text-sm font-semibold text-white lg:block">
             Безопасная сделка
           </div>
-          <div className="absolute bottom-1/4 left-20 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+          <div className="absolute bottom-1/4 left-20 hidden rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white lg:block">
             Финансирование
           </div>
-          <div className="absolute left-10 top-1/2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+          <div className="absolute left-10 top-1/2 hidden rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white lg:block">
             Документы онлайн
           </div>
         </section>

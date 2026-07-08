@@ -8,6 +8,8 @@ import {
 import LandingPage from './LandingPage';
 import VisualEditor from './VisualEditor';
 
+const IS_LOCAL_EDITOR_ENABLED = import.meta.env.DEV;
+
 function normalizeSavedHtml(html?: string) {
   if (!html) {
     return '';
@@ -99,7 +101,7 @@ function closeEditor() {
 }
 
 export default function App() {
-  const isEditorMode = new URLSearchParams(window.location.search).get('editor') === '1';
+  const isEditorMode = IS_LOCAL_EDITOR_ENABLED && new URLSearchParams(window.location.search).get('editor') === '1';
 
   if (isEditorMode) {
     return <VisualEditor />;
@@ -108,21 +110,23 @@ export default function App() {
   return (
     <div className="relative">
       <SavedSiteView />
-      <div className="fixed bottom-6 right-6 z-[70] flex gap-3">
-        <button
-          type="button"
-          onClick={openEditor}
-          className="rounded-full bg-[#111827] px-5 py-3 text-sm font-semibold text-white shadow-2xl transition hover:bg-[#440D84]"
-        >
-          Открыть визуальный редактор
-        </button>
-        <button
-          type="button"
-          onClick={closeEditor}
-          className="hidden"
-          aria-hidden="true"
-        />
-      </div>
+      {IS_LOCAL_EDITOR_ENABLED ? (
+        <div className="fixed bottom-6 right-6 z-[70] flex gap-3">
+          <button
+            type="button"
+            onClick={openEditor}
+            className="rounded-full bg-[#111827] px-5 py-3 text-sm font-semibold text-white shadow-2xl transition hover:bg-[#440D84]"
+          >
+            Открыть визуальный редактор
+          </button>
+          <button
+            type="button"
+            onClick={closeEditor}
+            className="hidden"
+            aria-hidden="true"
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
