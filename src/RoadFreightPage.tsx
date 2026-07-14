@@ -50,6 +50,23 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useState } from 'react';
+import roadHeroImage from '../assets/1/p1-hero.png';
+import safeDealAsset from '../assets/1/Безопасная сделка.png';
+import businessToolsAsset from '../assets/1/Возможности больших компаний — для малого и среднего бизнеса.png';
+import multimodalAsset from '../assets/1/Мультимодальные и контейнерные перевозки.png';
+import financeAsset from '../assets/1/Финансирование под конкретный рейс.png';
+import portalOverviewAsset from '../assets/1/Посмотрите, как устроена работа в Catalon.png';
+import earningAsset from '../assets/1/Зарабатывать.png';
+import savingAsset from '../assets/1/Экономить.png';
+import customerAsset from '../assets/1/Перевозка под контролем, а не в переписках.png';
+import carrierAsset from '../assets/1/Больше подходящих рейсов без ручного поиска.png';
+import operatorAsset from '../assets/1/Вся операционная работа в одной системе.png';
+import requestAsset from '../assets/1/Заявка.png';
+import tripsAsset from '../assets/1/Рейсы.png';
+import documentsAsset from '../assets/1/Документы.png';
+import financesAsset from '../assets/1/Финансы.png';
+import servicesAsset from '../assets/1/Сервисы.png';
+import supportAsset from '../assets/1/Поддержка.png';
 import { ProductAnchorNav, ProductFooter, ProductHeader, StickyProductCta } from './components/ProductChrome';
 
 function getBasePath() {
@@ -61,6 +78,19 @@ function home(anchor = '') {
 }
 
 function AssetPlaceholder({ name, dark = false }: { name: string; dark?: boolean }) {
+  const imageMap: Record<string, string> = {
+    'road-freight-hero.png': roadHeroImage,
+    'portal-overview.png': portalOverviewAsset,
+    'portal-overview-screen.png': portalOverviewAsset,
+    'safe-deal-road-freight.png': safeDealAsset,
+    'trip-finance-road-freight.png': financeAsset,
+    'carrier-growth.png': earningAsset,
+    'transport-services.png': savingAsset,
+    'small-business-big-tools-road.png': businessToolsAsset,
+    'multimodal-solution.png': multimodalAsset,
+  };
+  const image = imageMap[name] || (name.includes('/assets/') ? name : null);
+  if (image) return <img src={image} alt="" loading="lazy" className="block h-auto w-full object-contain" />;
   return <div className={`grid min-h-44 place-items-center border ${dark ? 'border-white/15 bg-white/8 text-white/45' : 'border-[#DED9E3] bg-[#F7F6F3] text-[#9B91A6]'}`}><div className="text-center"><div className="mx-auto h-8 w-8 rounded-lg border-2 border-current opacity-50" /><p className="mt-3 px-4 text-xs font-bold uppercase tracking-[0.14em]">Изображение: {name}</p></div></div>;
 }
 
@@ -76,7 +106,7 @@ const roles = [
       [Gavel, 'Аукцион и рекомендации по цене'],
       [Radar, 'Контроль исполнения в реальном времени'],
     ],
-    image: 'market-customer.png',
+    image: customerAsset,
     tone: 'lime',
   },
   {
@@ -88,7 +118,7 @@ const roles = [
       [Landmark, 'Предоплата и целевое финансирование'],
       [Fuel, 'Партнёрские условия на топливо и сервис'],
     ],
-    image: 'market-carrier.png',
+    image: carrierAsset,
     tone: 'purple',
   },
   {
@@ -100,7 +130,7 @@ const roles = [
       [Clock3, 'Сроки, события и ответственность'],
       [BarChart3, 'Отчётность, рейтинги и аналитика'],
     ],
-    image: 'market-operator.png',
+    image: operatorAsset,
     tone: 'soft',
   },
 ] as const;
@@ -129,12 +159,12 @@ const flow = [
 ];
 
 const onlineCards = [
-  ['Заявки', 'Создание и обработка новых перевозок.', 'portal-requests.png', ClipboardCheck],
-  ['Рейсы', 'Маршруты, транспорт и статусы исполнения.', 'portal-trips.png', Route],
-  ['Документы', 'Комплект файлов по каждой сделке.', 'portal-documents.png', FileText],
-  ['Финансы', 'Условия оплаты и движение расчётов.', 'portal-finance.png', WalletCards],
-  ['Сервисы', 'Полезные услуги прямо из портала.', 'portal-services.png', Wrench],
-  ['Поддержка', 'Помощь оператора на каждом этапе.', 'portal-support.png', Headphones],
+  ['Заявки', 'Создание и обработка новых перевозок.', requestAsset, ClipboardCheck],
+  ['Рейсы', 'Маршруты, транспорт и статусы исполнения.', tripsAsset, Route],
+  ['Документы', 'Комплект файлов по каждой сделке.', documentsAsset, FileText],
+  ['Финансы', 'Условия оплаты и движение расчётов.', financesAsset, WalletCards],
+  ['Сервисы', 'Полезные услуги прямо из портала.', servicesAsset, Wrench],
+  ['Поддержка', 'Помощь оператора на каждом этапе.', supportAsset, Headphones],
 ] as const;
 
 const faq = [
