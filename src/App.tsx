@@ -6,6 +6,8 @@ import {
   SavedSiteRender,
 } from './editorStorage';
 import LandingPage from './LandingPage';
+import MultimodalPage from './MultimodalPage';
+import RoadFreightPage from './RoadFreightPage';
 import VisualEditor from './VisualEditor';
 
 const IS_LOCAL_EDITOR_ENABLED = import.meta.env.DEV;
@@ -100,16 +102,44 @@ function closeEditor() {
   window.location.href = url.toString();
 }
 
+function getCurrentRoute() {
+  const url = new URL(window.location.href);
+  const redirectedRoute = url.searchParams.get('route');
+
+  if (redirectedRoute) {
+    const normalized = redirectedRoute.startsWith('/') ? redirectedRoute : `/${redirectedRoute}`;
+    window.history.replaceState({}, '', `${import.meta.env.BASE_URL.replace(/\/$/, '')}${normalized}`);
+    return normalized;
+  }
+
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const pathname = window.location.pathname;
+
+  if (basePath && pathname.startsWith(basePath)) {
+    const trimmed = pathname.slice(basePath.length);
+    return trimmed || '/';
+  }
+
+  return pathname || '/';
+}
+
 export default function App() {
   const isEditorMode = IS_LOCAL_EDITOR_ENABLED && new URLSearchParams(window.location.search).get('editor') === '1';
+  const currentRoute = getCurrentRoute();
 
   if (isEditorMode) {
     return <VisualEditor />;
   }
 
+  const page = currentRoute === '/solutions/road-freight-russia'
+    ? <RoadFreightPage />
+    : currentRoute === '/solutions/multimodal-container'
+      ? <MultimodalPage />
+      : <SavedSiteView />;
+
   return (
     <div className="relative">
-      <SavedSiteView />
+      {page}
       {IS_LOCAL_EDITOR_ENABLED ? (
         <div className="fixed bottom-6 right-6 z-[70] flex gap-3">
           <button
