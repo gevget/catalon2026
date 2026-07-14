@@ -72,6 +72,9 @@ const portalFeatures: [LucideIcon, string, string][] = [
   [BellRing, 'Уведомления', 'Сигналы о действиях, сроках и отклонениях.'],
   [SlidersHorizontal, 'Аналитика', 'Структура исполнения без выдуманных прогнозов и гарантий.'],
   [FileCheck2, 'Заявка к закрытию рейса', 'Проверка документов, этапов и итоговых условий перед закрытием.'],
+  [Route, 'Схема маршрута', 'Визуальная последовательность этапов от отправителя до получателя.'],
+  [Clock3, 'Контроль сроков', 'Плановые даты и отклонения видны по каждому переходу.'],
+  [Container, 'Контейнерный контур', 'Параметры контейнера и передачи собраны в одной карточке.'],
 ];
 
 const faq = [
@@ -104,7 +107,7 @@ export default function MultimodalPage() {
       <ProductHeader portalHref="#portal-demo" startHref="#start" />
       <ProductAnchorNav items={[["Обзор", "#mm-top"], ["Маршрут", "#route"], ["Участники", "#audience"], ["Этапы", "#stage-control"], ["Документы", "#documents"], ["Безопасность", "#safe-deal-mm"], ["Портал", "#portal-demo"], ["FAQ", "#faq"]]} />
       <StickyProductCta label="Соберите мультимодальный маршрут" href="#start">Обсудить маршрут</StickyProductCta>
-      <style>{`main button:hover { color: #7F42E1; } main button:hover span:last-child { background: #F1E8FA; color: #7F42E1; } main > section:first-child .inline-flex { background: rgba(255,255,255,.5); color: white; backdrop-filter: blur(8px); } main > section:nth-of-type(5) svg { color: #E5484D; }`}</style>
+      <style>{`main button:hover { color: #7F42E1; } main button:hover span:last-child { background: #F1E8FA; color: #7F42E1; } main > section:first-child .inline-flex { background: rgba(255,255,255,.5); color: white; backdrop-filter: blur(8px); } main > section:nth-of-type(5) svg { color: #E5484D; } main > section:first-child a[href="#start"] { background: #B7FF2A; color: #440D84; }`}</style>
       <main>
         <section className="bg-[#440D84] text-white" id="mm-top">
           <div className="mx-auto max-w-[1440px] px-4 pb-20 pt-6 sm:px-6 lg:px-10 lg:pb-24">
