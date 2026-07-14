@@ -46,6 +46,7 @@ import { ServiceCard } from './components/ServiceCard';
 import { SolutionCard, SolutionCardProps } from './components/SolutionCard';
 
 export default function LandingPage() {
+  const pageBase = import.meta.env.BASE_URL?.replace(/\/$/, '') || '';
   const navItems = [
     { label: 'О платформе', href: '#about' },
     { label: 'Решения', href: '#solutions' },
@@ -71,7 +72,7 @@ export default function LandingPage() {
       placeholder: 'road-freight-cat',
       imageSrc: logisticsRoadImage,
       imageAlt: 'Автоперевозки по России',
-      link: '/road-freight-russia',
+      link: `${pageBase}/road-freight-russia`,
       bgColor: 'white',
       borderColor: 'border-[#B7FF2A]',
       h3BorderColor: 'border-gray-200',
@@ -95,7 +96,7 @@ export default function LandingPage() {
       placeholder: 'container-solution-cat',
       imageSrc: logisticsMultiImage,
       imageAlt: 'Мультимодальные и контейнерные перевозки',
-      link: '/multimodal-container',
+      link: `${pageBase}/multimodal-container`,
       bgColor: 'white',
       borderColor: 'border-[#7133D0]',
       h3BorderColor: 'border-gray-200',
