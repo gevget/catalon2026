@@ -12,9 +12,12 @@ import {
   Compass,
   FileCheck2,
   FileText,
+  Files,
   Fuel,
   Gavel,
+  Handshake,
   Headphones,
+  Activity,
   Landmark,
   Link2,
   LockKeyhole,
@@ -26,16 +29,24 @@ import {
   ReceiptText,
   Route,
   ScanSearch,
+  Search,
+  Settings,
   ShieldCheck,
   SlidersHorizontal,
   Sparkles,
   Star,
+  Scale,
   TrendingUp,
   TimerReset,
   Truck,
   Users,
+  UserPlus,
   WalletCards,
   Wrench,
+  Zap,
+  ChartNoAxesCombined,
+  PackageSearch,
+  FilePlus2,
   type LucideIcon,
 } from 'lucide-react';
 import { useState } from 'react';
@@ -109,12 +120,14 @@ const roles = [
 ] as const;
 
 const capabilities: Feature[] = [
-  { icon: SlidersHorizontal, title: 'Точная заявка', text: 'Маршрут, груз, интервалы подачи и требования собраны в структурированной карточке.' },
-  { icon: Gavel, title: 'Аукцион и подбор', text: 'Платформа помогает сравнить предложения и увидеть ориентир справедливой стоимости.' },
-  { icon: Compass, title: 'Исполнение рейса', text: 'События маршрута, участники и следующие действия синхронизированы в одном процессе.' },
-  { icon: ReceiptText, title: 'ЭДО и архив', text: 'Документы связаны со сделкой и не теряются после завершения перевозки.' },
-  { icon: LockKeyhole, title: 'Контур доверия', text: 'Проверка участников, фиксация условий и страховые инструменты снижают риски.' },
-  { icon: TrendingUp, title: 'Управленческие данные', text: 'История операций превращается в аналитику по срокам, стоимости и качеству.' },
+  { icon: Sparkles, title: 'Умный подбор', text: 'Рекомендации по подходящим грузам, маршрутам и исполнителям.' },
+  { icon: Gavel, title: 'Аукцион предложений', text: 'Сравнение условий и выбор подходящего варианта сделки.' },
+  { icon: SlidersHorizontal, title: 'Гибкие фильтры', text: 'Отбор заявок по маршруту, датам, транспорту и параметрам груза.' },
+  { icon: Clock3, title: 'Временные интервалы', text: 'Фиксация времени погрузки, выгрузки и выполнения этапов.' },
+  { icon: Star, title: 'Рейтинги участников', text: 'История работы и качество выполнения помогают выбирать партнёров.' },
+  { icon: Activity, title: 'Статусы перевозки', text: 'Контроль ключевых событий и действий участников.' },
+  { icon: Files, title: 'ЭДО и документы', text: 'Цифровое хранение заявок, договорённостей и закрывающих документов.' },
+  { icon: ChartNoAxesCombined, title: 'Аналитика', text: 'Данные по заявкам, рейсам, участникам и результатам работы.' },
 ];
 
 const flow = [
@@ -245,6 +258,20 @@ export default function RoadFreightPage() {
 
         <section className="hidden relative bg-[#440D84] py-20 text-white lg:py-32" aria-hidden="true">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><SectionIntro eyebrow="Не макет, а рабочий инструмент" title="Посмотрите внутрь портала" text="Свободные грузы, предложения, данные по маршруту и действия по сделке собраны на одном экране." light /><div className="flex gap-3 text-xs font-bold"><span className="rounded-full bg-[#B7FF2A] px-4 py-2 text-[#440D84]">Свободные грузы</span><span className="rounded-full border border-white/20 px-4 py-2 text-white/70">Сделка</span></div></div><img src={carrierFreeLoadsScreen} alt="Интерфейс портала Catalon" className="mt-12 block h-auto w-full object-contain drop-shadow-[0_35px_45px_rgba(14,4,25,0.42)]" /></div>
+        </section>
+
+        <section className="bg-[#F1F1ED] py-20 lg:py-28">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <SectionIntro eyebrow="Форматы перевозок" title="Для регулярных и разовых перевозок по России" text="Выбирайте подходящий формат перевозки и управляйте повторяющимися поставками в одном цифровом процессе." />
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {[
+                [Route, 'По формату', 'FTL — отдельный транспорт под груз; LTL — частичная партия; догрузы по маршруту.'],
+                [Clock3, 'По частоте', 'Регулярные маршруты, разовые перевозки и повторяющиеся поставки.'],
+                [Boxes, 'По типу груза', 'Паллетные грузы, оборудование, строительные материалы и коммерческие партии.'],
+              ].map(([Icon, title, text]) => { const FormatIcon = Icon as LucideIcon; return <article key={title as string} className="rounded-[24px] border border-[#DED9E3] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(45,28,62,0.1)]"><FormatIcon className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-xl font-bold">{title as string}</h3><p className="mt-3 text-sm leading-6 text-[#675F6F]">{text as string}</p></article>; })}
+            </div>
+            <p className="mt-6 border-l-2 border-[#7133D0] pl-4 text-sm leading-6 text-[#675F6F]">Для опасных, негабаритных и специальных грузов Catalon развивает отдельные решения.</p>
+          </div>
         </section>
 
         <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
