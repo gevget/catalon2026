@@ -198,8 +198,6 @@ export default function RoadFreightPage() {
 
       <main>
         <section className="relative overflow-hidden bg-[#B7FF2A]" id="top">
-          <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-white/25 blur-3xl" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_24%,rgba(113,51,208,0.18),transparent_42%)]" />
           <div className="mx-auto max-w-[1440px] px-4 pb-16 pt-7 sm:px-6 lg:px-10 lg:pb-24">
             <div className="flex items-center gap-2 text-xs text-[#443B4B]"><a href={home()} className="hover:text-[#440D84]">Главная</a><span>/</span><span>Автомобильные перевозки</span></div>
             <div className="mt-10 grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
