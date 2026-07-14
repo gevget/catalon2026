@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Catalon</title>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        var origin = window.location.origin;
+        var base = '/catalon2026/';
+        var route = path.indexOf(base) === 0 ? path.slice(base.length - 1) : path;
+        var redirectTo = origin + base + '?route=' + encodeURIComponent(route + search + hash);
+        window.location.replace(redirectTo);
+      })();
+    </script>
+  </head>
+  <body></body>
+  </html>
