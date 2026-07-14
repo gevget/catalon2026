@@ -57,7 +57,7 @@ export function ProductFooter() {
 }
 
 export function ProductAnchorNav({ items }: { items: Array<[string, string]> }) {
-  return <nav className="sticky top-14 z-40 overflow-x-auto border-b border-[#E6DFF0] bg-white/95 backdrop-blur" aria-label="Навигация по странице"><div className="mx-auto flex min-w-max max-w-[1208px] gap-6 px-4 py-3 text-xs font-semibold text-[#675F6F] sm:px-6 lg:px-0">{items.map(([label, href]) => <a key={label} href={href} className="whitespace-nowrap border-b border-transparent py-1 transition hover:border-[#B7FF2A] hover:text-[#440D84]">{label}</a>)}</div></nav>;
+  return <nav className="sticky top-14 z-40 overflow-x-auto border-b border-[#E6DFF0] bg-white/95 backdrop-blur" aria-label="Навигация по странице"><div className="mx-auto flex min-w-max max-w-[980px] justify-center gap-5 px-4 py-2 text-xs font-semibold text-[#675F6F] sm:gap-7">{items.map(([label, href]) => <a key={label} href={href} className="whitespace-nowrap border-b border-transparent py-1 transition hover:border-[#B7FF2A] hover:text-[#440D84]">{label}</a>)}</div></nav>;
 }
 
 export function StickyProductCta({ label, href, children }: { label: string; href: string; children: string }) {
