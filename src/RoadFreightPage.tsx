@@ -191,6 +191,7 @@ export default function RoadFreightPage() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#F7F6F3] text-[#19131F]">
+      <style>{`#portal-early { background: #F1EDE9; } #how-it-works article:first-child { background: #B7F904; } #how-it-works article:nth-child(2) { background: #3C0A7D; } #safe-deal article:first-child { background: #7230D7; } #safe-deal article:nth-child(2) { background: #D6BFF3; } #safe-deal + section article:first-child { background: #EEE1F7; } #portal + section + section { background: #F6F3F0; }`}</style>
       <ProductHeader portalHref="#portal-early" startHref="#start" />
       <ProductAnchorNav items={[["Обзор", "#top"], ["Для кого", "#how-it-works"], ["Как работает", "#how-it-works"], ["Безопасная сделка", "#safe-deal"], ["Финансирование", "#safe-deal"], ["Портал", "#portal-early"], ["FAQ", "#faq"]]} />
       <StickyProductCta label="Автомобильные перевозки через Catalon" href="#start">Начать работу</StickyProductCta>
