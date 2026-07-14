@@ -90,7 +90,7 @@ function AssetPlaceholder({ name, dark = false }: { name: string; dark?: boolean
     'multimodal-solution.png': multimodalAsset,
   };
   const image = imageMap[name] || (name.includes('/assets/') ? name : null);
-  if (image) return <img src={image} alt="" loading="lazy" className={`block h-auto w-full rounded-[16px] object-contain ${name === supportAsset ? 'shadow-[0_18px_38px_rgba(68,13,132,0.18)]' : ''}`} />;
+  if (image) return <img src={image} alt="" loading="lazy" className="block h-auto w-full rounded-[16px] object-contain" />;
   return <div className={`grid min-h-44 place-items-center border ${dark ? 'border-white/15 bg-white/8 text-white/45' : 'border-[#DED9E3] bg-[#F7F6F3] text-[#9B91A6]'}`}><div className="text-center"><div className="mx-auto h-8 w-8 rounded-lg border-2 border-current opacity-50" /><p className="mt-3 px-4 text-xs font-bold uppercase tracking-[0.14em]">Изображение: {name}</p></div></div>;
 }
 
