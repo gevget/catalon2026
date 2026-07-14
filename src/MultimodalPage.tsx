@@ -107,7 +107,7 @@ export default function MultimodalPage() {
       <ProductHeader portalHref="#portal-demo" startHref="#start" />
       <ProductAnchorNav items={[["Обзор", "#mm-top"], ["Маршрут", "#route"], ["Участники", "#audience"], ["Этапы", "#stage-control"], ["Документы", "#documents"], ["Безопасность", "#safe-deal-mm"], ["Портал", "#portal-demo"], ["FAQ", "#faq"]]} />
       <StickyProductCta label="Соберите мультимодальный маршрут" href="#start">Обсудить маршрут</StickyProductCta>
-      <style>{`main button:hover { color: #7F42E1; } main button:hover span:last-child { background: #F1E8FA; color: #7F42E1; } main > section:first-child .inline-flex { background: rgba(255,255,255,.5); color: white; backdrop-filter: blur(8px); } main > section:nth-of-type(6) svg { color: #E5484D; } main > section:first-child a[href="#start"] { background: #B7FF2A; color: #440D84; }`}</style>
+      <style>{`main button:hover { color: #7F42E1; } main button:hover span:last-child { background: #F1E8FA; color: #7F42E1; } main > section:first-child .inline-flex:first-child { background: rgba(255,255,255,.5); color: #440D84; backdrop-filter: blur(8px); } main > section:nth-of-type(6) svg { color: #E5484D; } main > section:first-child a[href="#start"] { background: #B7FF2A; color: #440D84; }`}</style>
       <main>
         <section className="bg-[#440D84] text-white" id="mm-top">
           <div className="mx-auto max-w-[1440px] px-4 pb-20 pt-6 sm:px-6 lg:px-10 lg:pb-24">
