@@ -131,9 +131,9 @@ export default function App() {
     return <VisualEditor />;
   }
 
-  const page = currentRoute === '/solutions/road-freight-russia'
+  const page = (currentRoute === '/road-freight-russia' || currentRoute === '/solutions/road-freight-russia')
     ? <RoadFreightPage />
-    : currentRoute === '/solutions/multimodal-container'
+    : (currentRoute === '/multimodal-container' || currentRoute === '/solutions/multimodal-container')
       ? <MultimodalPage />
       : <SavedSiteView />;
 
