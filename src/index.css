@@ -79,7 +79,8 @@ body,
 .unified-header ~ main { padding-top: 52px; }
 .unified-header + nav ~ main { padding-top: 88px; }
 .unified-header + nav ~ main section { scroll-margin-top: 104px; }
-[data-block-id="road-safe-deal-finance"] { display: none !important; }
+#safe-deal { position: relative; z-index: 0; }
+#safe-deal::before { content: ""; position: absolute; inset: 0 -100vw; z-index: -1; background: #fff; }
 [data-block-id="road-portal-demo"] { display: none !important; }
 [data-block-id="road-formats-hidden"] { display: none !important; }
 [data-block-id="road-flow"] { display: none !important; }

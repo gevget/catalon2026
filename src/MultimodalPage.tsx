@@ -39,7 +39,10 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import roadImage from '../2.png';
-import { ProductAnchorNav, ProductFooter, ProductHeader, StickyProductCta } from './components/ProductChrome';
+import geographyMapImage from '../assets/1/multimodal-geography-map.png';
+import cargoTypesImage from '../assets/1/multimodal-cargo-types.png';
+import partnersNetworkImage from '../assets/1/multimodal-partners-network.png';
+import { ProductAnchorNav, ProductFooter, ProductHeader } from './components/ProductChrome';
 import { UnifiedFooter } from './components/UnifiedFooter';
 import { UnifiedHeader } from './components/UnifiedHeader';
 
@@ -101,6 +104,136 @@ export default function MultimodalPage() {
     const previousDescription = description?.content;
     document.title = 'Мультимодальные и контейнерные перевозки через Catalon';
     if (description) description.content = 'Управляйте контейнерными и мультимодальными маршрутами, этапами, участниками, документами и безопасной сделкой через единый портал Catalon.';
+    const blockTags: Array<[string, string]> = [
+      ['mm-hero', 'Мультимодальные перевозки в одном цифровом маршруте'],
+      ['mm-benefits', 'Ключевые возможности мультимодального решения'],
+      ['mm-definition', 'Что такое мультимодальная перевозка'],
+      ['route', 'Цепочка маршрута — несколько этапов'],
+      ['mm-audience', 'Для кого создано решение'],
+      ['mm-problems', 'Где возникает сложность'],
+      ['mm-process', 'Как Catalon собирает маршрут'],
+      ['stage-control', 'Контроль исполнения по этапам'],
+      ['mm-portal-features', 'Возможности портала'],
+      ['mm-operator', 'Рабочее место оператора маршрута'],
+      ['documents', 'Документы связаны с этапами'],
+      ['mm-services', 'Сервисы в контексте перевозки'],
+      ['mm-chain-scenarios', 'Сценарии мультимодального маршрута'],
+      ['portal-demo', 'Демо цифрового портала'],
+      ['mm-difference', 'Структура вместо переписки'],
+      ['mm-business-tools', 'Возможности для малого бизнеса'],
+      ['mm-road-link', 'Автомобильные перевозки по России'],
+      ['faq', 'FAQ о мультимодальных перевозках'],
+      ['start', 'Начало работы с мультимодальным маршрутом'],
+    ];
+    document.querySelectorAll<HTMLElement>('main section').forEach((section, index) => {
+      const [id, title] = blockTags[index] || [`mm-section-${index + 1}`, `Блок мультимодальных перевозок ${index + 1}`];
+      section.dataset.blockId = section.dataset.blockId || id;
+      section.dataset.blockTitle = section.dataset.blockTitle || title;
+      if (!section.id) section.id = id;
+    });
+    const operatorSection = Array.from(document.querySelectorAll<HTMLElement>('main section')).find((section) => section.textContent?.includes('Рабочее место оператора маршрута'));
+    if (operatorSection) operatorSection.style.display = 'none';
+    const startSection = document.getElementById('start');
+    if (startSection) startSection.style.display = 'none';
+    const routeSection = document.getElementById('route');
+    if (routeSection && !document.getElementById('mm-digital-cabinet')) {
+      routeSection.insertAdjacentHTML('beforebegin', `<section id="mm-digital-cabinet" data-block-id="mm-digital-cabinet" data-block-title="Цифровой кабинет для перевозки" class="bg-white py-16 lg:py-20"><div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><p class="text-xs font-bold uppercase tracking-[0.2em] text-[#7F42E1]">Цифровой кабинет</p><h2 class="mt-4 text-3xl font-bold text-[#19131F] sm:text-4xl">Заявка, тариф и документы — в одном месте</h2><p class="mt-5 max-w-3xl text-base leading-7 text-[#675F6F]">Оформляйте заявку, получайте информацию о перевозке, отслеживайте груз и храните транспортные и закрывающие документы в личном кабинете 24/7. Расчёт тарифа и оформление заявки доступны онлайн.</p><div class="mt-8 grid gap-4 sm:grid-cols-3"><article class="rounded-2xl border border-[#DDD3E7] bg-[#F8F4FC] p-5"><h3 class="font-bold text-[#440D84]">Отслеживание груза</h3><p class="mt-2 text-sm leading-6 text-[#675F6F]">Местонахождение и даты отгрузки доступны онлайн.</p></article><article class="rounded-2xl border border-[#DDD3E7] bg-[#F8F4FC] p-5"><h3 class="font-bold text-[#440D84]">Документы 24/7</h3><p class="mt-2 text-sm leading-6 text-[#675F6F]">Транспортные и закрывающие документы хранятся в кабинете.</p></article><article class="rounded-2xl border border-[#DDD3E7] bg-[#F8F4FC] p-5"><h3 class="font-bold text-[#440D84]">Расчёт тарифа</h3><p class="mt-2 text-sm leading-6 text-[#675F6F]">Параметры груза и маршрута собраны в заявке.</p></article></div></div></section><section id="mm-cargo-types" data-block-id="mm-cargo-types" data-block-title="Типы грузов и контейнеров" class="bg-[#F6F1FB] py-16 lg:py-20"><div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><p class="text-xs font-bold uppercase tracking-[0.2em] text-[#7F42E1]">Грузы и контейнеры</p><h2 class="mt-4 text-3xl font-bold text-[#19131F] sm:text-4xl">Перевозки под разные типы груза</h2><p class="mt-5 max-w-3xl text-base leading-7 text-[#675F6F]">Универсальные и рефрижераторные контейнеры, генеральные и опасные грузы — формат выбирается под задачу и маршрут.</p></div></section><section id="mm-geography" data-block-id="mm-geography" data-block-title="География перевозок" class="bg-white py-16 lg:py-20"><div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><p class="text-xs font-bold uppercase tracking-[0.2em] text-[#7F42E1]">География</p><h2 class="mt-4 text-3xl font-bold text-[#19131F] sm:text-4xl">Направления и точки отправки</h2><p class="mt-5 max-w-3xl text-base leading-7 text-[#675F6F]">Дальний Восток, Санкт-Петербург, Новороссийск, сухопутные погранпереходы и другие порты с отправкой грузов по России.</p><div class="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-[#440D84]"><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Владивосток и Восточный</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Санкт-Петербург</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Новороссийск</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Забайкальск</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Достык</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Алтынколь</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Наушки</span></div></div></section><section id="mm-partners" data-block-id="mm-partners" data-block-title="Партнёры мультимодальных перевозок" class="bg-[#F6F1FB] py-14 lg:py-16"><div class="mx-auto flex max-w-[1440px] flex-col gap-4 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10"><h2 class="text-2xl font-bold text-[#19131F]">Партнёры мультимодальных перевозок</h2><p class="max-w-2xl text-sm leading-6 text-[#675F6F]">В маршруте могут участвовать FESCO, ТрансКонтейнер и другие транспортные партнёры. Состав цепочки зависит от направления и доступности этапов.</p></div></section>`);
+      const geographySection = document.getElementById('mm-geography');
+      if (geographySection) {
+        geographySection.style.backgroundColor = '#FBF6F0';
+        const map = document.createElement('img');
+        map.src = geographyMapImage;
+        map.alt = 'Карта мультимодальных маршрутов Catalon';
+        map.className = 'mt-10 h-auto w-[70%] max-w-none object-contain';
+        geographySection.querySelector('div')?.appendChild(map);
+      }
+      const cargoSection = document.getElementById('mm-cargo-types');
+      if (cargoSection) {
+        cargoSection.style.backgroundColor = '#EDE3F6';
+        const cargoContent = cargoSection.querySelector('div');
+        cargoContent?.classList.add('lg:grid', 'lg:grid-cols-[0.85fr_1.15fr]', 'lg:items-center', 'lg:gap-12');
+        const image = document.createElement('img');
+        image.src = cargoTypesImage;
+        image.alt = 'Контейнеры и типы грузов';
+        image.className = 'mt-10 w-full object-cover lg:col-start-2 lg:row-start-1 lg:row-span-3 lg:mt-0';
+        if (cargoContent) {
+          const textColumn = document.createElement('div');
+          textColumn.className = 'lg:col-start-1';
+          const introChildren = Array.from(cargoContent.children).slice(0, 3);
+          introChildren.forEach((child) => textColumn.appendChild(child));
+          const cards = document.createElement('div');
+          cards.className = 'mt-7 grid gap-3 sm:grid-cols-2';
+          [['Универсальные контейнеры', 'Для стандартных генеральных грузов и сборных партий.'], ['Рефрижераторные контейнеры', 'Для грузов, которым важно сохранять температурный режим.'], ['Генеральные грузы', 'Оборудование, паллеты, упаковки и крупные партии.'], ['Опасные грузы', 'Маршрут и этапы подбираются с учётом требований безопасности.']].forEach(([title, text]) => {
+            const card = document.createElement('article');
+            card.className = 'rounded-2xl bg-white p-4 shadow-[0_8px_24px_rgba(68,13,132,0.06)]';
+            card.innerHTML = `<h3 class="text-sm font-bold text-[#440D84]">${title}</h3><p class="mt-2 text-xs leading-5 text-[#675F6F]">${text}</p>`;
+            cards.appendChild(card);
+          });
+          textColumn.appendChild(cards);
+          cargoContent.appendChild(textColumn);
+          cargoContent.appendChild(image);
+        }
+      }
+      const partnersSection = document.getElementById('mm-partners');
+      if (partnersSection) {
+        const content = partnersSection.querySelector('div');
+        if (content) {
+          content.classList.add('lg:grid', 'lg:grid-cols-[0.8fr_1.2fr]', 'lg:gap-10');
+          const logoGrid = document.createElement('div');
+          logoGrid.className = 'mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:col-span-2';
+          ['FESCO', 'ТрансКонтейнер', 'Партнёр 03'].forEach((label) => {
+            const logo = document.createElement('div');
+            logo.className = 'grid min-h-16 place-items-center rounded-2xl border border-dashed border-[#BA9AF0] bg-white px-4 text-center text-xs font-bold uppercase tracking-[0.12em] text-[#7F42E1]';
+            logo.textContent = label;
+            logoGrid.appendChild(logo);
+          });
+          content.appendChild(logoGrid);
+          const image = document.createElement('img');
+          image.src = partnersNetworkImage;
+          image.alt = 'Сеть партнёров мультимодальных перевозок';
+          image.className = 'mt-6 w-full rounded-[28px] border border-[#DDD3E7] object-cover shadow-[0_20px_50px_rgba(68,13,132,0.1)] lg:mt-0';
+          image.remove();
+        }
+      }
+      const cabinetSection = document.getElementById('mm-digital-cabinet');
+      if (cabinetSection) {
+        const cardGrid = cabinetSection.querySelector('.grid.sm\\:grid-cols-3');
+        const extraCards = [['Единая заявка', 'Все этапы маршрута собираются вокруг одного запроса.'], ['Статусы перевозки', 'События и передача ответственности видны участникам.'], ['Автоматизация ЭДО', 'Документы проходят через единый цифровой контур.']];
+        extraCards.forEach(([title, text]) => {
+          const card = document.createElement('article');
+          card.className = 'rounded-2xl border border-[#DDD3E7] bg-[#F8F4FC] p-5';
+          card.innerHTML = `<h3 class="text-sm font-bold text-[#440D84]">${title}</h3><p class="mt-2 text-xs leading-5 text-[#675F6F]">${text}</p>`;
+          cardGrid?.appendChild(card);
+        });
+        const cardImages = [geographyMapImage, cargoTypesImage, partnersNetworkImage, geographyMapImage, cargoTypesImage, partnersNetworkImage];
+        Array.from(cabinetSection.querySelectorAll<HTMLElement>('article')).forEach((card, index) => {
+          if (card.querySelector('img')) return;
+          const image = document.createElement('img');
+          image.src = cardImages[index % cardImages.length];
+          image.alt = '';
+          image.className = '-mx-5 -mt-5 mb-4 h-24 w-[calc(100%+2.5rem)] rounded-t-xl rounded-b-none object-cover';
+          card.prepend(image);
+        });
+      }
+      const problemsSection = Array.from(document.querySelectorAll<HTMLElement>('main section')).find((section) => section.textContent?.includes('Мультимодальная логистика ломается на стыках'));
+      if (problemsSection) {
+        problemsSection.querySelectorAll<SVGElement>('svg').forEach((icon) => { icon.style.color = '#E5484D'; });
+        problemsSection.querySelectorAll<HTMLElement>('article').forEach((card) => { card.style.borderTop = '2px solid #E5484D'; });
+      }
+      const subnav = document.querySelector<HTMLElement>('nav[aria-label="Навигация по странице"]');
+      const subnavItems = [['Маршрут', '#route'], ['Кабинет', '#mm-digital-cabinet'], ['Грузы и контейнеры', '#mm-cargo-types'], ['География', '#mm-geography'], ['Партнёры', '#mm-partners'], ['Участники', '#mm-audience'], ['Проблемы', '#mm-problems'], ['Этапы', '#mm-process'], ['Контроль', '#stage-control'], ['Портал', '#mm-portal-features'], ['Документы', '#documents'], ['Сценарий', '#mm-chain-scenarios'], ['FAQ', '#faq']];
+      const subnavContainer = subnav?.querySelector('div');
+      if (subnavContainer) {
+        subnavContainer.innerHTML = '';
+        subnavItems.forEach(([label, href]) => {
+          const link = document.createElement('a');
+          link.textContent = label;
+          link.href = href;
+          link.className = 'whitespace-nowrap border-b border-transparent py-1 transition hover:border-[#B7FF2A] hover:text-[#440D84]';
+          subnavContainer.appendChild(link);
+        });
+      }
+    }
     return () => { document.title = previousTitle; if (description && previousDescription) description.content = previousDescription; };
   }, []);
 
@@ -108,8 +241,8 @@ export default function MultimodalPage() {
     <div className="min-h-screen overflow-x-hidden bg-white text-[#19131F]">
       <UnifiedHeader />
       <ProductAnchorNav items={[["Обзор", "#mm-top"], ["Маршрут", "#route"], ["Участники", "#audience"], ["Этапы", "#stage-control"], ["Документы", "#documents"], ["Безопасность", "#safe-deal-mm"], ["Портал", "#portal-demo"], ["FAQ", "#faq"]]} />
-      <StickyProductCta label="Соберите мультимодальный маршрут" href="#start">Обсудить маршрут</StickyProductCta>
-      <style>{`main button:hover { color: #7F42E1; } main button:hover span:last-child { background: #F1E8FA; color: #7F42E1; } main > section:first-child .inline-flex:first-child { background: rgba(255,255,255,.5); color: #440D84; backdrop-filter: blur(8px); } main > section:nth-of-type(6) svg { color: #E5484D; } main > section:first-child a[href="#start"] { background: #B7FF2A !important; color: #440D84 !important; }`}</style>
+      <style>{`main button:hover { color: #7F42E1; } main button:hover span:last-child { background: #F1E8FA; color: #7F42E1; } main > section:first-child .inline-flex:first-child { background: rgba(255,255,255,.5); color: #440D84; backdrop-filter: blur(8px); } main > section:nth-of-type(6) svg { color: #E5484D; } main > section:first-child a[href="#start"] { background: #B7FF2A !important; color: #440D84 !important; } #documents > div > article { display: none !important; } #start, [data-block-id="mm-business-tools"], [data-block-id="mm-benefits"], [data-block-id="mm-difference"], [data-block-id="mm-definition"], [data-block-id="mm-services"] { display: none !important; }`}</style>
+      <style>{`[data-block-id="mm-operator"] { display: none !important; }`}</style>
       <main>
         <section className="bg-[#440D84] text-white" id="mm-top">
           <div className="mx-auto max-w-[1440px] px-4 pb-20 pt-6 sm:px-6 lg:px-10 lg:pb-24">
