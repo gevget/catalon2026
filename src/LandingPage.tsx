@@ -44,6 +44,8 @@ import {
 import { LargeSolutionCard } from './components/LargeSolutionCard';
 import { ServiceCard } from './components/ServiceCard';
 import { SolutionCard, SolutionCardProps } from './components/SolutionCard';
+import { UnifiedFooter } from './components/UnifiedFooter';
+import { UnifiedHeader } from './components/UnifiedHeader';
 
 export default function LandingPage() {
   const pageBase = import.meta.env.BASE_URL?.replace(/\/$/, '') || '';
@@ -172,7 +174,8 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#440D84] backdrop-blur">
+      <UnifiedHeader />
+      <header className="hidden sticky top-0 z-50 border-b border-white/10 bg-[#440D84] backdrop-blur">
         <div className="flex h-14 w-full items-center justify-between px-6 lg:px-10">
           <a href="#" className="flex items-center">
             <img src={headerLogo} alt="Catalon" className="h-7 w-auto" />
@@ -216,6 +219,7 @@ export default function LandingPage() {
         <section
           className="relative mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24"
           id="about"
+          data-block-id="home-hero" data-block-title="Главный экран Catalon"
         >
           <div className="absolute inset-0 -z-10 rounded-[36px] bg-gradient-to-tr from-purple-main/5 to-transparent" />
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
@@ -276,7 +280,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="solutions">
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="solutions" data-block-id="home-active-solutions" data-block-title="Активные решения Catalon">
           <h2 className="text-3xl font-bold">Активные решения Catalon</h2>
           <p className="mt-4 text-gray-600">
             Рабочие направления, с которых начинается marketplace Catalon.
@@ -288,7 +292,11 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24" id="catalog">
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="audience-after-solutions" data-block-id="home-audiences" data-block-title="Для участников рынка грузоперевозок"><h2 className="text-center text-3xl font-bold">Для участников рынка грузоперевозок</h2><p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">Заказчики, перевозчики и экспедиторы работают в одном цифровом контуре Catalon.</p><div className="mt-10 grid gap-6 md:grid-cols-3"><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-green-500 bg-white"><img src={portalCards[0].image} alt={portalCards[0].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Заказчикам</h3><p className="mt-4 text-sm text-gray-600">Размещайте заявки, находите перевозчиков, фиксируйте условия и проводите сделки безопаснее.</p></div></article><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-purple-600 bg-white"><img src={portalCards[1].image} alt={portalCards[1].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Перевозчикам</h3><p className="mt-4 text-sm text-gray-600">Получайте рейсы, загружайте транспорт, подключайте финансирование и сервисы.</p></div></article><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-blue-500 bg-white"><img src={portalCards[2].image} alt={portalCards[2].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Экспедиторам</h3><p className="mt-4 text-sm text-gray-600">Управляйте заявками, маршрутами, документами и участниками перевозки в одном месте.</p></div></article></div></section>
+
+        <section className="hidden" aria-label="Изображения участников рынка"><div className="grid gap-6 md:grid-cols-3">{portalCards.slice(0, 3).map((card) => <div key={card.title} className="overflow-hidden rounded-[28px] bg-white"><img src={card.image} alt={card.title} className="block h-auto w-full object-contain" /></div>)}</div></section>
+
+        <section className="hidden mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24" id="catalog" data-block-id="home-earn-save" data-block-title="Catalon помогает зарабатывать и экономить">
           <h2 className="text-center text-3xl font-bold">Catalon помогает зарабатывать и экономить</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">
             Решения открывают новые направления для заработка, а сервисы помогают снижать
@@ -352,7 +360,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24">
+        <section className="mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-solution-catalog" data-block-title="Каталог решений Catalon">
           <h2 className="text-3xl font-bold">Каталог решений Catalon</h2>
           <p className="mt-4 text-sm text-gray-600">
             Сейчас доступны два активных направления. Остальные решения находятся в разработке
@@ -366,8 +374,9 @@ export default function LandingPage() {
         </section>
 
         <section
-          className="mx-auto max-w-7xl rounded-[36px] bg-[#7133D0] px-4 py-16 text-white lg:px-8 lg:py-24"
+          className="hidden mx-auto max-w-7xl rounded-[36px] bg-[#7133D0] px-4 py-16 text-white lg:px-8 lg:py-24"
           id="safe-deal"
+          data-block-id="home-safe-deal" data-block-title="Безопасная сделка — ключевое отличие Catalon"
         >
               <h2 className="text-center text-3xl font-bold sm:text-4xl"><span className="text-[#B7FF2A]">Безопасная сделка</span> - ключевое отличие Catalon</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-white/70">
@@ -416,7 +425,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="services">
+        <section className="hidden mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="services" data-block-id="home-trip-finance" data-block-title="Финансирование поездки под конкретный рейс">
           <div className="grid grid-cols-1 items-center gap-12 rounded-[48px] bg-[#BA9AF0] p-12 text-white lg:grid-cols-2 lg:p-16">
             <div>
               <div className="mb-6 flex flex-wrap gap-2">
@@ -458,7 +467,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="portal">
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="portal" data-block-id="home-portal" data-block-title="Все управление перевозками — онлайн">
           <h2 className="text-center text-3xl font-bold">Сервисы Catalon помогают экономить</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">
             Подключайте сервисы экосистемы, чтобы снижать расходы на рейсы, транспорт,
@@ -516,7 +525,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="audience">
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="audience" data-block-id="home-audiences" data-block-title="Для участников рынка грузоперевозок">
           <h2 className="text-center text-3xl font-bold">Все управление перевозками - онлайн</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">
             Catalon собирает заявки, сделки, документы, статусы, финансирование и сервисы в
@@ -553,7 +562,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+        <section style={{ display: 'none' }} className="home-big-business-tools-main hidden mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-big-business-tools" data-block-title="Возможности больших компаний — для малого и среднего бизнеса">
           <h2 className="text-center text-3xl font-bold">Для участников рынка грузоперевозок</h2>
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
             <div className="rounded-[28px] border border-gray-200 border-t-4 border-t-green-500 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
@@ -601,7 +610,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-digital-ecosystem" data-block-title="Catalon строит цифровую экосистему грузоперевозок">
           <div className="grid grid-cols-1 items-center gap-12 rounded-[48px] bg-[#350375] p-12 text-white lg:grid-cols-2 lg:p-16">
             <div>
               <h2 className="text-3xl font-bold sm:text-4xl">
@@ -638,7 +647,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl bg-white px-4 py-16 lg:px-8 lg:py-24">
+        <section className="mx-auto max-w-7xl bg-white px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-ai-operator" data-block-title="Интеллектуальный оператор Catalon">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div>
               <h2 className="text-3xl font-bold">Catalon строит цифровую экосистему грузоперевозок</h2>
@@ -695,7 +704,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="hidden mx-auto max-w-7xl rounded-[48px] bg-[#440D84] px-4 py-16 lg:px-8 lg:py-24" aria-hidden="true">
+        <section className="hidden mx-auto max-w-7xl rounded-[48px] bg-[#440D84] px-4 py-16 lg:px-8 lg:py-24" aria-hidden="true" data-block-id="home-portal-demo" data-block-title="Посмотрите, как выглядит портал">
           <h2 className="text-center text-3xl font-bold">Посмотрите, как выглядит портал</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">
             Скриншоты интерфейса покажут путь от заявки до сделки, документов, финансирования и
@@ -718,7 +727,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="relative mx-auto my-16 max-w-7xl overflow-hidden rounded-[48px] bg-[#2F0A63] px-4 py-24 text-white">
+        <section className="relative mx-auto my-16 max-w-7xl overflow-hidden rounded-[48px] bg-[#2F0A63] px-4 py-24 text-white" data-block-id="home-final-cta" data-block-title="Начните работать в Catalon">
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(185,122,255,0.18)_0%,rgba(47,10,99,0)_38%,rgba(183,255,42,0.12)_100%)]" />
           <div className="absolute -left-24 top-8 h-64 w-64 rounded-full bg-[#B7FF2A]/10 blur-3xl" />
           <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[#8B5CF6]/20 blur-3xl" />
@@ -756,7 +765,7 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="bg-[#12071F] pt-18 text-white" id="contacts">
+      <footer className="bg-[#12071F] pt-18 text-white" id="contacts" data-block-id="home-footer-contacts" data-block-title="Контакты и интеллектуальный оператор">
         <div className="mx-auto max-w-7xl px-4 pb-14">
           <div className="grid grid-cols-1 gap-12 border-b border-white/10 pb-14 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
             <div>
@@ -819,6 +828,7 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+      <UnifiedFooter />
     </div>
   );
 }

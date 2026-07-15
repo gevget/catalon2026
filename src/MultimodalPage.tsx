@@ -40,6 +40,8 @@ import {
 import { useEffect, useState } from 'react';
 import roadImage from '../2.png';
 import { ProductAnchorNav, ProductFooter, ProductHeader, StickyProductCta } from './components/ProductChrome';
+import { UnifiedFooter } from './components/UnifiedFooter';
+import { UnifiedHeader } from './components/UnifiedHeader';
 
 function baseUrl(path = '') {
   const base = import.meta.env.BASE_URL?.replace(/\/$/, '') || '';
@@ -104,7 +106,7 @@ export default function MultimodalPage() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-[#19131F]">
-      <ProductHeader portalHref="#portal-demo" startHref="#start" />
+      <UnifiedHeader />
       <ProductAnchorNav items={[["Обзор", "#mm-top"], ["Маршрут", "#route"], ["Участники", "#audience"], ["Этапы", "#stage-control"], ["Документы", "#documents"], ["Безопасность", "#safe-deal-mm"], ["Портал", "#portal-demo"], ["FAQ", "#faq"]]} />
       <StickyProductCta label="Соберите мультимодальный маршрут" href="#start">Обсудить маршрут</StickyProductCta>
       <style>{`main button:hover { color: #7F42E1; } main button:hover span:last-child { background: #F1E8FA; color: #7F42E1; } main > section:first-child .inline-flex:first-child { background: rgba(255,255,255,.5); color: #440D84; backdrop-filter: blur(8px); } main > section:nth-of-type(6) svg { color: #E5484D; } main > section:first-child a[href="#start"] { background: #B7FF2A !important; color: #440D84 !important; }`}</style>
@@ -155,7 +157,7 @@ export default function MultimodalPage() {
 
         <section className="px-4 pb-4 sm:px-6 lg:px-10" id="start"><div className="mx-auto max-w-[1440px] overflow-hidden rounded-[34px] bg-[#440D84] px-6 py-16 text-center text-white sm:px-10 lg:py-24"><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#A0FF00]">Единый цифровой контур</p><h2 className="mx-auto mt-5 max-w-4xl text-[clamp(2.3rem,5vw,5rem)] font-extrabold leading-[0.96] tracking-[-0.055em]">Соберите мультимодальный маршрут в Catalon</h2><p className="mx-auto mt-6 max-w-2xl leading-7 text-white/68">Создайте заявку, подключите участников и управляйте этапами, документами и сделкой через единый цифровой портал.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="#contacts" className="rounded-full bg-[#A0FF00] px-7 py-4 text-sm font-bold text-[#350375]">Создать заявку</a><a href="#contacts" className="rounded-full border border-white/30 px-7 py-4 text-sm font-bold">Получить консультацию</a></div><div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-2">{['Один маршрут', 'Контроль этапов', 'Документы онлайн', 'Безопасная сделка', 'Оператор'].map((tag) => <span key={tag} className="rounded-full border border-white/15 px-3 py-2 text-xs text-white/62">{tag}</span>)}</div></div></section>
       </main>
-      <ProductFooter />
+      <UnifiedFooter />
     </div>
   );
 }

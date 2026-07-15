@@ -49,7 +49,7 @@ import {
   FilePlus2,
   type LucideIcon,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import roadHeroImage from '../assets/1/p1-hero.png';
 import safeDealAsset from '../assets/1/Безопасная сделка.png';
 import businessToolsAsset from '../assets/1/Возможности больших компаний — для малого и среднего бизнеса.png';
@@ -67,7 +67,10 @@ import documentsAsset from '../assets/1/Документы.png';
 import financesAsset from '../assets/1/Финансы.png';
 import servicesAsset from '../assets/1/Сервисы.png';
 import supportAsset from '../assets/1/Поддержка.png';
-import { ProductAnchorNav, ProductFooter, ProductHeader, StickyProductCta } from './components/ProductChrome';
+import { ProductAnchorNav, ProductFooter, ProductHeader } from './components/ProductChrome';
+import { UnifiedFooter } from './components/UnifiedFooter';
+import { UnifiedHeader } from './components/UnifiedHeader';
+import { HomeBigBusinessToolsBlock, HomeEarnSaveBlock, HomeSafeDealBlock, HomeServicesBlock, HomeTripFinanceBlock } from './HomeBlocks';
 
 function getBasePath() {
   return import.meta.env.BASE_URL?.replace(/\/$/, '') || '';
@@ -159,15 +162,22 @@ const flow = [
 ];
 
 const onlineCards = [
+  ['Предложения и тарифы', 'Сравнение стоимости, условий и доступного транспорта по заявке.', requestAsset, Search],
+  ['Расчёт тарифа', 'Параметры заявки, маршрут и условия перевозки собраны для предварительной оценки стоимости.', financesAsset, CircleDollarSign],
   ['Заявки', 'Создание и обработка новых перевозок.', requestAsset, ClipboardCheck],
   ['Рейсы', 'Маршруты, транспорт и статусы исполнения.', tripsAsset, Route],
   ['Документы', 'Комплект файлов по каждой сделке.', documentsAsset, FileText],
   ['Финансы', 'Условия оплаты и движение расчётов.', financesAsset, WalletCards],
   ['Сервисы', 'Полезные услуги прямо из портала.', servicesAsset, Wrench],
   ['Поддержка', 'Помощь оператора на каждом этапе.', supportAsset, Headphones],
+  ['История и аналитика', 'История рейсов, документы и данные для повторных перевозок и управленческих решений.', portalOverviewAsset, ChartNoAxesCombined],
 ] as const;
 
 const faq = [
+  ['Как заказчику разместить заявку на перевозку?', 'Укажите маршрут, груз, сроки и требования к перевозке в личном кабинете. После публикации вы сможете получать и сравнивать предложения перевозчиков.'],
+  ['Можно ли сравнить предложения перевозчиков?', 'Да. В заявке можно сопоставить доступные варианты по стоимости, маршруту, срокам и условиям исполнения.'],
+  ['Можно ли отслеживать статус рейса?', 'Да. Статусы, ключевые этапы, документы и действия участников доступны в цифровом портале.'],
+  ['Где хранятся документы по перевозке?', 'Документы и история сделки сохраняются в личном кабинете и доступны участникам в рамках конкретного рейса.'],
   ['Catalon — перевозчик или биржа грузов?', 'Catalon — цифровая платформа для совместной работы заказчиков, перевозчиков и операторов. Она объединяет поиск рейса, проведение сделки, документы, расчёты и сервисы.'],
   ['Какие перевозки можно организовать?', 'Решение рассчитано на автомобильные FTL- и LTL-перевозки по России: разовые, регулярные и контрактные рейсы.'],
   ['Что даёт безопасная сделка?', 'Она фиксирует согласованные условия, участников и этапы перевозки. Это делает процесс прозрачнее и помогает снизить операционные риски для обеих сторон.'],
@@ -188,16 +198,45 @@ function SectionIntro({ eyebrow, title, text, light = false }: { eyebrow: string
 
 export default function RoadFreightPage() {
   const [openedFaq, setOpenedFaq] = useState(0);
+  useEffect(() => {
+    const titles: Array<[string, string]> = [
+      ['road-benefits', 'Преимущества Catalon для перевозок'],
+      ['road-market-stats', 'Ключевые показатели Catalon'],
+      ['road-portal-preview', 'Как устроена работа в Catalon'],
+      ['road-services', 'Сервисы для автопарка'],
+      ['road-business-tools', 'Возможности для малого и среднего бизнеса'],
+      ['road-multimodal-link', 'Мультимодальные и контейнерные перевозки'],
+      ['road-faq', 'Частые вопросы об автомобильных перевозках'],
+      ['road-final-cta', 'Начните работать с перевозками в Catalon'],
+    ];
+    document.querySelectorAll<HTMLElement>('main section').forEach((section, index) => {
+      if (section.dataset.blockId) return;
+      const [id, title] = titles[index] || [`road-section-${index + 1}`, `Блок автомобильных перевозок ${index + 1}`];
+      section.dataset.blockId = id;
+      section.dataset.blockTitle = title;
+    });
+    const customerScenario = document.querySelector<HTMLElement>('[data-block-id="road-customer-scenario"]');
+    const roleBlock = document.querySelector<HTMLElement>('[data-block-id="road-how-it-works"]');
+    if (customerScenario && roleBlock) roleBlock.insertAdjacentElement('afterend', customerScenario);
+    const servicesBlock = document.querySelector<HTMLElement>('[data-block-id="road-services-catalog"]');
+    const earnSaveBlock = document.querySelector<HTMLElement>('[data-block-id="road-earn-save"]');
+    if (servicesBlock && earnSaveBlock) earnSaveBlock.insertAdjacentElement('afterend', servicesBlock);
+    const sectionIds: Record<string, string> = { 'road-earn-save': 'road-earn-save', 'road-capabilities': 'capabilities', 'road-ai-operator': 'intelligence', 'road-customer-scenario': 'road-customer-scenario', 'road-services-catalog': 'road-services-catalog' };
+    Object.entries(sectionIds).forEach(([blockId, id]) => { const section = document.querySelector<HTMLElement>(`[data-block-id="${blockId}"]`); if (section) section.id = id; });
+    const subnav = document.querySelector<HTMLElement>('nav[aria-label="Навигация по странице"]');
+    const subnavItems = [['Для кого', '#how-it-works'], ['Клиентский сценарий', '#road-customer-scenario'], ['Возможности', '#capabilities'], ['Заработок и экономия', '#road-earn-save'], ['Сервисы', '#road-services-catalog'], ['Портал', '#portal'], ['Бизнес-инструменты', '#road-business-tools'], ['ИИ', '#intelligence'], ['FAQ', '#faq']];
+    const subnavContainer = subnav?.querySelector('div');
+    if (subnavContainer) { subnavContainer.innerHTML = ''; subnavItems.forEach(([label, href]) => { const link = document.createElement('a'); link.textContent = label; link.href = href; link.className = 'whitespace-nowrap border-b border-transparent py-1 transition hover:border-[#B7FF2A] hover:text-[#440D84]'; subnavContainer.appendChild(link); }); }
+  }, []);
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#F7F6F3] text-[#19131F]">
       <style>{`#top { background: #9FF501 !important; } #portal-early { background: #F1EDE9; } #how-it-works article:first-child { background: #B7F904; } #how-it-works article:nth-child(2) { background: #3C0A7D; } #safe-deal article:first-child { background: #7230D7; } #safe-deal article:nth-child(2) { background: #D6BFF3; } #safe-deal + section article:first-child { background: #EEE1F7; } #portal + section + section { background: #F6F3F0; }`}</style>
-      <ProductHeader portalHref="#portal-early" startHref="#start" />
+      <UnifiedHeader />
       <ProductAnchorNav items={[["Обзор", "#top"], ["Для кого", "#how-it-works"], ["Как работает", "#how-it-works"], ["Безопасная сделка", "#safe-deal"], ["Финансирование", "#safe-deal"], ["Портал", "#portal-early"], ["FAQ", "#faq"]]} />
-      <StickyProductCta label="Автомобильные перевозки через Catalon" href="#start">Начать работу</StickyProductCta>
 
       <main>
-        <section className="relative overflow-hidden bg-[#B7FF2A]" id="top">
+        <section className="relative overflow-hidden bg-[#B7FF2A]" id="top" data-block-id="road-hero" data-block-title="Автомобильные перевозки по России">
           <div className="mx-auto max-w-[1440px] px-4 pb-16 pt-7 sm:px-6 lg:px-10 lg:pb-24">
             <div className="flex items-center gap-2 text-xs text-[#443B4B]"><a href={home()} className="hover:text-[#440D84]">Главная</a><span>/</span><span>Автомобильные перевозки</span></div>
             <div className="mt-10 grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
@@ -219,8 +258,8 @@ export default function RoadFreightPage() {
           </div>
         </section>
 
-        <section className="border-b border-[#DED9E3] bg-white" aria-label="Преимущества Catalon">
-          <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-px bg-[#DED9E3] px-4 sm:px-6 md:grid-cols-4 lg:px-10">
+        <section id="benefits" className="border-b border-[#DED9E3] bg-white" aria-label="Преимущества Catalon">
+          <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-0 bg-white px-4 sm:px-6 md:grid-cols-4 lg:px-10">
             {[
               [Users, 'Бесплатная регистрация', 'Изучите портал и возможности платформы без оплаты за вход.'],
               [Sparkles, 'Быстрый старт', 'Создайте заявку или начните поиск подходящего груза.'],
@@ -231,45 +270,46 @@ export default function RoadFreightPage() {
         </section>
 
         <section className="bg-[#19131F] text-white">
-          <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-px bg-white/10 px-4 sm:px-6 md:grid-cols-4 lg:px-10">
+          <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-0 bg-[#19131F] px-4 sm:px-6 md:grid-cols-4 lg:px-10">
             {[['0 ₽', 'регистрация на платформе'], ['Успех', 'комиссия только по сделке'], ['РФ', 'отечественный софт'], ['ЭДО', 'документы и архив']].map(([value, label]) => <div key={label} className="bg-[#19131F] px-3 py-7 sm:px-6"><p className="text-2xl font-extrabold text-[#B7FF2A] sm:text-3xl">{value}</p><p className="mt-1 text-xs text-white/55 sm:text-sm">{label}</p></div>)}
           </div>
         </section>
 
-        <section className="bg-[#F1F1ED] py-20 lg:py-24" id="portal-early"><div className="mx-auto max-w-[1208px] px-4 sm:px-6 lg:px-0"><div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><SectionIntro eyebrow="Продукт сразу" title="Посмотрите, как устроена работа в Catalon" text="Свободные грузы, карточка заявки, статусы сделки и документы собраны в одном рабочем интерфейсе." /><a href="#portal" className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-[#440D84]">Открыть портал <ArrowRight className="h-4 w-4" /></a></div><div className="mt-10 grid items-center gap-8 lg:grid-cols-[1.65fr_0.8fr]"><AssetPlaceholder name="portal-overview.png" /><div className="grid gap-3">{[[PackageCheck, 'Свободные грузы', 'Подбор заявок по маршруту и параметрам транспорта.'], [ClipboardCheck, 'Карточка заявки', 'Маршрут, стоимость, сроки и участники в одном окне.'], [Radar, 'Статусы сделки', 'Актуальный этап виден заказчику, перевозчику и оператору.'], [FileText, 'Документы', 'История и закрывающие файлы не теряются в чатах.']].map(([Icon, title, text]) => { const PortalIcon = Icon as LucideIcon; return <div key={title as string} className="group border-b border-[#DDD8DF] py-3"><div className="flex items-center gap-3 text-sm font-bold"><PortalIcon className="h-5 w-5 text-[#440D84] transition-transform group-hover:translate-x-1" />{title as string}</div><p className="mt-1 pl-8 text-xs leading-5 text-[#675F6F]">{text as string}</p></div>; })}</div></div></div></section>
+        <section className="bg-[#F1F1ED] py-20 lg:py-24" id="portal-early"><div className="mx-auto max-w-[1208px] px-4 sm:px-6 lg:px-0"><div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><SectionIntro eyebrow="Продукт сразу" title="Посмотрите, как устроена работа в Catalon" text="Свободные грузы, карточка заявки, статусы сделки и документы собраны в одном рабочем интерфейсе." /></div><div className="mt-10 grid items-center gap-8 lg:grid-cols-[1.65fr_0.8fr]"><AssetPlaceholder name="portal-overview.png" /><div className="grid gap-3">{[[PackageCheck, 'Свободные грузы', 'Подбор заявок по маршруту и параметрам транспорта.'], [ClipboardCheck, 'Карточка заявки', 'Маршрут, стоимость, сроки и участники в одном окне.'], [Radar, 'Статусы сделки', 'Актуальный этап виден заказчику, перевозчику и оператору.'], [FileText, 'Документы', 'История и закрывающие файлы не теряются в чатах.']].map(([Icon, title, text]) => { const PortalIcon = Icon as LucideIcon; return <div key={title as string} className="group border-b border-[#DDD8DF] py-3"><div className="flex items-center gap-3 text-sm font-bold"><PortalIcon className="h-5 w-5 text-[#440D84] transition-transform group-hover:translate-x-1" />{title as string}</div><p className="mt-1 pl-8 text-xs leading-5 text-[#675F6F]">{text as string}</p></div>; })}</div></div></div></section>
 
-        <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32" id="how-it-works">
+        <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32" id="how-it-works" data-block-id="road-how-it-works" data-block-title="Как проходит перевозка в Catalon">
           <SectionIntro eyebrow="Один рынок — разные задачи" title="Каждый участник получает свой рабочий сценарий" text="Catalon не показывает всем один и тот же список грузов. Заказчик, перевозчик и оператор работают со своими задачами, но остаются внутри общей цифровой сделки." />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {roles.map((role) => <article key={role.title} className={`group flex min-h-full flex-col overflow-hidden rounded-[28px] p-6 sm:p-8 ${role.tone === 'lime' ? 'bg-[#B7FF2A]' : role.tone === 'purple' ? 'bg-[#440D84] text-white' : 'border border-[#DED9E3] bg-white'}`}><div className="flex items-center justify-between"><span className={`text-xs font-bold uppercase tracking-[0.16em] ${role.tone === 'purple' ? 'text-[#B7FF2A]' : 'text-[#7133D0]'}`}>{role.label}</span><ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" /></div><h3 className="mt-5 text-2xl font-extrabold leading-tight tracking-[-0.03em]">{role.title}</h3><p className={`mt-3 text-sm leading-6 ${role.tone === 'purple' ? 'text-white/70' : 'text-[#554C5D]'}`}>{role.text}</p><ul className="mt-6 divide-y divide-current/10">{role.points.map(([PointIcon, point]) => <li key={point} className="flex gap-3 py-3 text-sm font-semibold"><PointIcon className={`h-5 w-5 shrink-0 ${role.tone === 'purple' ? 'text-[#B7FF2A]' : 'text-[#440D84]'}`} />{point}</li>)}</ul><div className="mt-auto pt-7"><AssetPlaceholder name={role.image as string} dark={role.tone === 'purple'} /></div></article>)}
           </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-3"><div className="rounded-2xl border border-[#DED9E3] bg-white/70 p-5 text-sm"><strong>Заказчику:</strong> предложения, тарифы, сроки и документы в одном окне.</div><div className="rounded-2xl border border-[#DED9E3] bg-white/70 p-5 text-sm"><strong>Перевозчику:</strong> прямые заказы, планирование загрузки и электронный документооборот.</div><div className="rounded-2xl border border-[#DED9E3] bg-white/70 p-5 text-sm"><strong>Оператору:</strong> контроль отклонений, участников и отчётности.</div></div>
         </section>
 
-        <section className="bg-[#440D84] py-20 text-white lg:py-32" id="capabilities">
+        <section className="bg-[#440D84] py-20 text-white lg:py-32" id="capabilities" data-block-id="road-capabilities" data-block-title="Инструменты Catalon как единая система">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><SectionIntro eyebrow="Цифровой контур перевозки" title="Инструменты работают как единая система" text="Заявка становится основой всей операции. Из неё формируются предложения, рейс, документы и управленческие данные — без повторного ввода и потери контекста." light />
             <div className="mt-12 grid gap-px overflow-hidden rounded-[28px] bg-white/15 sm:grid-cols-2 lg:grid-cols-3">{capabilities.map(({ icon: Icon, title, text }, index) => <article key={title} className="bg-[#440D84] p-7 transition hover:bg-[#521298] sm:p-9"><div className="flex items-start justify-between"><div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#B7FF2A] text-[#440D84]"><Icon className="h-6 w-6" /></div><span className="text-xs font-bold text-white/30">0{index + 1}</span></div><h3 className="mt-8 text-xl font-bold">{title}</h3><p className="mt-3 text-sm leading-6 text-white/65">{text}</p></article>)}</div>
           </div>
         </section>
 
-        <section className="bg-[#B7FF2A] py-20 lg:py-28">
+        <section className="bg-[#B7FF2A] py-20 lg:py-28" data-block-id="road-flow" data-block-title="От заявки до закрытого рейса">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><SectionIntro eyebrow="Восемь шагов" title="От заявки до закрытого рейса" text="У процесса есть ясное начало, ответственные действия и зафиксированный результат." />
             <ol className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">{flow.map(([number, title, text], index) => <li key={number} className="relative border-t border-[#440D84] pt-6"><div className="flex items-center justify-between"><span className="text-4xl font-extrabold text-[#440D84]">{number}</span>{index < flow.length - 1 && <ArrowRight className="hidden h-5 w-5 text-[#440D84]/45 xl:block" />}</div><h3 className="mt-7 text-xl font-extrabold">{title}</h3><p className="mt-3 text-sm leading-6 text-[#4C454E]">{text}</p></li>)}</ol>
           </div>
         </section>
 
-        <section id="safe-deal" className="mx-auto max-w-[1440px] space-y-6 px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
+        <section id="safe-deal" className="mx-auto max-w-[1440px] space-y-6 px-4 py-20 sm:px-6 lg:px-10 lg:py-32" data-block-id="road-safe-deal-finance" data-block-title="Безопасная сделка и финансирование рейса">
           <article className="grid items-center gap-8 overflow-hidden rounded-[32px] bg-[#7133D0] p-7 text-white sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-14"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B7FF2A]">Защита интересов сторон</p><h2 className="mt-4 text-3xl font-bold sm:text-4xl">Безопасная сделка</h2><p className="mt-5 max-w-xl leading-7 text-white/75">Условия, участники и документы связаны с конкретным рейсом. Меньше неоднозначности, больше прозрачности на каждом этапе.</p><div className="mt-8 grid gap-3 sm:grid-cols-2">{[[LockKeyhole, 'Условия зафиксированы'], [Users, 'Участники идентифицированы'], [TimerReset, 'Этапы видны онлайн'], [ReceiptText, 'История сохраняется']].map(([Icon, item]) => { const DealIcon = Icon as LucideIcon; return <span key={item as string} className="flex items-center gap-2 text-sm font-semibold"><DealIcon className="h-5 w-5 text-[#B7FF2A]" />{item as string}</span>; })}</div></div><AssetPlaceholder name="safe-deal-road-freight.png" dark /></article>
           <article className="grid items-center gap-8 overflow-hidden rounded-[32px] bg-[#D8C5F4] p-7 sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-14"><div className="order-2 lg:order-1"><AssetPlaceholder name="trip-finance-road-freight.png" /></div><div className="order-1 lg:order-2"><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#440D84]">Оборотные средства</p><h2 className="mt-4 text-4xl font-extrabold leading-none tracking-[-0.04em] text-[#440D84] sm:text-5xl">Финансирование под конкретный рейс</h2><p className="mt-5 max-w-xl leading-7 text-[#554466]">Не абстрактный кредит, а возможность поддержать исполнение подтверждённой перевозки. Заявка на финансирование связана с её параметрами и документами.</p><a href="#start" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#440D84] px-6 py-3 text-sm font-bold text-white">Узнать условия <ArrowRight className="h-4 w-4" /></a></div></article>
         </section>
 
-        <section className="bg-white py-20 lg:py-32">
+        <section className="bg-white py-20 lg:py-32" data-block-id="road-earn-save" data-block-title="Зарабатывать больше и экономить на рейсе">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><SectionIntro eyebrow="Экономика рейса" title="Помогаем больше зарабатывать и меньше тратить" text="Доход формируется не только ценой перевозки. Catalon помогает сократить простой, быстрее запустить рейс и подключить полезные сервисы в нужный момент." />
             <div className="mt-12 grid gap-6 lg:grid-cols-2"><article className="flex flex-col rounded-[30px] bg-[#F2EDF8] p-7 sm:p-10"><div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#440D84] text-[#B7FF2A]"><CircleDollarSign className="h-6 w-6" /></div><h3 className="mt-7 text-3xl font-extrabold tracking-[-0.04em]">Зарабатывать</h3><p className="mt-4 max-w-lg text-sm leading-6 text-[#675F6F]">Подходящие загрузки, меньше холостого пробега, быстрый документооборот и доступ к финансированию.</p><div className="mt-7"><AssetPlaceholder name="carrier-growth.png" /></div></article><article className="flex flex-col rounded-[30px] bg-[#F1F1ED] p-7 sm:p-10"><div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#B7FF2A] text-[#440D84]"><Banknote className="h-6 w-6" /></div><h3 className="mt-7 text-3xl font-extrabold tracking-[-0.04em]">Экономить</h3><p className="mt-4 max-w-lg text-sm leading-6 text-[#675F6F]">Топливо, страхование, обслуживание, запчасти и поддержка — в одной экосистеме для транспорта.</p><div className="mt-7"><AssetPlaceholder name="transport-services.png" /></div></article></div>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{[[Fuel, 'Топливо', 'Меньше затрат на рейс.'], [Wrench, 'Автосервис', 'Обслуживание без лишних поисков.'], [ShieldCheck, 'Страховая поддержка', 'Защита груза и ответственности.'], [Headphones, 'Поддержка', 'Помощь на каждом этапе.']].map(([Icon, label, description]) => { const ServiceIcon = Icon as LucideIcon; return <div key={label as string} className="rounded-2xl border border-[#E3DFE6] p-5"><div className="flex items-center gap-4"><ServiceIcon className="h-6 w-6 text-[#7133D0]" /><span className="text-sm font-bold">{label as string}</span></div><p className="mt-2 pl-10 text-xs leading-5 text-[#675F6F]">{description as string}</p></div>; })}</div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32" id="portal">
+        <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32" id="portal" data-block-id="road-portal" data-block-title="Цифровой портал Catalon">
           <SectionIntro eyebrow="Портал Catalon" title="Управление перевозками — онлайн" text="Каждый раздел отвечает на конкретный рабочий вопрос. Интерфейс не заставляет собирать картину рейса вручную." />
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{onlineCards.map(([title, text, image, Icon]) => <article key={title} className="group rounded-[26px] border border-[#DED9E3] bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_24px_60px_rgba(45,28,62,0.14)]"><div className="flex items-center justify-between"><div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#F0E8FA] text-[#440D84]"><Icon className="h-5 w-5" /></div><ArrowRight className="h-5 w-5 text-[#440D84]/25 transition group-hover:text-[#440D84]" /></div><div className="mt-4"><AssetPlaceholder name={image as string} /></div><h3 className="mt-5 text-xl font-extrabold">{title}</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">{text}</p></article>)}</div>
         </section>
@@ -278,7 +318,7 @@ export default function RoadFreightPage() {
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><SectionIntro eyebrow="Не макет, а рабочий инструмент" title="Посмотрите внутрь портала" text="Свободные грузы, предложения, данные по маршруту и действия по сделке собраны на одном экране." light /><div className="flex gap-3 text-xs font-bold"><span className="rounded-full bg-[#B7FF2A] px-4 py-2 text-[#440D84]">Свободные грузы</span><span className="rounded-full border border-white/20 px-4 py-2 text-white/70">Сделка</span></div></div><div className="mt-12"><AssetPlaceholder name="portal-overview-screen.png" dark /></div></div>
         </section>
 
-        <section className="bg-[#F1F1ED] py-20 lg:py-28">
+        <section className="hidden bg-[#F1F1ED] py-20 lg:py-28" data-block-id="road-formats-hidden" data-block-title="Форматы перевозок — Для регулярных и разовых перевозок по России">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
             <SectionIntro eyebrow="Форматы перевозок" title="Для регулярных и разовых перевозок по России" text="Выбирайте подходящий формат перевозки и управляйте повторяющимися поставками в одном цифровом процессе." />
             <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -292,11 +332,11 @@ export default function RoadFreightPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
+        <section id="road-business-tools" data-block-id="road-business-tools" data-block-title="Возможности для малого и среднего бизнеса" className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
           <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7133D0]">Экосистема для бизнеса</p><h2 className="mt-4 text-3xl font-bold sm:text-4xl"><span className="text-[#6CAA00]">Возможности</span> больших компаний — для малого и среднего бизнеса</h2><p className="mt-6 max-w-xl leading-7 text-[#675F6F]">Получайте доступ к инструментам, которые сложно собирать по отдельности: финансированию, защите сделки, сервисам для транспорта и цифровому документообороту.</p><div className="mt-8 grid grid-cols-2 gap-3">{[[Landmark, 'Финансирование', 'Средства под конкретный рейс.'], [Fuel, 'Топливо', 'Партнёрские условия на топливо.'], [ShieldCheck, 'Страхование', 'Дополнительная защита сделки.'], [FileText, 'Документы', 'Единый цифровой архив.']].map(([Icon, item, description]) => { const BusinessIcon = Icon as LucideIcon; return <div key={item as string} className="rounded-2xl bg-white p-4"><div className="flex items-center gap-2 text-sm font-bold"><BusinessIcon className="h-4 w-4 text-[#7133D0]" />{item as string}</div><p className="mt-2 text-xs leading-5 text-[#675F6F]">{description as string}</p></div>; })}</div></div><AssetPlaceholder name="small-business-big-tools-road.png" /></div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#180527] py-20 text-white lg:py-32" id="intelligence">
+        <section className="relative overflow-hidden bg-[#180527] py-20 text-white lg:py-32" id="intelligence" data-block-id="road-ai-operator" data-block-title="Интеллектуальный оператор Catalon">
           <div className="pointer-events-none absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:72px_72px]" />
           <div className="pointer-events-none absolute right-[-12%] top-[-30%] h-[650px] w-[650px] rounded-full bg-[#7133D0]/25 blur-[120px]" />
           <div className="relative mx-auto grid max-w-[1440px] gap-14 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:px-10">
@@ -325,9 +365,11 @@ export default function RoadFreightPage() {
         <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:py-28" id="faq"><SectionIntro eyebrow="Коротко о важном" title="Частые вопросы" text="Ответы о подключении, работе решения и ключевых возможностях платформы." /><div className="mt-10 divide-y divide-[#DED9E3] border-y border-[#DED9E3]">{faq.map(([question, answer], index) => { const open = openedFaq === index; return <article key={question}><button type="button" onClick={() => setOpenedFaq(open ? -1 : index)} className={`group flex w-full items-center justify-between gap-5 py-6 text-left transition ${open ? 'text-[#440D84]' : 'hover:text-[#7133D0]'}`} aria-expanded={open}><span className="text-base font-bold sm:text-lg">{question}</span><span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition ${open ? 'rotate-180 bg-[#440D84] text-white' : 'bg-white text-[#440D84] group-hover:bg-[#F0E8FA] group-hover:text-[#7133D0]'}`}><ChevronDown className="h-4 w-4" /></span></button>{open && <p className="max-w-3xl pb-7 pr-12 text-sm leading-7 text-[#675F6F]">{answer}</p>}</article>; })}</div></section>
 
         <section className="px-4 pb-4 sm:px-6 lg:px-10" id="start"><div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-[32px] bg-[linear-gradient(120deg,#440D84_0%,#7133D0_55%,#350375_100%)] px-6 py-16 text-center text-white sm:px-10 lg:py-24"><div className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[#B7FF2A]/20 blur-3xl" /><div className="relative"><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B7FF2A]">Первый рейс начинается здесь</p><h2 className="mx-auto mt-5 max-w-4xl text-[clamp(2.2rem,5vw,5rem)] font-extrabold leading-[0.96] tracking-[-0.055em]">Начните работать с перевозками в Catalon</h2><p className="mx-auto mt-6 max-w-2xl leading-7 text-white/70">Зарегистрируйтесь или обсудите с командой, как встроить платформу в ваши текущие процессы.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="#contacts" className="rounded-full bg-[#B7FF2A] px-7 py-4 text-sm font-bold text-[#30085E]">Зарегистрироваться</a><a href="#contacts" className="rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold">Получить консультацию</a></div></div></div></section>
+        <section data-block-id="road-customer-scenario" data-block-title="Сценарий заказчика — от заявки до контроля перевозки" className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-28"><div className="overflow-hidden rounded-[36px] bg-[#F1F1ED] p-8 sm:p-10 lg:p-14"><div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7133D0]">Для заказчика и грузоотправителя</p><h2 className="mt-4 max-w-3xl text-3xl font-extrabold tracking-[-0.04em] text-[#19131F] sm:text-5xl">Перевозка под контролем заказчика</h2><p className="mt-5 max-w-2xl leading-7 text-[#675F6F]">Размещайте заявку, получайте предложения от перевозчиков, фиксируйте условия и контролируйте исполнение в одном цифровом кабинете.</p></div><span className="hidden rounded-full bg-white px-4 py-2 text-xs font-bold text-[#440D84] sm:inline-flex">От заявки до закрывающих документов</span></div><div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4"><article className="rounded-[24px] bg-white p-6"><ClipboardCheck className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-lg font-bold">Создать заявку</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">Укажите маршрут, груз, сроки и требования к перевозке.</p></article><article className="rounded-[24px] bg-white p-6"><ScanSearch className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-lg font-bold">Получить предложения</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">Сравните доступный транспорт, условия и стоимость перевозки.</p></article><article className="rounded-[24px] bg-white p-6"><ChartNoAxesCombined className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-lg font-bold">Контролировать рейс</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">Следите за статусами, этапами и действиями участников сделки.</p></article><article className="rounded-[24px] bg-white p-6"><FileText className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-lg font-bold">Закрыть перевозку</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">Получите документы и сохраните историю рейса в кабинете.</p></article></div></div></section>
+        <div className="space-y-8 py-16"><HomeServicesBlock /><HomeEarnSaveBlock /><HomeSafeDealBlock /><HomeTripFinanceBlock /><HomeBigBusinessToolsBlock /></div>
       </main>
 
-      <ProductFooter />
+      <UnifiedFooter />
     </div>
   );
 }

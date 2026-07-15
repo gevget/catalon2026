@@ -37,3 +37,57 @@ body,
     transform: scale(0.82);
   }
 }
+#audience { display: none; }
+.home-big-business-tools-main { display: none !important; }
+#audience-after-solutions article { display: flex; flex-direction: column; }
+#audience-after-solutions article > div { order: 1; }
+#audience-after-solutions article > img { order: 2; }
+[data-block-id="road-customer-scenario"] { position: relative; }
+[data-block-id="road-customer-scenario"] > div { border: 1px solid #e4ddec; background: linear-gradient(135deg, #f5f1f8 0%, #f1f1ed 55%, #ebe3f5 100%); box-shadow: 0 18px 50px rgba(68, 13, 132, .08); }
+[data-block-id="road-customer-scenario"] article { position: relative; border: 1px solid #eee9f3; box-shadow: 0 8px 24px rgba(25, 19, 31, .04); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+[data-block-id="road-customer-scenario"] article::before { content: counter(customer-step, decimal-leading-zero); counter-increment: customer-step; position: absolute; right: 1.25rem; top: 1.1rem; color: #b4a8c0; font-size: .7rem; font-weight: 800; letter-spacing: .12em; }
+[data-block-id="road-customer-scenario"] .grid.md\:grid-cols-2 { counter-reset: customer-step; }
+[data-block-id="road-customer-scenario"] article:hover { transform: translateY(-5px); border-color: #cdb7e5; box-shadow: 0 18px 36px rgba(68, 13, 132, .13); }
+[data-block-id="road-customer-scenario"] article svg { transition: transform .25s ease; }
+[data-block-id="road-customer-scenario"] article:hover svg { transform: scale(1.08); }
+[data-block-id="road-customer-scenario"] > div::after { content: 'Результат: понятная стоимость, контролируемые сроки и единая история перевозки без разрозненных чатов.'; display: block; margin-top: 2rem; border-top: 1px solid #ddd3e7; padding-top: 1.25rem; color: #675f6f; font-size: .875rem; line-height: 1.5; }
+[data-block-id="road-capabilities"] article > div:first-child { display: none; }
+[data-block-id="road-capabilities"] article { padding: 1.25rem; }
+[data-block-id="road-capabilities"] article h3 { margin-top: 0; }
+[data-block-id="road-capabilities"] article p { margin-top: .5rem; }
+[data-block-id="road-capabilities"] article h3 { color: #B7FF2A; }
+[data-block-id="road-services-catalog"] { position: relative; z-index: 0; background: #fff; padding-top: 2rem !important; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
+[data-block-id="road-customer-scenario"] { padding-top: 2rem !important; }
+#audience-after-solutions article::after { content: 'Подробнее'; order: 3; align-self: flex-start; margin: 1rem 2rem 2rem; border-radius: 9999px; background: #440D84; padding: .75rem 1.5rem; font-size: .875rem; font-weight: 600; color: #fff; }
+#audience-after-solutions article { transition: transform .3s ease, box-shadow .3s ease; }
+#audience-after-solutions article:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(68, 13, 132, .16); }
+#portal > h2 { font-size: 0; }
+#portal > h2::after { content: 'Экосистема сервисов Catalon'; font-size: 1.875rem; line-height: 2.25rem; }
+#portal > div:last-of-type { position: relative; padding-bottom: 5rem; }
+#portal > div:last-of-type::after { content: 'Подробнее о всех сервисах'; position: absolute; bottom: 0; left: 50%; display: block; width: max-content; transform: translateX(-50%); border-radius: 9999px; background: #e5e7eb; padding: .75rem 1.5rem; font-size: .875rem; font-weight: 600; color: #6b7280; opacity: .75; cursor: not-allowed; }
+[data-block-id="home-final-cta"] { display: none !important; }
+[data-block-id="home-solution-catalog"] a p,
+[data-block-id="home-solution-catalog"] a > span.hidden { display: none !important; }
+[data-block-id="home-digital-ecosystem"] { display: none !important; }
+[data-block-id="home-footer-contacts"] { display: none !important; }
+.unified-footer a { width: fit-content; transition: color .2s ease; }
+.unified-footer a:hover { color: #B7FF2A; }
+.unified-header > div { max-width: none !important; padding-left: 20px !important; padding-right: 20px !important; }
+.unified-header nav, .unified-header nav a, .unified-header nav button, .unified-header > div > div a { font-weight: 500 !important; }
+.unified-header { position: fixed !important; inset: 0 0 auto 0; width: 100%; }
+.unified-header + nav { position: fixed !important; top: 52px !important; left: 0; right: 0; width: 100%; }
+.unified-header ~ main { padding-top: 52px; }
+.unified-header + nav ~ main { padding-top: 88px; }
+.unified-header + nav ~ main section { scroll-margin-top: 104px; }
+[data-block-id="road-safe-deal-finance"] { display: none !important; }
+[data-block-id="road-portal-demo"] { display: none !important; }
+[data-block-id="road-formats-hidden"] { display: none !important; }
+[data-block-id="road-flow"] { display: none !important; }
+#portal-early > div > div:first-child a { display: none !important; }
+#portal-early > div { width: 100%; max-width: 1440px !important; margin-left: auto !important; margin-right: auto !important; padding-left: 1rem; padding-right: 1rem; }
+@media (min-width: 640px) { #portal-early > div { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { #portal-early > div { padding-left: 2.5rem; padding-right: 2.5rem; } }
+[data-block-id="home-earn-save"],
+[data-block-id="home-safe-deal"],
+[data-block-id="home-trip-finance"],
+[data-block-id="home-big-business-tools"] { display: none !important; }

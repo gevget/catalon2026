@@ -9,9 +9,6 @@ import LandingPage from './LandingPage';
 import MultimodalPage from './MultimodalPage';
 import RoadFreightPage from './RoadFreightPage';
 import VisualEditor from './VisualEditor';
-import LandingPageV2 from './LandingPageV2';
-import RoadFreightPageV2 from './RoadFreightPageV2';
-import MultimodalPageV2 from './MultimodalPageV2';
 
 const IS_LOCAL_EDITOR_ENABLED = import.meta.env.DEV;
 
@@ -127,6 +124,22 @@ function getCurrentRoute() {
 }
 
 export default function App() {
+  useEffect(() => {
+    const replaceBrand = (root: Node) => {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const nodes: Text[] = [];
+      let current: Node | null;
+      while ((current = walker.nextNode())) nodes.push(current as Text);
+      nodes.forEach((node) => {
+        node.nodeValue = node.nodeValue?.replace(/CATALON|Catalon/g, 'Каталон').replace(/Marketplace/g, 'Маркетплейс').replace(/marketplace/g, 'маркетплейс').replace(/service catalog/gi, 'каталог сервисов').replace(/online/gi, 'онлайн').replace(/operator/gi, 'оператор').replace(/finance/gi, 'финансирование').replace(/support/gi, 'поддержка') ?? node.nodeValue;
+      });
+    };
+    replaceBrand(document.body);
+    const observer = new MutationObserver((mutations) => mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => replaceBrand(node))));
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, []);
+
   const isEditorMode = IS_LOCAL_EDITOR_ENABLED && new URLSearchParams(window.location.search).get('editor') === '1';
   const currentRoute = getCurrentRoute();
 
@@ -138,13 +151,7 @@ export default function App() {
     ? <RoadFreightPage />
     : (currentRoute === '/multimodal-container' || currentRoute === '/solutions/multimodal-container')
       ? <MultimodalPage />
-      : currentRoute === '/v2/road-freight-russia'
-        ? <RoadFreightPageV2 />
-        : currentRoute === '/v2/multimodal-container'
-          ? <MultimodalPageV2 />
-          : currentRoute === '/v2'
-            ? <LandingPageV2 />
-      : <SavedSiteView />;
+      : <LandingPage />;
 
   return (
     <div className="relative">

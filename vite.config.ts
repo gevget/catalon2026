@@ -2,10 +2,13 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 
+const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig(() => {
-  const publicDir = path.resolve(__dirname, 'public');
+  const publicDir = path.resolve(projectRoot, 'public');
   const siteRenderFile = path.resolve(publicDir, 'site-render.json');
 
   return {
@@ -70,7 +73,7 @@ export default defineConfig(() => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': projectRoot,
       },
     },
     server: {

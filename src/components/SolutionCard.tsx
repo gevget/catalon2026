@@ -7,6 +7,7 @@ export interface SolutionCardProps {
   color?: string;
   borderColor?: string;
   bgColor?: string;
+  link?: string;
 }
 
 export function SolutionCard({
@@ -17,13 +18,14 @@ export function SolutionCard({
   color = 'bg-purple-main',
   borderColor = 'border-purple-main',
   bgColor = 'bg-white',
+  link = '#',
 }: SolutionCardProps) {
   const baseClasses =
     'flex h-full flex-col rounded-[32px] p-8 transition-all duration-300 hover:-translate-y-1';
 
   if (active) {
     return (
-      <a href="#" className={`${baseClasses} ${bgColor} ${borderColor} border-2 shadow-sm hover:shadow-xl`}>
+      <a href={link} className={`${baseClasses} ${bgColor} ${borderColor} border-2 shadow-sm hover:shadow-xl`}>
         <div className="flex items-start justify-between">
           <span className="inline-flex items-center rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-gray-700">
             Активно
@@ -31,7 +33,7 @@ export function SolutionCard({
         </div>
         <h3 className="mt-6 text-xl font-bold leading-tight text-gray-900">{title}</h3>
         {description && <p className="mt-3 flex-grow text-sm leading-relaxed text-gray-600">{description}</p>}
-        <span className="mt-8 inline-flex w-fit rounded-full bg-purple-dark px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-purple-main">
+        <span className="hidden mt-8 inline-flex w-fit rounded-full bg-purple-dark px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-purple-main">
           {cta || 'Подробнее'}
         </span>
       </a>
