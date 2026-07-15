@@ -9,6 +9,9 @@ import LandingPage from './LandingPage';
 import MultimodalPage from './MultimodalPage';
 import RoadFreightPage from './RoadFreightPage';
 import VisualEditor from './VisualEditor';
+import LandingPageV2 from './LandingPageV2';
+import RoadFreightPageV2 from './RoadFreightPageV2';
+import MultimodalPageV2 from './MultimodalPageV2';
 
 const IS_LOCAL_EDITOR_ENABLED = import.meta.env.DEV;
 
@@ -135,6 +138,12 @@ export default function App() {
     ? <RoadFreightPage />
     : (currentRoute === '/multimodal-container' || currentRoute === '/solutions/multimodal-container')
       ? <MultimodalPage />
+      : currentRoute === '/v2/road-freight-russia'
+        ? <RoadFreightPageV2 />
+        : currentRoute === '/v2/multimodal-container'
+          ? <MultimodalPageV2 />
+          : currentRoute === '/v2'
+            ? <LandingPageV2 />
       : <SavedSiteView />;
 
   return (
