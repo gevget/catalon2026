@@ -9,6 +9,10 @@ import LandingPage from './LandingPage';
 import MultimodalPage from './MultimodalPage';
 import RoadFreightPage from './RoadFreightPage';
 import VisualEditor from './VisualEditor';
+import ForCustomersPage from './ForCustomersPage';
+import ForCarriersPage from './ForCarriersPage';
+import ForOperatorsPage from './ForOperatorsPage';
+import PartnersPage from './PartnersPage';
 
 const IS_LOCAL_EDITOR_ENABLED = import.meta.env.DEV;
 
@@ -147,7 +151,15 @@ export default function App() {
     return <VisualEditor />;
   }
 
-  const page = (currentRoute === '/road-freight-russia' || currentRoute === '/solutions/road-freight-russia')
+  const page = currentRoute === '/for-carriers'
+    ? <ForCarriersPage />
+    : currentRoute === '/for-operators'
+    ? <ForOperatorsPage />
+    : currentRoute === '/for-customers'
+    ? <ForCustomersPage />
+    : currentRoute === '/partners'
+    ? <PartnersPage />
+    : (currentRoute === '/road-freight-russia' || currentRoute === '/solutions/road-freight-russia')
     ? <RoadFreightPage />
     : (currentRoute === '/multimodal-container' || currentRoute === '/solutions/multimodal-container')
       ? <MultimodalPage />
