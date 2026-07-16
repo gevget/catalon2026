@@ -383,6 +383,7 @@ body,
 @media (min-width:1500px) { .partners-page .partners-subnav-arrow { visibility:hidden !important; opacity:0 !important; pointer-events:none !important; } }
 .partners-user-principles .partners-user-principle-icon { display:grid; width:30px; height:30px; flex:0 0 30px; place-items:center; margin-top:0; border:1px solid #6F2DBD; border-radius:8px; color:#A0FF00; background:#1A0829; }.partners-user-principles div:hover .partners-user-principle-icon { border-color:#A0FF00; box-shadow:0 0 18px rgba(160,255,0,.1); }
 .partners-page .unified-header img { filter:none !important; }
+.partners-page .unified-footer img { filter:none !important; }
 .partners-hero .partners-lead-short { display:none; }
 .partners-service-card p,.partners-model-card p,.partners-format-card > p,.partners-commercial-grid article p { display:-webkit-box; overflow:hidden; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
 .partners-project-list { max-height:142px; overflow:hidden; }
