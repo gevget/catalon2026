@@ -1,7 +1,7 @@
 import { UnifiedHeader } from './components/UnifiedHeader';
 import { UnifiedFooter } from './components/UnifiedFooter';
-import { useEffect, useState, type ComponentProps } from 'react';
-import { Archive, BarChart3, BriefcaseBusiness, Calculator, CheckCircle2, Clock3, FileCheck2, FileText, Gauge, HandCoins, Headphones, History, Route, ShieldCheck, Truck, Users, WalletCards, Workflow } from 'lucide-react';
+import { useEffect, useRef, useState, type ComponentProps } from 'react';
+import { Archive, BarChart3, BriefcaseBusiness, Calculator, CheckCircle2, ChevronLeft, ChevronRight, Clock3, FileCheck2, FileText, Gauge, HandCoins, Headphones, History, Route, ShieldCheck, Truck, Users, WalletCards, Workflow } from 'lucide-react';
 
 const tasks = [['Организовать вывоз', 'Найти подходящий транспорт под маршрут, груз, сроки и требования.'], ['Уложиться в бюджет', 'Получить несколько предложений, сравнить условия и зафиксировать стоимость.'], ['Соблюсти сроки', 'Видеть ключевые этапы перевозки и вовремя реагировать на отклонения.'], ['Снизить риски', 'Проверять данные участников и сохранять историю взаимодействия.'], ['Собрать документы', 'Хранить транспортные и закрывающие документы вместе с перевозкой.'], ['Понять экономику', 'Сравнивать план и факт, историю ставок и затраты по направлениям.']];
 const steps = [['Создать заявку', 'Указать маршрут, груз, даты, требования к транспорту и условия перевозки.'], ['Получить предложения', 'Собрать доступные варианты от перевозчиков и операторов.'], ['Выбрать исполнителя', 'Сравнить стоимость, условия, транспорт и данные участника.'], ['Зафиксировать условия', 'Сохранить ставку, сроки, этапы и ответственность сторон.'], ['Контролировать выполнение', 'Следить за назначением транспорта, погрузкой, движением и выгрузкой.'], ['Закрыть перевозку', 'Получить документы, завершить расчёты и сохранить историю сделки.']];
@@ -16,12 +16,32 @@ const faq = [['Какие перевозки можно организовать
 
 export default function ForCustomersPage() {
   const [activeSection, setActiveSection] = useState('overview');
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const submenuRef = useRef<HTMLElement>(null);
   const submenu = [['Обзор', 'overview'], ['Задачи', 'tasks'], ['Как работает', 'flow'], ['Решения', 'solutions'], ['Кабинет', 'cabinet'], ['Контроль', 'control'], ['Экономика', 'economy'], ['Безопасность', 'security'], ['Документы', 'documents'], ['Сервисы', 'services'], ['FAQ', 'faq']];
   useEffect(() => {
     const sections = submenu.map(([, id]) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) setActiveSection(entry.target.id); }), { rootMargin: '-128px 0px -55% 0px', threshold: 0 });
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const element = submenuRef.current;
+    if (!element) return;
+    const update = () => { setCanScrollLeft(element.scrollLeft > 4); setCanScrollRight(Math.ceil(element.scrollLeft + element.clientWidth) < element.scrollWidth - 4); };
+    const frame = window.requestAnimationFrame(update);
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(update) : null;
+    const leftArrow = document.querySelector('.customer-subnav-arrow-left');
+    const rightArrow = document.querySelector('.customer-subnav-arrow-right');
+    const moveLeft = () => { element.scrollLeft = Math.max(0, element.scrollLeft - 260); };
+    const moveRight = () => { element.scrollLeft = Math.min(element.scrollWidth - element.clientWidth, element.scrollLeft + 260); };
+    element.addEventListener('scroll', update, { passive: true });
+    observer?.observe(element);
+    window.addEventListener('resize', update);
+    leftArrow?.addEventListener('click', moveLeft);
+    rightArrow?.addEventListener('click', moveRight);
+    return () => { window.cancelAnimationFrame(frame); element.removeEventListener('scroll', update); observer?.disconnect(); window.removeEventListener('resize', update); leftArrow?.removeEventListener('click', moveLeft); rightArrow?.removeEventListener('click', moveRight); };
   }, []);
   useEffect(() => {
     document.title = 'Catalon для заказчиков — управление грузоперевозками онлайн';
@@ -31,7 +51,7 @@ export default function ForCustomersPage() {
     meta.setAttribute('content', description);
   }, []);
   return <div className="customer-page"><UnifiedHeader />
-    <nav className="customer-subnav">{submenu.map(([label, id]) => <a key={id} className={activeSection === id ? 'active' : ''} href={`#${id}`}>{label}</a>)}</nav>
+    <div className="customer-subnav-wrap"><button type="button" className={`customer-subnav-arrow customer-subnav-arrow-left ${canScrollLeft ? '' : 'is-hidden'}`} disabled={!canScrollLeft} onClick={() => submenuRef.current?.scrollBy({ left: -260, behavior: 'smooth' })} aria-label="Прокрутить подменю влево"><ChevronLeft size={17} /></button><nav ref={submenuRef} className="customer-subnav">{submenu.map(([label, id]) => <a key={id} className={activeSection === id ? 'active' : ''} href={`#${id}`}>{label}</a>)}</nav><button type="button" className={`customer-subnav-arrow customer-subnav-arrow-right ${canScrollRight ? '' : 'is-hidden'}`} disabled={!canScrollRight} onClick={() => submenuRef.current?.scrollBy({ left: 260, behavior: 'smooth' })} aria-label="Прокрутить подменю вправо"><ChevronRight size={17} /></button></div>
     <main>
       <section id="overview" className="customer-hero"><div className="customer-container hero-grid"><div><p className="eyebrow">ДЛЯ ЗАКАЗЧИКОВ И ГРУЗООТПРАВИТЕЛЕЙ</p><h1>Перевозки под контролем — от заявки до закрывающих документов</h1><p className="lead">Создавайте заявку один раз, получайте предложения от перевозчиков и операторов, фиксируйте условия и контролируйте исполнение в едином цифровом кабинете. Все события, расчёты и документы остаются связанными с конкретной перевозкой.</p><div className="actions"><a className="btn btn-purple" href="#connect">Разместить заявку</a><a className="btn btn-light" href="#flow">Посмотреть, как работает</a></div><div className="hero-tags"><span>FTL и LTL</span><span>Мультимодальные маршруты</span><span>Безопасная сделка</span><span>Документы онлайн</span><span>Финансовые сервисы</span></div><p className="hero-note">Бесплатная регистрация · Оплата по результату · Поддержка оператора</p></div><div className="hero-art"><Placeholder label="Боксик с планшетом и грузом" className="hero-visual" />{['Получено 5 предложений', 'Условия согласованы', 'Погрузка подтверждена', 'Документы готовы'].map((label, i) => <div key={label} className={`hero-status status-${i + 1}`}>{label}</div>)}</div></div></section>
       <section className="stats"><div>0 ₽<small>Регистрация и доступ к платформе.</small></div><div>Одна заявка<small>Условия, предложения и участники в одной карточке.</small></div><div>Всё онлайн<small>Статусы, события и документы доступны в кабинете.</small></div><div>По результату<small>Комиссия применяется к успешно завершённой сделке.</small></div></section>
