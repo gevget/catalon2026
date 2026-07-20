@@ -20,6 +20,9 @@
   --color-red: #FF3B30;
 }
 
+/* Product subnavigation follows the actual 48px product header without a gap. */
+nav.sticky[class~="top-[52px]"] { top: 48px !important; }
+
 html,
 body,
 #root {

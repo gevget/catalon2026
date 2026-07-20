@@ -16,6 +16,19 @@ const faq = [['Какие перевозки можно организовать
 
 export default function ForCustomersPage() {
   const [activeSection, setActiveSection] = useState('overview');
+  useEffect(() => {
+    const hero = document.querySelector('.customer-hero');
+    const lead = hero?.querySelector('.lead');
+    const tags = hero?.querySelector('.hero-tags');
+    if (lead) lead.textContent = 'Интегрируйте с вашей платформой, либо размещайте грузы и получайте лучшие ценовые предложения';
+    if (tags) {
+      tags.replaceChildren(...['Проведение сделки безопасно', 'Отслеживание и контроль онлайн', 'ЭДО'].map((label) => {
+        const tag = document.createElement('span');
+        tag.textContent = label;
+        return tag;
+      }));
+    }
+  }, []);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const submenuRef = useRef<HTMLElement>(null);

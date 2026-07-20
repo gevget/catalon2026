@@ -186,12 +186,12 @@ const faq = [
   ['Есть ли помощь при подключении?', 'Да. Команда Catalon помогает настроить профиль, провести первую заявку и разобраться с рабочим процессом в портале.'],
 ] as const;
 
-function SectionIntro({ eyebrow, title, text, light = false }: { eyebrow: string; title: string; text: string; light?: boolean }) {
+function SectionIntro({ eyebrow, title, text, light = false }: { eyebrow: string; title: string; text?: string; light?: boolean }) {
   return (
     <div className="max-w-3xl">
       <p className={`text-xs font-bold uppercase tracking-[0.2em] ${light ? 'text-[#B7FF2A]' : 'text-[#7133D0]'}`}>{eyebrow}</p>
       <h2 className={`mt-4 text-3xl font-bold sm:text-4xl ${light ? 'text-white' : 'text-[#19131F]'}`}>{title}</h2>
-      <p className={`mt-5 max-w-2xl text-base leading-7 ${light ? 'text-white/72' : 'text-[#675F6F]'}`}>{text}</p>
+      {text && <p className={`mt-5 max-w-2xl text-base leading-7 ${light ? 'text-white/72' : 'text-[#675F6F]'}`}>{text}</p>}
     </div>
   );
 }
@@ -282,7 +282,7 @@ export default function RoadFreightPage() {
         <section className="bg-[#F1F1ED] py-20 lg:py-24" id="portal-early"><div className="mx-auto max-w-[1208px] px-4 sm:px-6 lg:px-0"><div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><SectionIntro eyebrow="Продукт сразу" title="Посмотрите, как устроена работа в Catalon" text="Свободные грузы, карточка заявки, статусы сделки и документы собраны в одном рабочем интерфейсе." /></div><div className="mt-10 grid items-center gap-8 lg:grid-cols-[1.65fr_0.8fr]"><AssetPlaceholder name="portal-overview.png" /><div className="grid gap-3">{[[PackageCheck, 'Свободные грузы', 'Подбор заявок по маршруту и параметрам транспорта.'], [ClipboardCheck, 'Карточка заявки', 'Маршрут, стоимость, сроки и участники в одном окне.'], [Radar, 'Статусы сделки', 'Актуальный этап виден заказчику, перевозчику и оператору.'], [FileText, 'Документы', 'История и закрывающие файлы не теряются в чатах.']].map(([Icon, title, text]) => { const PortalIcon = Icon as LucideIcon; return <div key={title as string} className="group border-b border-[#DDD8DF] py-3"><div className="flex items-center gap-3 text-sm font-bold"><PortalIcon className="h-5 w-5 text-[#440D84] transition-transform group-hover:translate-x-1" />{title as string}</div><p className="mt-1 pl-8 text-xs leading-5 text-[#675F6F]">{text as string}</p></div>; })}</div></div></div></section>
 
         <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32" id="how-it-works" data-block-id="road-how-it-works" data-block-title="Как проходит перевозка в Catalon">
-          <SectionIntro eyebrow="Один рынок — разные задачи" title="Каждый участник получает свой рабочий сценарий" text="Catalon не показывает всем один и тот же список грузов. Заказчик, перевозчик и оператор работают со своими задачами, но остаются внутри общей цифровой сделки." />
+          <SectionIntro eyebrow="Один рынок — разные задачи" title="Каждый участник получает свой рабочий сценарий" text="Заказчик, перевозчик и оператор работают со своими задачами, но остаются внутри общей цифровой сделки." />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {roles.map((role) => <article key={role.title} className={`group flex min-h-full flex-col overflow-hidden rounded-[28px] p-6 sm:p-8 ${role.tone === 'lime' ? 'bg-[#B7FF2A]' : role.tone === 'purple' ? 'bg-[#440D84] text-white' : 'border border-[#DED9E3] bg-white'}`}><div className="flex items-center justify-between"><span className={`text-xs font-bold uppercase tracking-[0.16em] ${role.tone === 'purple' ? 'text-[#B7FF2A]' : 'text-[#7133D0]'}`}>{role.label}</span><ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" /></div><h3 className="mt-5 text-2xl font-extrabold leading-tight tracking-[-0.03em]">{role.title}</h3><p className={`mt-3 text-sm leading-6 ${role.tone === 'purple' ? 'text-white/70' : 'text-[#554C5D]'}`}>{role.text}</p><ul className="mt-6 divide-y divide-current/10">{role.points.map(([PointIcon, point]) => <li key={point} className="flex gap-3 py-3 text-sm font-semibold"><PointIcon className={`h-5 w-5 shrink-0 ${role.tone === 'purple' ? 'text-[#B7FF2A]' : 'text-[#440D84]'}`} />{point}</li>)}</ul><div className="mt-auto pt-7"><AssetPlaceholder name={role.image as string} dark={role.tone === 'purple'} /></div></article>)}
           </div>

@@ -46,9 +46,24 @@ import { ServiceCard } from './components/ServiceCard';
 import { SolutionCard, SolutionCardProps } from './components/SolutionCard';
 import { UnifiedFooter } from './components/UnifiedFooter';
 import { UnifiedHeader } from './components/UnifiedHeader';
+import { useEffect } from 'react';
 
 export default function LandingPage() {
   const pageBase = import.meta.env.BASE_URL?.replace(/\/$/, '') || '';
+  useEffect(() => {
+    const section = document.querySelector('#audience-after-solutions');
+    const cards = section?.querySelectorAll('article');
+    if (!cards || cards.length < 3) return;
+    const copy = [
+      'Интегрируйте с вашей платформой, либо размещайте грузы и получайте лучшие ценовые предложения. Проведение сделки безопасно. Отслеживание и контроль онлайн. ЭДО.',
+      'Получайте рейсы, работайте с прямыми грузовладельцами и проводите сделки через безопасный цифровой контур.',
+      'Партнёрская модель работы. Безопасная сделка. Сроки, события и ответственность.',
+    ];
+    cards.forEach((card, index) => {
+      const text = card.querySelector('p');
+      if (text) text.textContent = copy[index];
+    });
+  }, []);
   const navItems = [
     { label: 'О платформе', href: '#about' },
     { label: 'Решения', href: '#solutions' },
