@@ -13,6 +13,8 @@ import ForCustomersPage from './ForCustomersPage';
 import ForCarriersPage from './ForCarriersPage';
 import ForOperatorsPage from './ForOperatorsPage';
 import PartnersPage from './PartnersPage';
+import ForSuppliersPage from './ForSuppliersPage';
+import InvestorsPage from './InvestorsPage';
 
 const IS_LOCAL_EDITOR_ENABLED = import.meta.env.DEV;
 
@@ -159,6 +161,10 @@ export default function App() {
     ? <ForCustomersPage />
     : currentRoute === '/partners'
     ? <PartnersPage />
+    : currentRoute === '/for-suppliers'
+    ? <ForSuppliersPage />
+    : currentRoute === '/investors'
+    ? <InvestorsPage />
     : (currentRoute === '/road-freight-russia' || currentRoute === '/solutions/road-freight-russia')
     ? <RoadFreightPage />
     : (currentRoute === '/multimodal-container' || currentRoute === '/solutions/multimodal-container')
