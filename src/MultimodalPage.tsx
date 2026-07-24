@@ -38,7 +38,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import roadImage from '../2.png';
+import roadImage from '../2.webp';
 import geographyMapImage from '../assets/1/multimodal-geography-map-catalon-regions.png';
 import cargoTypesImage from '../assets/1/multimodal-cargo-types.png';
 import partnersNetworkImage from '../assets/1/multimodal-partners-network.png';

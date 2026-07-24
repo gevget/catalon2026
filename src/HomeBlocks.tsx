@@ -1,9 +1,9 @@
 import { ClipboardList, CreditCard, Fuel, HelpCircle, Map, Shield, ShoppingBag, TrendingDown, Users, Wallet, Wrench } from 'lucide-react';
-import earningImage from '../4.png';
-import savingImage from '../5.png';
-import safeDealImage from '../6.png';
-import financeImage from '../7.png';
-import businessImage from '../8.png';
+import earningImage from '../4.webp';
+import savingImage from '../5.webp';
+import safeDealImage from '../6.webp';
+import financeImage from '../7.webp';
+import businessImage from '../8.webp';
 import { ServiceCard } from './components/ServiceCard';
 
 const Item = ({ icon: Icon, children }: { icon: typeof ClipboardList; children: string }) => <li className="flex items-center gap-3 text-sm text-[#675F6F]"><Icon className="h-4 w-4 shrink-0 text-[#5B20B5]" />{children}</li>;

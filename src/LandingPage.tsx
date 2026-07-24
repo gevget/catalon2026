@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import logisticsRoadImage from '../2.png';
-import logisticsMultiImage from '../3.png';
-import earningSolutionImage from '../4.png';
-import savingsServicesImage from '../5.png';
-import safeDealImage from '../6.png';
-import tripFinanceImage from '../7.png';
-import bigBusinessToolsImage from '../8.png';
-import digitalEcosystemImage from '../9.png';
-import heroImage from '../hero1.png';
+import logisticsRoadImage from '../2.webp';
+import logisticsMultiImage from '../3.webp';
+import earningSolutionImage from '../4.webp';
+import savingsServicesImage from '../5.webp';
+import safeDealImage from '../6.webp';
+import tripFinanceImage from '../7.webp';
+import bigBusinessToolsImage from '../8.webp';
+import digitalEcosystemImage from '../9.webp';
+import heroImage from '../hero1.webp';
 import portalRequestsImage from '../a1.png';
 import portalTripCardImage from '../a2.png';
 import portalDocumentsImage from '../a3.png';
@@ -274,6 +274,10 @@ export default function LandingPage() {
               <div className="relative aspect-square w-full max-w-[42rem]">
                 <img
                   src={heroImage}
+                  width={586}
+                  height={668}
+                  fetchPriority="high"
+                  decoding="async"
                   alt="Главный экран Catalon"
                   className="block h-full w-full object-contain"
                 />
