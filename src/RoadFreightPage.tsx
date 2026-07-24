@@ -29,7 +29,6 @@ import {
   ReceiptText,
   Route,
   ScanSearch,
-  Search,
   Settings,
   ShieldCheck,
   SlidersHorizontal,
@@ -61,7 +60,6 @@ import savingAsset from '../assets/1/Экономить.png';
 import customerAsset from '../assets/1/Перевозка под контролем, а не в переписках.png';
 import carrierAsset from '../assets/1/Больше подходящих рейсов без ручного поиска.png';
 import operatorAsset from '../assets/1/Вся операционная работа в одной системе.png';
-import requestAsset from '../assets/1/Заявка.png';
 import tripsAsset from '../assets/1/Рейсы.png';
 import documentsAsset from '../assets/1/Документы.png';
 import financesAsset from '../assets/1/Финансы.png';
@@ -162,9 +160,7 @@ const flow = [
 ];
 
 const onlineCards = [
-  ['Предложения и тарифы', 'Сравнение стоимости, условий и доступного транспорта по заявке.', requestAsset, Search],
-  ['Расчёт тарифа', 'Параметры заявки, маршрут и условия перевозки собраны для предварительной оценки стоимости.', financesAsset, CircleDollarSign],
-  ['Заявки', 'Создание и обработка новых перевозок.', requestAsset, ClipboardCheck],
+  ['Рабочая панель', 'Заявки, предложения и ключевые задачи собраны в одном рабочем окне.', portalOverviewAsset, MonitorCheck],
   ['Рейсы', 'Маршруты, транспорт и статусы исполнения.', tripsAsset, Route],
   ['Документы', 'Комплект файлов по каждой сделке.', documentsAsset, FileText],
   ['Финансы', 'Условия оплаты и движение расчётов.', financesAsset, WalletCards],
@@ -218,9 +214,6 @@ export default function RoadFreightPage() {
     const customerScenario = document.querySelector<HTMLElement>('[data-block-id="road-customer-scenario"]');
     const roleBlock = document.querySelector<HTMLElement>('[data-block-id="road-how-it-works"]');
     if (customerScenario && roleBlock) roleBlock.insertAdjacentElement('afterend', customerScenario);
-    const servicesBlock = document.querySelector<HTMLElement>('[data-block-id="road-services-catalog"]');
-    const earnSaveBlock = document.querySelector<HTMLElement>('[data-block-id="road-earn-save"]');
-    if (servicesBlock && earnSaveBlock) earnSaveBlock.insertAdjacentElement('afterend', servicesBlock);
     const sectionIds: Record<string, string> = { 'road-earn-save': 'road-earn-save', 'road-capabilities': 'capabilities', 'road-ai-operator': 'intelligence', 'road-customer-scenario': 'road-customer-scenario', 'road-services-catalog': 'road-services-catalog' };
     Object.entries(sectionIds).forEach(([blockId, id]) => { const section = document.querySelector<HTMLElement>(`[data-block-id="${blockId}"]`); if (section) section.id = id; });
     const subnav = document.querySelector<HTMLElement>('nav[aria-label="Навигация по странице"]');
@@ -228,7 +221,7 @@ export default function RoadFreightPage() {
     const safeDealCards = safeDealSection?.querySelectorAll<HTMLElement>('article');
     if (safeDealCards?.[0]) safeDealCards[0].id = 'safe-deal-card';
     if (safeDealCards?.[1]) safeDealCards[1].id = 'trip-finance-card';
-    const subnavItems = [['Для кого', '#how-it-works'], ['Клиентский сценарий', '#road-customer-scenario'], ['Возможности', '#capabilities'], ['Безопасность', '#safe-deal-card'], ['Финансирование', '#trip-finance-card'], ['Заработок и экономия', '#road-earn-save'], ['Сервисы', '#road-services-catalog'], ['Портал', '#portal'], ['Бизнес-инструменты', '#road-business-tools'], ['ИИ', '#intelligence'], ['FAQ', '#faq']];
+    const subnavItems = [['Для кого', '#how-it-works'], ['Клиентский сценарий', '#road-customer-scenario'], ['Возможности', '#capabilities'], ['Безопасность', '#safe-deal-card'], ['Финансирование', '#trip-finance-card'], ['Заработок и экономия', '#road-earn-save'], ['Сервисы', '#road-services-catalog'], ['Портал', '#portal'], ['ИИ', '#intelligence'], ['FAQ', '#faq']];
     const subnavContainer = subnav?.querySelector('div');
     if (subnavContainer) { subnavContainer.innerHTML = ''; subnavItems.forEach(([label, href]) => { const link = document.createElement('a'); link.textContent = label; link.href = href; link.className = 'whitespace-nowrap border-b border-transparent py-1 transition hover:border-[#B7FF2A] hover:text-[#440D84]'; subnavContainer.appendChild(link); }); }
   }, []);
@@ -309,7 +302,6 @@ export default function RoadFreightPage() {
         <section className="bg-white py-20 lg:py-32" data-block-id="road-earn-save" data-block-title="Зарабатывать больше и экономить на рейсе">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><SectionIntro eyebrow="Экономика рейса" title="Помогаем больше зарабатывать и меньше тратить" text="Доход формируется не только ценой перевозки. Catalon помогает сократить простой, быстрее запустить рейс и подключить полезные сервисы в нужный момент." />
             <div className="mt-12 grid gap-6 lg:grid-cols-2"><article className="flex flex-col rounded-[30px] bg-[#F2EDF8] p-7 sm:p-10"><div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#440D84] text-[#B7FF2A]"><CircleDollarSign className="h-6 w-6" /></div><h3 className="mt-7 text-3xl font-extrabold tracking-[-0.04em]">Зарабатывать</h3><p className="mt-4 max-w-lg text-sm leading-6 text-[#675F6F]">Подходящие загрузки, меньше холостого пробега, быстрый документооборот и доступ к финансированию.</p><div className="mt-7"><AssetPlaceholder name="carrier-growth.png" /></div></article><article className="flex flex-col rounded-[30px] bg-[#F1F1ED] p-7 sm:p-10"><div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#B7FF2A] text-[#440D84]"><Banknote className="h-6 w-6" /></div><h3 className="mt-7 text-3xl font-extrabold tracking-[-0.04em]">Экономить</h3><p className="mt-4 max-w-lg text-sm leading-6 text-[#675F6F]">Топливо, страхование, обслуживание, запчасти и поддержка — в одной экосистеме для транспорта.</p><div className="mt-7"><AssetPlaceholder name="transport-services.png" /></div></article></div>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{[[Fuel, 'Топливо', 'Меньше затрат на рейс.'], [Wrench, 'Автосервис', 'Обслуживание без лишних поисков.'], [ShieldCheck, 'Страховая поддержка', 'Защита груза и ответственности.'], [Headphones, 'Поддержка', 'Помощь на каждом этапе.']].map(([Icon, label, description]) => { const ServiceIcon = Icon as LucideIcon; return <div key={label as string} className="rounded-2xl border border-[#E3DFE6] p-5"><div className="flex items-center gap-4"><ServiceIcon className="h-6 w-6 text-[#7133D0]" /><span className="text-sm font-bold">{label as string}</span></div><p className="mt-2 pl-10 text-xs leading-5 text-[#675F6F]">{description as string}</p></div>; })}</div>
           </div>
         </section>
 
@@ -336,8 +328,8 @@ export default function RoadFreightPage() {
           </div>
         </section>
 
-        <section id="road-business-tools" data-block-id="road-business-tools" data-block-title="Возможности для малого и среднего бизнеса" className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7133D0]">Экосистема для бизнеса</p><h2 className="mt-4 text-3xl font-bold sm:text-4xl"><span className="text-[#6CAA00]">Возможности</span> больших компаний — для малого и среднего бизнеса</h2><p className="mt-6 max-w-xl leading-7 text-[#675F6F]">Получайте доступ к инструментам, которые сложно собирать по отдельности: финансированию, защите сделки, сервисам для транспорта и цифровому документообороту.</p><div className="mt-8 grid grid-cols-2 gap-3">{[[Landmark, 'Финансирование', 'Средства под конкретный рейс.'], [Fuel, 'Топливо', 'Партнёрские условия на топливо.'], [ShieldCheck, 'Страхование', 'Дополнительная защита сделки.'], [FileText, 'Документы', 'Единый цифровой архив.']].map(([Icon, item, description]) => { const BusinessIcon = Icon as LucideIcon; return <div key={item as string} className="rounded-2xl bg-white p-4"><div className="flex items-center gap-2 text-sm font-bold"><BusinessIcon className="h-4 w-4 text-[#7133D0]" />{item as string}</div><p className="mt-2 text-xs leading-5 text-[#675F6F]">{description as string}</p></div>; })}</div></div><AssetPlaceholder name="small-business-big-tools-road.png" /></div>
+        <section id="road-services-catalog" data-block-id="road-services-catalog" data-block-title="Сервисы для перевозки в одной экосистеме" className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7133D0]">Экосистема Catalon</p><h2 className="mt-4 text-3xl font-bold sm:text-4xl"><span className="text-[#6CAA00]">Сервисы</span> подключаются к конкретной перевозке</h2><p className="mt-6 max-w-xl leading-7 text-[#675F6F]">Инструменты, которые помогают малому и среднему бизнесу не собирать решение по частям: финансирование, топливо, защита сделки и цифровые документы — в одном контексте рейса.</p><div className="mt-8 grid grid-cols-2 gap-3">{[[Landmark, 'Финансирование', 'Средства под подтверждённый рейс.'], [Fuel, 'Топливо', 'Партнёрские условия и контроль затрат.'], [ShieldCheck, 'Страхование', 'Дополнительная защита сделки.'], [FileText, 'Документы', 'Единый цифровой архив.']].map(([Icon, item, description]) => { const BusinessIcon = Icon as LucideIcon; return <div key={item as string} className="rounded-2xl bg-white p-4"><div className="flex items-center gap-2 text-sm font-bold"><BusinessIcon className="h-4 w-4 text-[#7133D0]" />{item as string}</div><p className="mt-2 text-xs leading-5 text-[#675F6F]">{description as string}</p></div>; })}</div></div><AssetPlaceholder name="small-business-big-tools-road.png" /></div>
         </section>
 
         <section className="relative overflow-hidden bg-[#180527] py-20 text-white lg:py-32" id="intelligence" data-block-id="road-ai-operator" data-block-title="Интеллектуальный оператор Catalon">

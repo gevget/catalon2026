@@ -107,6 +107,34 @@ body,
 @media (max-width:520px) { .bento-grid,.service-grid,.scenario-grid { grid-template-columns:1fr; }.bento-main { grid-column:auto; } }
 .customer-page #control { background:#440D84 !important; color:#fff; }
 .customer-page #integrations { background:#fff !important; color:#1A1A1A; }
+.carrier-page .carrier-hero { background:#F0E8FA !important; }
+.carrier-page .carrier-lead, .carrier-page .carrier-note { color:#675F6F !important; }
+.carrier-page .carrier-tags span { border-color:#BA9AF0; color:#440D84; }
+.carrier-page .carrier-stats { background:#F7F6F3 !important; }
+.carrier-page .carrier-stats-grid > div { border-color:#E7E2E9; }
+.carrier-page .carrier-stats strong { color:#440D84; }
+.carrier-page .carrier-stats span { color:#6F687A; }
+.carrier-page .carrier-connect-panel { background:#F0E8FA !important; }
+.carrier-page .carrier-connect-panel h2 { color:#19131F; }
+.customer-page main > section:nth-of-type(1) { background:#F0E8FA !important; }
+.customer-page main > section:nth-of-type(2) { background:#fff !important; color:#19151F; }
+.customer-page main > section:nth-of-type(2) .stats div { color:#440D84; }
+.customer-page main > section:nth-of-type(2) .stats small { color:#6F687A; }
+.customer-page main > section:nth-of-type(15) .connect-inner { background:#F0E8FA !important; }
+.customer-page .task-grid article { border-top:0 !important; }
+.customer-page .task-grid article:nth-child(-n+3) { border-top:2px solid #7133D0 !important; }
+.customer-page .task-grid .card-icon { transform:rotate(45deg); }
+.customer-page .task-grid .card-icon svg { transform:rotate(-45deg); }
+.carrier-page .carrier-hero { background:#F0E8FA !important; }
+.carrier-page .carrier-hero .carrier-eyebrow { color:#440D84 !important; }
+.carrier-page .carrier-lead, .carrier-page .carrier-note { color:#675F6F !important; }
+.carrier-page .carrier-tags span { border-color:#BA9AF0 !important; color:#440D84 !important; }
+.carrier-page .carrier-stats { background:#F7F6F3 !important; }
+.carrier-page .carrier-stats-grid > div { border-color:#E7E2E9 !important; }
+.carrier-page .carrier-stats strong { color:#440D84 !important; }
+.carrier-page .carrier-stats span { color:#6F687A !important; }
+.carrier-page .carrier-connect-panel { background:#F0E8FA !important; }
+.carrier-page .carrier-connect-panel h2 { color:#19131F !important; }
 
 /* Customer landing: typography and rhythm aligned with the main Catalon page. */
 .customer-page { font-family: "Manrope", ui-sans-serif, system-ui, sans-serif; }
@@ -786,3 +814,14 @@ body,
 .operator-page #operator-income .operator-income-points span { color:#A0FF00; }
 .operator-page #operator-income .operator-income-extra > div { border:1px solid rgba(255,255,255,.14); background:#2A0751; }
 .operator-page #operator-income .operator-income-role { border:1px solid rgba(160,255,0,.32); background:#2A0751; }
+.customer-page .customer-hero { background:#F0E8FA !important; }
+.customer-page main > section:nth-of-type(2) { background:#fff !important; color:#19151F !important; }
+.customer-page main > section:nth-of-type(2) .stats { background:#fff !important; }
+.customer-page main > section:nth-of-type(2) .stats div { color:#440D84 !important; }
+.customer-page main > section:nth-of-type(2) .stats small { color:#6F687A !important; }
+.customer-page .connect { background:#F7F6F3 !important; }
+.customer-page .connect-inner { background:#F0E8FA !important; }
+.customer-page .task-grid article { border-top:0 !important; }
+.customer-page .task-grid article:nth-child(-n+3) { border-top:2px solid #7133D0 !important; }
+.customer-page .task-grid .card-icon { transform:rotate(45deg); }
+.customer-page .task-grid .card-icon svg { transform:rotate(-45deg); }
