@@ -4,7 +4,7 @@ import headerLogo from '../../Group 3320.svg';
 
 const baseUrl = (path = '') => `${import.meta.env.BASE_URL?.replace(/\/$/, '') || ''}/${path}`;
 const audience = [['Заказчикам', 'for-customers'], ['Перевозчикам', 'for-carriers'], ['Операторам', 'for-operators'], ['Партнёрам', 'partners'], ['Поставщикам', 'for-suppliers'], ['Инвесторам', 'investors']];
-const links = [['Главная', baseUrl()], ['Грузоперевозки', baseUrl('road-freight-russia')], ['Мультимодальные', baseUrl('multimodal-container')], ['Все решения', baseUrl('#solutions')], ['Сервисы', baseUrl('#services')]];
+const links = [['Главная', baseUrl()], ['Грузоперевозки', baseUrl('road-freight-russia')], ['Мультимодальные', baseUrl('multimodal-container')], ['Все решения', baseUrl('#solutions')], ['Сервисы', baseUrl('#services-visible')]];
 
 export function UnifiedHeader() {
   const [open, setOpen] = useState(false);

@@ -17,7 +17,7 @@ export function ProductHeader({ portalHref, startHref }: ProductHeaderProps) {
   const links = [
     ['О платформе', baseUrl('#about')],
     ['Решения', baseUrl('#solutions')],
-    ['Сервисы', baseUrl('#services')],
+    ['Сервисы', baseUrl('#services-visible')],
     ['Портал', portalHref],
     ['Контакты', '#contacts'],
   ];
@@ -46,7 +46,7 @@ export function ProductFooter() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div><img src={headerLogo} alt="Catalon" className="h-9 w-auto" /><p className="mt-5 max-w-md text-sm leading-6 text-white/55">Marketplace логистических решений для управления перевозками, безопасных сделок и сервисов транспортного бизнеса.</p></div>
-          <div><h3 className="text-xs font-bold uppercase tracking-[0.18em] text-white/40">Навигация</h3><div className="mt-5 grid gap-3 text-sm text-white/70"><a href={baseUrl()}>Главная</a><a href={baseUrl('#solutions')}>Решения</a><a href={baseUrl('#services')}>Сервисы</a><a href={baseUrl('#portal')}>Портал</a></div></div>
+          <div><h3 className="text-xs font-bold uppercase tracking-[0.18em] text-white/40">Навигация</h3><div className="mt-5 grid gap-3 text-sm text-white/70"><a href={baseUrl()}>Главная</a><a href={baseUrl('#solutions')}>Решения</a><a href={baseUrl('#services-visible')}>Сервисы</a><a href={baseUrl('#portal')}>Портал</a></div></div>
           <div><h3 className="text-xs font-bold uppercase tracking-[0.18em] text-white/40">Перевозки</h3><div className="mt-5 grid gap-3 text-sm text-white/70"><a href={baseUrl('road-freight-russia')}>По России</a><a href={baseUrl('multimodal-container')}>Мультимодальные</a><a href={baseUrl('#solutions')}>Все решения</a><a href={baseUrl('#start')}>Регистрация</a></div></div>
           <div><h3 className="text-xs font-bold uppercase tracking-[0.18em] text-white/40">Связаться</h3><div className="mt-5 grid gap-3 text-sm text-white/70"><a href="mailto:info@catalon.ru">info@catalon.ru</a><a href="tel:+78000000000">+7 800 000-00-00</a><span>Москва, Россия</span></div></div>
         </div>

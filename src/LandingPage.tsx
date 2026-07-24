@@ -381,6 +381,7 @@ export default function LandingPage() {
             Сейчас доступны два активных направления. Остальные решения находятся в разработке
             и будут постепенно подключаться к marketplace.
           </p>
+          <span id="services-visible" aria-hidden="true" className="relative -top-24 block" />
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {allSolutions.map((solution) => (
               <SolutionCard key={solution.title} {...solution} />
@@ -811,8 +812,8 @@ export default function LandingPage() {
               <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">Решения и сервисы</h4>
               <ul className="mt-6 space-y-3 text-sm text-white/70">
                 <li><a href="#safe-deal" className="transition hover:text-[#B7FF2A]">Безопасная сделка</a></li>
-                <li><a href="#services" className="transition hover:text-[#B7FF2A]">Финансирование рейса</a></li>
-                <li><a href="#services" className="transition hover:text-[#B7FF2A]">Сервисы экосистемы</a></li>
+                <li><a href="#services-visible" className="transition hover:text-[#B7FF2A]">Финансирование рейса</a></li>
+                <li><a href="#services-visible" className="transition hover:text-[#B7FF2A]">Сервисы экосистемы</a></li>
                 <li><a href="#audience" className="transition hover:text-[#B7FF2A]">Для участников рынка</a></li>
               </ul>
             </div>
