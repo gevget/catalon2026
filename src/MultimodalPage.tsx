@@ -174,6 +174,11 @@ export default function MultimodalPage() {
         }
       }
       const audienceSection = Array.from(document.querySelectorAll<HTMLElement>('main section')).find((section) => section.textContent?.includes('Для кого создано решение'));
+      const duplicateSections = Array.from(document.querySelectorAll<HTMLElement>('main section')).filter((section) => {
+        const text = section.textContent || '';
+        return text.includes('Сборка маршрута') || text.includes('Статус каждого этапа — в одной картине маршрута') || text.includes('Один маршрут связывает несколько самостоятельных операций') || text.includes('Одна система для сложного маршрута');
+      });
+      duplicateSections.forEach((section) => section.classList.add('hidden'));
       if (audienceSection) {
         const intro = audienceSection.querySelector<HTMLElement>('p.mt-3');
         if (intro) intro.textContent = 'В первую очередь решение создано для заказчика: он получает единый маршрут, прозрачные условия и контроль всей перевозки, даже если отдельные этапы выполняют разные транспортные партнёры.';
