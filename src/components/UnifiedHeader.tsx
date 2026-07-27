@@ -22,20 +22,12 @@ export function UnifiedHeader() {
         '\u0420\u2019\u0420\u0456\u0420\u0458\u0421\u201a\u0420\u0456': '\u0412\u043e\u0439\u0442\u0438',
         '\u0420\u00a0\u0420\u00b5\u0420\u0456\u0421\u201a\u0420\u00b0\u0421\u201a\u0420\u0456\u0420\u0451\u0420\u00b0\u0426\u201a\u0420\u0456\u0421\u045f': '\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f'
       };
+      if (value.startsWith('\u0420\u201d\u0420\u00bb\u0421\u045f')) return 'Для кого';
+      if (value.startsWith('\u0420\u0459\u0420\u0455\u0421\u201a')) return 'Контакты';
+      if (value.startsWith('\u0420\u2019\u0420\u0456\u0420\u0458')) return 'Войти';
+      if (value.startsWith('\u0420\u00a0\u0420\u0455\u0420\u0456')) return 'Регистрация';
       if (exact[value]) return exact[value];
-      if (!/(?:Р[љџ”’ —]|С[ЃЉЊЋЌЏ])/.test(value)) return value;
-      try {
-        const cp1251 = (char: string) => {
-          const code = char.charCodeAt(0);
-          if (code >= 0x0410 && code <= 0x044f) return code - 0x350;
-          if (code === 0x0401) return 0xa8;
-          if (code === 0x0451) return 0xb8;
-          const extra: Record<number, number> = { 0x2018: 0x91, 0x2019: 0x92, 0x201c: 0x93, 0x201d: 0x94, 0x00ab: 0xab, 0x00bb: 0xbb, 0x0454: 0xf4, 0x0455: 0xf5, 0x0456: 0xf6, 0x0457: 0xf7, 0x0458: 0xf8, 0x0459: 0xf9, 0x045a: 0xfa, 0x045b: 0xfb, 0x045c: 0xfc, 0x045e: 0xfe, 0x045f: 0xff };
-          return extra[code] ?? code;
-        };
-        const bytes = new Uint8Array(Array.from(value, cp1251));
-        return new TextDecoder().decode(bytes);
-      } catch { return value; }
+      return value;
     };
     const header = document.querySelector('.unified-header');
     if (!header) return;
