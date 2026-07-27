@@ -1,18 +1,29 @@
 ﻿import { ChevronDown, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import headerLogo from '../../Group 3320.svg';
 
 const baseUrl = (path = '') => `${import.meta.env.BASE_URL?.replace(/\/$/, '') || ''}/${path}`;
-const audience = [['Р—Р°РєР°Р·С‡РёРєР°Рј', 'for-customers'], ['РџРµСЂРµРІРѕР·С‡РёРєР°Рј', 'for-carriers'], ['РћРїРµСЂР°С‚РѕСЂР°Рј', 'for-operators'], ['РџР°СЂС‚РЅС‘СЂР°Рј', 'partners'], ['РџРѕСЃС‚Р°РІС‰РёРєР°Рј', 'for-suppliers'], ['РРЅРІРµСЃС‚РѕСЂР°Рј', 'investors']];
-const links = [['Р“Р»Р°РІРЅР°СЏ', baseUrl()], ['Р“СЂСѓР·РѕРїРµСЂРµРІРѕР·РєРё', baseUrl('road-freight-russia')], ['РњСѓР»СЊС‚РёРјРѕРґР°Р»СЊРЅС‹Рµ', baseUrl('multimodal-container')], ['Р’СЃРµ СЂРµС€РµРЅРёСЏ', baseUrl('#solutions')], ['РЎРµСЂРІРёСЃС‹', baseUrl('#services-visible')]];
+const audience = [['Заказчикам', 'for-customers'], ['Перевозчикам', 'for-carriers'], ['Операторам', 'for-operators']];
+const links = [['Главная', baseUrl()], ['Грузоперевозки по РФ', baseUrl('road-freight-russia')], ['Мультимодальные перевозки', baseUrl('multimodal-container')], ['Сервисы', baseUrl('#services-visible')]];
 
 const audienceLinks = audience.filter(([, path]) => path !== 'partners' && path !== 'for-suppliers' && path !== 'investors');
 const primaryLinks = links.filter(([, href]) => !href.includes('#solutions')).map(([label, href], index) => index === 1 ? [label + ' по РФ', href] : [label, href]);
-const spotlightLinks = [['\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a\u0430\u043c', baseUrl('for-suppliers')], ['\u0418\u043d\u0432\u0435\u0441\u0442\u043e\u0440\u0430\u043c', baseUrl('investors')]];
+const spotlightLinks = [['Поставщикам', baseUrl('for-suppliers')], ['Инвесторам', baseUrl('investors')]];
 
 export function UnifiedHeader() {
   const [open, setOpen] = useState(false);
   const [audienceOpen, setAudienceOpen] = useState(false);
+
+  useEffect(() => {
+    const fixMojibake = (value: string) => {
+      try { return decodeURIComponent(escape(value)); } catch { return value; }
+    };
+    const walker = document.createTreeWalker(document.querySelector('.unified-header')!, NodeFilter.SHOW_TEXT);
+    const nodes: Text[] = [];
+    let node: Node | null;
+    while ((node = walker.nextNode())) nodes.push(node as Text);
+    nodes.forEach((text) => { text.nodeValue = fixMojibake(text.nodeValue || ''); });
+  }, []);
 
   return <header className="unified-header sticky top-0 z-50 bg-[#440D84] text-white shadow-[0_8px_30px_rgba(36,8,67,0.15)]">
     <div className="mx-auto flex h-[48px] max-w-[1440px] items-center justify-between px-5 lg:px-8">
@@ -42,4 +53,5 @@ export function UnifiedHeader() {
     </nav>}
   </header>;
 }
+
 
