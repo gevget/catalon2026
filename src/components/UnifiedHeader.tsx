@@ -16,7 +16,11 @@ export function UnifiedHeader() {
 
   useEffect(() => {
     const fixMojibake = (value: string) => {
-      try { return decodeURIComponent(escape(value)); } catch { return value; }
+      if (!/(?:Р[љџ”’ —]|С[ЃЉЊЋЌЏ])/.test(value)) return value;
+      try {
+        const bytes = Array.from(value, (char) => String.fromCharCode(char.charCodeAt(0) & 0xff)).join('');
+        return decodeURIComponent(escape(bytes));
+      } catch { return value; }
     };
     const header = document.querySelector('.unified-header');
     if (!header) return;
