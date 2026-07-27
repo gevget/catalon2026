@@ -1,5 +1,5 @@
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import headerLogo from '../../Group 3320.svg';
 
 const baseUrl = (path = '') => `${import.meta.env.BASE_URL?.replace(/\/$/, '') || ''}/${path}`;
@@ -22,6 +22,18 @@ const spotlightLinks = [
 export function UnifiedHeader() {
   const [open, setOpen] = useState(false);
   const [audienceOpen, setAudienceOpen] = useState(false);
+
+  useEffect(() => {
+    const header = document.querySelector('.unified-header');
+    if (!header) return;
+    const walker = document.createTreeWalker(header, NodeFilter.SHOW_TEXT);
+    const textNodes: Text[] = [];
+    let node: Node | null;
+    while ((node = walker.nextNode())) textNodes.push(node as Text);
+    textNodes.forEach((text) => {
+      text.nodeValue = (text.nodeValue || '').replace(/\\u([0-9a-f]{4})/gi, (_, code: string) => String.fromCharCode(parseInt(code, 16)));
+    });
+  }, [open]);
 
   return <header className="unified-header sticky top-0 z-50 bg-[#440D84] text-white shadow-[0_8px_30px_rgba(36,8,67,0.15)]">
     <div className="mx-auto flex h-[48px] max-w-[1440px] items-center justify-between px-5 lg:px-8">
