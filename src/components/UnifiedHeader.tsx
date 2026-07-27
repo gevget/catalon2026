@@ -7,7 +7,7 @@ const audience = [['Заказчикам', 'for-customers'], ['Перевозч�
 const links = [['Главная', baseUrl()], ['Грузоперевозки по РФ', baseUrl('road-freight-russia')], ['Мультимодальные перевозки', baseUrl('multimodal-container')], ['Сервисы', baseUrl('#services-visible')]];
 
 const audienceLinks = audience.filter(([, path]) => path !== 'partners' && path !== 'for-suppliers' && path !== 'investors');
-const primaryLinks = links.filter(([, href]) => !href.includes('#solutions')).map(([label, href], index) => index === 1 ? [label + ' по РФ', href] : [label, href]);
+const primaryLinks = links.filter(([, href]) => !href.includes('#solutions'));
 const spotlightLinks = [['Поставщикам', baseUrl('for-suppliers')], ['Инвесторам', baseUrl('investors')]];
 
 export function UnifiedHeader() {
@@ -18,12 +18,14 @@ export function UnifiedHeader() {
     const fixMojibake = (value: string) => {
       try { return decodeURIComponent(escape(value)); } catch { return value; }
     };
-    const walker = document.createTreeWalker(document.querySelector('.unified-header')!, NodeFilter.SHOW_TEXT);
+    const header = document.querySelector('.unified-header');
+    if (!header) return;
+    const walker = document.createTreeWalker(header, NodeFilter.SHOW_TEXT);
     const nodes: Text[] = [];
     let node: Node | null;
     while ((node = walker.nextNode())) nodes.push(node as Text);
     nodes.forEach((text) => { text.nodeValue = fixMojibake(text.nodeValue || ''); });
-  }, []);
+  }, [open]);
 
   return <header className="unified-header sticky top-0 z-50 bg-[#440D84] text-white shadow-[0_8px_30px_rgba(36,8,67,0.15)]">
     <div className="mx-auto flex h-[48px] max-w-[1440px] items-center justify-between px-5 lg:px-8">
