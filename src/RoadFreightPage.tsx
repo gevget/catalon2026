@@ -49,7 +49,9 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import roadHeroImage from '../assets/1/p1-hero.png';
+import roadFreightHeroImage from '../assets/1/road-freight-hero.png';
+import roadFreightPanelImage from '../assets/1/road-freight-panel.png';
+import roadFreightAnalyticsImage from '../assets/1/road-freight-analytics.png';
 import safeDealAsset from '../assets/1/Безопасная сделка.png';
 import businessToolsAsset from '../assets/1/Возможности больших компаний — для малого и среднего бизнеса.png';
 import multimodalAsset from '../assets/1/Мультимодальные и контейнерные перевозки.png';
@@ -80,7 +82,7 @@ function home(anchor = '') {
 
 function AssetPlaceholder({ name, dark = false }: { name: string; dark?: boolean }) {
   const imageMap: Record<string, string> = {
-    'road-freight-hero.png': roadHeroImage,
+    'road-freight-hero.png': roadFreightHeroImage,
     'portal-overview.png': portalOverviewAsset,
     'portal-overview-screen.png': portalOverviewAsset,
     'safe-deal-road-freight.png': safeDealAsset,
@@ -160,13 +162,13 @@ const flow = [
 ];
 
 const onlineCards = [
-  ['Рабочая панель', 'Заявки, предложения и ключевые задачи собраны в одном рабочем окне.', portalOverviewAsset, MonitorCheck],
+  ['Рабочая панель', 'Заявки, предложения и ключевые задачи собраны в одном рабочем окне.', roadFreightPanelImage, MonitorCheck],
   ['Рейсы', 'Маршруты, транспорт и статусы исполнения.', tripsAsset, Route],
   ['Документы', 'Комплект файлов по каждой сделке.', documentsAsset, FileText],
   ['Финансы', 'Условия оплаты и движение расчётов.', financesAsset, WalletCards],
   ['Сервисы', 'Полезные услуги прямо из портала.', servicesAsset, Wrench],
   ['Поддержка', 'Помощь оператора на каждом этапе.', supportAsset, Headphones],
-  ['История и аналитика', 'История рейсов, документы и данные для повторных перевозок и управленческих решений.', portalOverviewAsset, ChartNoAxesCombined],
+  ['История и аналитика', 'История рейсов, документы и данные для повторных перевозок и управленческих решений.', roadFreightAnalyticsImage, ChartNoAxesCombined],
 ] as const;
 
 const faq = [
@@ -328,8 +330,8 @@ export default function RoadFreightPage() {
           </div>
         </section>
 
-        <section id="road-services-catalog" data-block-id="road-services-catalog" data-block-title="Сервисы для перевозки в одной экосистеме" className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7133D0]">Экосистема Catalon</p><h2 className="mt-4 text-3xl font-bold sm:text-4xl"><span className="text-[#6CAA00]">Сервисы</span> подключаются к конкретной перевозке</h2><p className="mt-6 max-w-xl leading-7 text-[#675F6F]">Инструменты, которые помогают малому и среднему бизнесу не собирать решение по частям: финансирование, топливо, защита сделки и цифровые документы — в одном контексте рейса.</p><div className="mt-8 grid grid-cols-2 gap-3">{[[Landmark, 'Финансирование', 'Средства под подтверждённый рейс.'], [Fuel, 'Топливо', 'Партнёрские условия и контроль затрат.'], [ShieldCheck, 'Страхование', 'Дополнительная защита сделки.'], [FileText, 'Документы', 'Единый цифровой архив.']].map(([Icon, item, description]) => { const BusinessIcon = Icon as LucideIcon; return <div key={item as string} className="rounded-2xl bg-white p-4"><div className="flex items-center gap-2 text-sm font-bold"><BusinessIcon className="h-4 w-4 text-[#7133D0]" />{item as string}</div><p className="mt-2 text-xs leading-5 text-[#675F6F]">{description as string}</p></div>; })}</div></div><AssetPlaceholder name="small-business-big-tools-road.png" /></div>
+        <section id="road-services-catalog" data-block-id="road-services-catalog" data-block-title="Сервисы для перевозки в одной экосистеме" className="w-full bg-[#F5F3EF] py-20 lg:py-32" style={{ backgroundColor: '#F5F3EF' }}>
+          <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-10"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7133D0]">Экосистема Catalon</p><h2 className="mt-4 text-3xl font-bold sm:text-4xl"><span className="text-[#6CAA00]">Сервисы</span> подключаются к конкретной перевозке</h2><p className="mt-6 max-w-xl leading-7 text-[#675F6F]">Инструменты, которые помогают малому и среднему бизнесу не собирать решение по частям: финансирование, топливо, защита сделки и цифровые документы — в одном контексте рейса.</p><div className="mt-8 grid grid-cols-2 gap-3">{[[Landmark, 'Финансирование', 'Средства под подтверждённый рейс.'], [Fuel, 'Топливо', 'Партнёрские условия и контроль затрат.'], [ShieldCheck, 'Страхование', 'Дополнительная защита сделки.'], [FileText, 'Документы', 'Единый цифровой архив.']].map(([Icon, item, description]) => { const BusinessIcon = Icon as LucideIcon; return <div key={item as string} className="rounded-2xl bg-white p-4"><div className="flex items-center gap-2 text-sm font-bold"><BusinessIcon className="h-4 w-4 text-[#7133D0]" />{item as string}</div><p className="mt-2 text-xs leading-5 text-[#675F6F]">{description as string}</p></div>; })}</div></div><AssetPlaceholder name="small-business-big-tools-road.png" /></div>
         </section>
 
         <section className="relative overflow-hidden bg-[#440D84] py-20 text-white lg:py-32" id="intelligence" data-block-id="road-ai-operator" data-block-title="Интеллектуальный оператор Catalon">
@@ -362,7 +364,7 @@ export default function RoadFreightPage() {
 
         <section className="px-4 pb-4 sm:px-6 lg:px-10" id="start"><div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-[32px] bg-[linear-gradient(120deg,#440D84_0%,#7133D0_55%,#350375_100%)] px-6 py-16 text-center text-white sm:px-10 lg:py-24"><div className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-[#B7FF2A]/20 blur-3xl" /><div className="relative"><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#B7FF2A]">Первый рейс начинается здесь</p><h2 className="mx-auto mt-5 max-w-4xl text-[clamp(2.2rem,5vw,5rem)] font-extrabold leading-[0.96] tracking-[-0.055em]">Начните работать с перевозками в Catalon</h2><p className="mx-auto mt-6 max-w-2xl leading-7 text-white/70">Зарегистрируйтесь или обсудите с командой, как встроить платформу в ваши текущие процессы.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a href="#contacts" className="rounded-full bg-[#B7FF2A] px-7 py-4 text-sm font-bold text-[#30085E]">Зарегистрироваться</a><a href="#contacts" className="rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold">Получить консультацию</a></div></div></div></section>
         <section data-block-id="road-customer-scenario" data-block-title="Сценарий заказчика — от заявки до контроля перевозки" className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-28"><div className="overflow-hidden rounded-[36px] bg-[#F1F1ED] p-8 sm:p-10 lg:p-14"><div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7133D0]">Для заказчика и грузоотправителя</p><h2 className="mt-4 max-w-3xl text-3xl font-extrabold tracking-[-0.04em] text-[#19131F] sm:text-5xl">Перевозка под контролем заказчика</h2><p className="mt-5 max-w-2xl leading-7 text-[#675F6F]">Размещайте заявку, получайте предложения от перевозчиков, фиксируйте условия и контролируйте исполнение в одном цифровом кабинете.</p></div><span className="hidden rounded-full bg-white px-4 py-2 text-xs font-bold text-[#440D84] sm:inline-flex">От заявки до закрывающих документов</span></div><div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4"><article className="rounded-[24px] bg-white p-6"><ClipboardCheck className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-lg font-bold">Создать заявку</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">Укажите маршрут, груз, сроки и требования к перевозке.</p></article><article className="rounded-[24px] bg-white p-6"><ScanSearch className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-lg font-bold">Получить предложения</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">Сравните доступный транспорт, условия и стоимость перевозки.</p></article><article className="rounded-[24px] bg-white p-6"><ChartNoAxesCombined className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-lg font-bold">Контролировать рейс</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">Следите за статусами, этапами и действиями участников сделки.</p></article><article className="rounded-[24px] bg-white p-6"><FileText className="h-6 w-6 text-[#7133D0]" /><h3 className="mt-5 text-lg font-bold">Закрыть перевозку</h3><p className="mt-2 text-sm leading-6 text-[#675F6F]">Получите документы и сохраните историю рейса в кабинете.</p></article></div></div></section>
-        <div className="space-y-8 py-16"><HomeServicesBlock /><HomeEarnSaveBlock /><HomeSafeDealBlock /><HomeTripFinanceBlock /><HomeBigBusinessToolsBlock /></div>
+        <div className="hidden space-y-8 py-16"><HomeServicesBlock /><HomeEarnSaveBlock /><HomeSafeDealBlock /><HomeTripFinanceBlock /><HomeBigBusinessToolsBlock /></div>
       </main>
 
       <UnifiedFooter />

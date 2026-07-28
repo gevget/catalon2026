@@ -38,13 +38,12 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import roadImage from '../2.webp';
+import multimodalHeroImage from '../assets/1/multimodal-hero.png';
 import geographyMapImage from '../assets/1/multimodal-geography-map-catalon-regions.png';
 import cargoTypesImage from '../assets/1/multimodal-cargo-types.png';
 import partnersNetworkImage from '../assets/1/multimodal-partners-network.png';
-import multimodalRouteCatImage from '../assets/1/multimodal-route-cat.png';
-import customerRoleImage from '../assets/1/Заявка.png';
-import partnerRoleImage from '../assets/1/Рейсы.png';
+import multimodalCustomerImage from '../assets/1/multimodal-customers.png';
+import multimodalTransportPartnerImage from '../assets/1/multimodal-transport-partners.png';
 import stageControlImage from '../assets/1/Вся операционная работа в одной системе.png';
 import documentsStageImage from '../assets/1/Документы.png';
 import { ProductAnchorNav, ProductFooter, ProductHeader } from './components/ProductChrome';
@@ -249,14 +248,22 @@ export default function MultimodalPage() {
           card.innerHTML = `<h3 class="text-sm font-bold text-[#440D84]">${title}</h3><p class="mt-2 text-xs leading-5 text-[#675F6F]">${text}</p>`;
           cardGrid?.appendChild(card);
         });
-        const cardImages = [geographyMapImage, cargoTypesImage, partnersNetworkImage, geographyMapImage, cargoTypesImage, partnersNetworkImage];
+        const cardIcons = [
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20M8 7h8M8 11h6"/></svg>',
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/><circle cx="9" cy="5" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="11" cy="19" r="2"/></svg>',
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>',
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2M4 12H2M22 12h-2"/></svg>',
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18M5 17V7h14v10M8 7V4h8v3M8 21h8"/></svg>',
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M8 10h8M8 14h5"/></svg>',
+        ];
         Array.from(cabinetSection.querySelectorAll<HTMLElement>('article')).forEach((card, index) => {
-          if (card.querySelector('img')) return;
-          const image = document.createElement('img');
-          image.src = cardImages[index % cardImages.length];
-          image.alt = '';
-          image.className = '-mx-5 -mt-5 mb-4 h-24 w-[calc(100%+2.5rem)] rounded-t-xl rounded-b-none object-cover';
-          card.prepend(image);
+          if (card.querySelector('[data-cabinet-icon]')) return;
+          const icon = document.createElement('div');
+          icon.dataset.cabinetIcon = 'true';
+          icon.className = 'mb-4 grid h-11 w-11 place-items-center rounded-xl bg-[#EBDDFA] text-[#7133D0]';
+          icon.innerHTML = cardIcons[index % cardIcons.length];
+          icon.querySelector('svg')?.setAttribute('class', 'h-5 w-5 fill-none stroke-current stroke-[1.7]');
+          card.prepend(icon);
         });
       }
       const problemsSection = Array.from(document.querySelectorAll<HTMLElement>('main section')).find((section) => section.textContent?.includes('Мультимодальная логистика ломается на стыках'));
@@ -288,12 +295,12 @@ export default function MultimodalPage() {
       <style>{`main button:hover { color: #7F42E1; } main button:hover span:last-child { background: #F1E8FA; color: #7F42E1; } main > section:first-child .inline-flex:first-child { background: rgba(255,255,255,.5); color: #440D84; backdrop-filter: blur(8px); } main > section:nth-of-type(6) svg { color: #E5484D; } main > section:first-child a[href="#start"] { background: #B7FF2A !important; color: #440D84 !important; } #documents > div > article { display: none !important; } #start, [data-block-id="mm-business-tools"], [data-block-id="mm-benefits"], [data-block-id="mm-difference"], [data-block-id="mm-definition"], [data-block-id="mm-services"] { display: none !important; }`}</style>
       <style>{`[data-block-id="mm-operator"] { display: none !important; }`}</style>
       <main>
-        <section className="bg-[#440D84] text-white" id="mm-top">
+        <section className="bg-[#3D0B78] text-white" id="mm-top" style={{ backgroundColor: '#3D0B78' }}>
           <div className="mx-auto max-w-[1440px] px-4 pb-20 pt-6 sm:px-6 lg:px-10 lg:pb-24">
             <div className="flex flex-wrap items-center gap-2 text-xs text-white/55"><a href={baseUrl()} className="hover:text-white">Главная</a><span>→</span><span>Мультимодальные перевозки</span></div>
             <div className="mt-10 grid min-h-[650px] items-center gap-12 lg:grid-cols-[1.08fr_0.92fr]">
               <div><div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/8 px-4 py-2 text-xs font-bold"><span className="h-2 w-2 rounded-full bg-[#A0FF00]" />Активное решение Catalon</div><h1 className="mt-7 text-4xl font-bold sm:text-5xl lg:text-6xl">Мультимодальные перевозки — <span className="text-[#BA9AF0]">в одном цифровом маршруте</span></h1><p className="mt-7 max-w-2xl text-lg leading-8 text-white/72">Объединяйте автомобильные, железнодорожные, морские и терминальные этапы. Управляйте заявкой, участниками, документами и статусами через единый портал Catalon.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><a href="#mm-digital-cabinet" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#A0FF00] px-7 py-4 text-sm font-bold text-[#2E075A]">Создать заявку <ArrowRight className="h-4 w-4" /></a><a href="#route" className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-4 text-sm font-bold">Посмотреть, как работает</a></div><div className="mt-9 flex flex-wrap gap-2">{['Контейнеры', 'Комбинированные маршруты', 'Контроль этапов', 'Документы онлайн', 'Статусы маршрута'].map((tag) => <span key={tag} className="rounded-full border border-white/15 px-3 py-2 text-xs text-white/70">{tag}</span>)}</div></div>
-              <img src={multimodalRouteCatImage} alt="Мультимодальный маршрут Catalon" className="w-full object-contain" />
+              <img src={multimodalHeroImage} alt="Мультимодальный маршрут Catalon" className="w-full object-contain" />
             </div>
           </div>
         </section>
@@ -304,7 +311,7 @@ export default function MultimodalPage() {
 
         <section className="bg-[#561A9D] py-20 text-white lg:py-28" id="route"><div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><SectionIntro eyebrow="Цепочка маршрута" title="Один маршрут — несколько этапов" text="Каждый этап имеет исполнителя, статус, документы и результат. Передача между этапами становится отдельным контролируемым событием." light /><div className="mt-12 grid gap-4 lg:grid-cols-7">{[[Truck, 'Первая миля'], [Warehouse, 'Терминал'], [RailSymbol, 'Железная дорога'], [Ship, 'Морская линия'], [Container, 'Терминал'], [Truck, 'Последняя миля'], [PackageCheck, 'Получатель']].map(([Icon, label], index) => { const StageIcon = Icon as LucideIcon; return <div key={`${label}-${index}`} className="group relative rounded-[22px] border border-white/15 bg-white/8 p-5 transition duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-[0_14px_30px_rgba(20,3,43,0.22)]"><span className="text-[10px] font-bold text-[#A0FF00]">0{index + 1}</span><StageIcon className="mt-8 h-7 w-7 transition-transform duration-300 group-hover:scale-110" /><p className="mt-4 text-sm font-bold">{label as string}</p>{index < 6 && <ArrowDown className="absolute -bottom-3 left-1/2 z-10 h-6 w-6 -translate-x-1/2 rounded-full bg-[#A0FF00] p-1 text-[#440D84] lg:-right-3 lg:bottom-auto lg:left-auto lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 lg:-rotate-90" />}</div>; })}</div></div></section>
 
-        <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-28"><SectionIntro eyebrow="Участники маршрута" title="Для кого создано решение" text="Главный сценарий — для заказчика и грузовладельца. Крупные транспортные партнёры подключаются к отдельным этапам и передают статусы в общий цифровой маршрут." /><div className="mt-12 grid gap-5 lg:grid-cols-2">{audience.map(({ icon: Icon, title, text, points }, index) => { const roleImage = [customerRoleImage, partnerRoleImage][index]; return <article key={title} className={`group rounded-[28px] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(68,13,132,0.16)] ${index === 1 ? 'bg-[#440D84] text-white hover:bg-[#561A9D]' : 'border border-[#DDD3E7] bg-white hover:border-[#BA9AF0]'}`}><Icon className={`h-8 w-8 transition-transform duration-300 group-hover:scale-110 ${index === 1 ? 'text-[#A0FF00]' : 'text-[#7F42E1]'}`} /><h3 className="mt-7 text-2xl font-extrabold">{title}</h3><p className={`mt-3 text-sm leading-6 ${index === 1 ? 'text-white/65' : 'text-[#675F6F]'}`}>{text}</p><ul className="mt-6 divide-y divide-current/10">{points.map(([PointIcon, point]) => <li key={point} className="flex items-center gap-3 py-3 text-sm font-semibold"><PointIcon className={`h-4 w-4 ${index === 1 ? 'text-[#A0FF00]' : 'text-[#7F42E1]'}`} />{point}</li>)}</ul><img src={roleImage} alt="" className="mt-6 h-48 w-full rounded-2xl object-cover" /></article>; })}</div></section>
+        <section className="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-28"><SectionIntro eyebrow="Участники маршрута" title="Для кого создано решение" text="Главный сценарий — для заказчика и грузовладельца. Крупные транспортные партнёры подключаются к отдельным этапам и передают статусы в общий цифровой маршрут." /><div className="mt-12 grid gap-5 lg:grid-cols-2">{audience.map(({ icon: Icon, title, text, points }, index) => { const roleImage = [multimodalCustomerImage, multimodalTransportPartnerImage][index]; return <article key={title} className={`group rounded-[28px] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(68,13,132,0.16)] ${index === 1 ? 'bg-[#440D84] text-white hover:bg-[#561A9D]' : 'border border-[#DDD3E7] bg-white hover:border-[#BA9AF0]'}`}><Icon className={`h-8 w-8 transition-transform duration-300 group-hover:scale-110 ${index === 1 ? 'text-[#A0FF00]' : 'text-[#7F42E1]'}`} /><h3 className="mt-7 text-2xl font-extrabold">{title}</h3><p className={`mt-3 text-sm leading-6 ${index === 1 ? 'text-white/65' : 'text-[#675F6F]'}`}>{text}</p><ul className="mt-6 divide-y divide-current/10">{points.map(([PointIcon, point]) => <li key={point} className="flex items-center gap-3 py-3 text-sm font-semibold"><PointIcon className={`h-4 w-4 ${index === 1 ? 'text-[#A0FF00]' : 'text-[#7F42E1]'}`} />{point}</li>)}</ul><img src={roleImage} alt={title} className="mt-6 h-48 w-full rounded-2xl object-cover" /></article>; })}</div></section>
 
         <section className="bg-[#F1E8FA] py-20 lg:py-28"><div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><SectionIntro eyebrow="Где возникает сложность" title="Мультимодальная логистика ломается на стыках" text="Проблема появляется не только в движении транспорта, а в переходах между исполнителями, документами и зонами ответственности." /><div className="mt-12 grid gap-px overflow-hidden rounded-[28px] bg-[#CDBAE1] sm:grid-cols-2 lg:grid-cols-3">{[[AlertTriangle, 'Разрозненные статусы'], [Link2, 'Несогласованные переходы'], [FileArchive, 'Документы в разных каналах'], [Clock3, 'Задержки без ответственного'], [Scale, 'Непрозрачная стоимость этапов'], [RadioTower, 'Коммуникация в чатах и письмах']].map(([Icon, label]) => { const ProblemIcon = Icon as LucideIcon; return <article key={label as string} className="group bg-white p-7 transition duration-300 hover:-translate-y-1 hover:bg-[#FAF7FD] hover:shadow-[0_18px_35px_rgba(68,13,132,0.14)]"><ProblemIcon className="h-6 w-6 text-[#7F42E1] transition-transform duration-300 group-hover:scale-110" /><h3 className="mt-8 text-lg font-bold">{label as string}</h3></article>; })}</div></div></section>
 

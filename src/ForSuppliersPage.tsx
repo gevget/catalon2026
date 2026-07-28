@@ -17,6 +17,9 @@ import {
 import { UnifiedHeader } from './components/UnifiedHeader';
 import { UnifiedFooter } from './components/UnifiedFooter';
 import { ProductAnchorNav } from './components/ProductChrome';
+import supplierHeroImage from '../assets/1/Frame 566.png';
+import supplierDemandImage from '../assets/1/image 413.png';
+import supplierPartnershipImage from '../assets/1/supplier-partnership.png';
 
 const directions = [
   { title: 'Банковские решения', text: 'Расчётные счета, финансирование, факторинг, эквайринг и другие финансовые продукты.', icon: Landmark },
@@ -64,7 +67,7 @@ export default function ForSuppliersPage() {
       <ProductAnchorNav items={supplierNav} />
 
       <main>
-        <section id="supplier-overview" className="bg-[#F7F7F5] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <section id="supplier-overview" className="bg-[#F6F5F4] px-5 py-20 sm:px-8 lg:px-10 lg:py-28" style={{ backgroundColor: '#F6F5F4' }}>
           <div className="mx-auto grid max-w-[1208px] items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#561A9D]">ПОСТАВЩИКАМ РЕШЕНИЙ</p>
@@ -76,8 +79,8 @@ export default function ForSuppliersPage() {
               </div>
               <p className="mt-5 text-sm text-[#8496AD]">Для банков, страховых, лизинговых и сервисных компаний</p>
             </div>
-            <div className="supplier-hero-placeholder flex min-h-[320px] items-center justify-center rounded-[28px] border border-dashed border-[#B0BDCE] bg-white p-6 sm:min-h-[430px]">
-              <div className="text-center"><span className="block text-sm font-bold uppercase tracking-[0.16em] text-[#561A9D]">Место для изображения</span><small className="mt-3 block text-sm text-[#8496AD]">Иллюстрация поставщика и сервисов Catalon</small></div>
+            <div className="supplier-hero-image overflow-hidden rounded-[28px] bg-white">
+              <img src={supplierHeroImage} alt="Поставщик решений для транспортного бизнеса" className="block h-auto w-full object-contain" />
             </div>
           </div>
         </section>
@@ -99,7 +102,7 @@ export default function ForSuppliersPage() {
           </div>
         </section>
 
-        <section id="supplier-value" className="bg-[#F0E8FA] px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+        <section id="supplier-value" className="bg-[#EADCFA] px-5 py-20 sm:px-8 lg:px-10 lg:py-24" style={{ backgroundColor: '#EADCFA' }}>
           <div className="mx-auto max-w-[1208px]">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#561A9D]">СПРОС ВНУТРИ ПЕРЕВОЗКИ</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl">Каждый этап перевозки создаёт собственный спрос</h2>
@@ -107,7 +110,7 @@ export default function ForSuppliersPage() {
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {demandStages.map(([title, text, Icon]) => <article key={title} className="rounded-2xl border border-[#D8C7EE] bg-white p-5 transition hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(68,13,132,0.1)]"><div className="grid h-11 w-11 place-items-center rounded-xl bg-[#440D84] text-[#A0FF00]"><Icon className="h-5 w-5" /></div><h3 className="mt-5 text-lg font-bold text-[#19131F]">{title}</h3><p className="mt-3 text-sm leading-6 text-[#675F6F]">{text}</p></article>)}
             </div>
-            <div className="supplier-image-slot mt-8 flex min-h-[260px] items-center justify-center rounded-2xl border border-dashed border-[#7F42E1]/45 bg-white/55 p-6 text-center"><div><span className="block text-xs font-bold uppercase tracking-[0.16em] text-[#561A9D]">Место под изображение</span><small className="mt-2 block text-xs text-[#675F6F]">Карта спроса по этапам перевозки</small></div></div>
+            <img src={supplierDemandImage} alt="Спрос по этапам перевозки" className="mt-8 block h-auto w-full rounded-2xl object-contain" />
           </div>
         </section>
 
@@ -122,10 +125,10 @@ export default function ForSuppliersPage() {
           </div>
         </section>
 
-        <section id="supplier-info" className="bg-[#440D84] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-24">
+        <section id="supplier-info" className="bg-[#3C0B7A] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-24" style={{ backgroundColor: '#3C0B7A' }}>
           <div className="mx-auto grid max-w-[1208px] items-center gap-12 lg:grid-cols-[1fr_0.8fr]">
             <div><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#A0FF00]">ВАЖНО ЗНАТЬ</p><h2 className="mt-4 max-w-2xl text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl">Подключайте продукт к реальному сценарию</h2><p className="mt-6 max-w-2xl leading-7 text-white/70">Формат размещения, рекомендации или интеграции зависит от продукта и задачи аудитории. Мы проверяем ценность решения в конкретном контексте перевозки и только затем масштабируем.</p><p className="mt-5 max-w-2xl leading-7 text-white/70">Если подходящего сервиса ещё нет, предложите собственную модель — команда Catalon открыта к новым решениям.</p></div>
-            <div><div className="supplier-image-slot mb-5 flex min-h-[220px] items-center justify-center rounded-2xl border border-dashed border-white/30 bg-white/[0.06] p-6 text-center"><div><span className="block text-xs font-bold uppercase tracking-[0.16em] text-[#A0FF00]">Место под изображение</span><small className="mt-2 block text-xs text-white/50">Иллюстрация партнёрской сети Catalon</small></div></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3"><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><CircleDollarSign className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Финансы</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><Truck className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Техника</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><ShieldCheck className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Защита</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><Fuel className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Топливо</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><Wrench className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Сервис</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><Network className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">B2B</p></div></div></div>
+            <div><img src={supplierPartnershipImage} alt="Партнёрские решения Catalon для транспортного бизнеса" className="mb-5 block h-auto w-full rounded-2xl object-contain" /><div className="grid grid-cols-2 gap-3 sm:grid-cols-3"><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><CircleDollarSign className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Финансы</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><Truck className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Техника</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><ShieldCheck className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Защита</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><Fuel className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Топливо</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><Wrench className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">Сервис</p></div><div className="rounded-2xl border border-white/15 bg-white/10 p-5"><Network className="h-6 w-6 text-[#A0FF00]" /><p className="mt-4 text-sm font-bold">B2B</p></div></div></div>
           </div>
         </section>
 
