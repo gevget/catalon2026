@@ -209,9 +209,9 @@ export default function LandingPage() {
           </nav>
 
           <div className="hidden items-center gap-2.5 lg:flex">
-            <button className="rounded-full border border-[#B7FF2A] bg-transparent px-5 py-2.5 text-sm font-semibold text-[#B7FF2A] transition-colors hover:bg-[#B7FF2A] hover:text-[#440D84]">
+            <a href={`${import.meta.env.BASE_URL}login`} className="rounded-full border border-[#B7FF2A] bg-transparent px-5 py-2.5 text-sm font-semibold text-[#B7FF2A] transition-colors hover:bg-[#B7FF2A] hover:text-[#440D84]">
               Войти
-            </button>
+            </a>
             <a
               href="#contacts"
               className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#440D84] transition-colors hover:bg-white/90"
@@ -260,12 +260,12 @@ export default function LandingPage() {
                 ))}
               </div>
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <button className="rounded-full bg-[#B7FF2A] px-8 py-3.5 text-sm font-semibold text-purple-dark transition-all hover:scale-105 hover:bg-[#B7FF2A]/90 active:scale-95">
+                <a href={`${import.meta.env.BASE_URL}for-customers`} className="rounded-full bg-[#B7FF2A] px-8 py-3.5 text-sm font-semibold text-purple-dark transition-all hover:scale-105 hover:bg-[#B7FF2A]/90 active:scale-95">
                   Начать работу
-                </button>
-                <button className="text-sm font-semibold text-gray-900 transition-colors hover:text-purple-main">
+                </a>
+                <a href="#solutions" className="text-sm font-semibold text-gray-900 transition-colors hover:text-purple-main">
                   Посмотреть решения →
-                </button>
+                </a>
               </div>
             </div>
             <div className="relative flex justify-center lg:justify-end">
@@ -473,9 +473,9 @@ export default function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <button className="mt-10 rounded-full bg-[#B7FF2A] px-8 py-4 font-semibold text-purple-dark hover:bg-[#B7FF2A]/90">
+              <a href="#services-visible" className="mt-10 inline-flex rounded-full bg-[#B7FF2A] px-8 py-4 font-semibold text-purple-dark hover:bg-[#B7FF2A]/90">
                 Узнать о финансировании
-              </button>
+              </a>
             </div>
             <div className="flex items-center justify-center">
               <img
@@ -565,7 +565,11 @@ export default function LandingPage() {
                     className="block h-auto w-full object-contain"
                   />
                 </div>
-                <h4 className="text-lg font-bold">{card.title}</h4>
+                <a
+                  className="mt-5 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]"
+                  href={card.title === 'Заявки' ? `${import.meta.env.BASE_URL}for-customers` : card.title === 'Карточка рейса' ? `${import.meta.env.BASE_URL}for-carriers` : card.title === 'Документооборот' ? `${import.meta.env.BASE_URL}for-customers` : card.title === 'Финансы' ? `${import.meta.env.BASE_URL}investors` : card.title === 'Сервисы' ? `${import.meta.env.BASE_URL}for-suppliers` : `${import.meta.env.BASE_URL}for-operators`}
+                >Подробнее</a>
+                <h4 className="mt-4 text-lg font-bold">{card.title}</h4>
                 <p className="mt-2 text-sm text-gray-600">{card.desc}</p>
               </div>
             ))}
@@ -759,12 +763,12 @@ export default function LandingPage() {
               заработка, безопасности и экономии.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <button className="rounded-full bg-lime-400 px-8 py-4 font-semibold text-purple-900 hover:bg-lime-300">
+              <a href={`${import.meta.env.BASE_URL}registration`} className="rounded-full bg-lime-400 px-8 py-4 font-semibold text-purple-900 hover:bg-lime-300">
                 Зарегистрироваться
-              </button>
-              <button className="rounded-full border border-white/30 bg-white/5 px-8 py-4 font-semibold text-white hover:bg-white/10">
+              </a>
+              <a href={`${import.meta.env.BASE_URL}contacts`} className="rounded-full border border-white/30 bg-white/5 px-8 py-4 font-semibold text-white hover:bg-white/10">
                 Получить консультацию
-              </button>
+              </a>
             </div>
           </div>
           <div className="absolute left-10 top-10 hidden rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-white lg:block">

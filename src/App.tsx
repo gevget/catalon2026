@@ -184,6 +184,7 @@ export default function App() {
       addEdoCallout(document.querySelector('#portal-early'), 'ЭДО и ЭТРН Контур.Диадок', 'Электронный документооборот встроен в цифровой контур перевозки и связывает заявку, рейс и закрывающие документы.');
     } else if (path === '/' || path.endsWith('/catalon2026/') || path.endsWith('/catalon2026')) {
       addEdoCallout(document.querySelector('#home-safe-deal'), 'ЭДО и ЭТРН Контур.Диадок', 'Документы и электронная транспортная накладная проходят внутри безопасной цифровой сделки.');
+      document.querySelectorAll('#audience-after-solutions a').forEach((link) => link.remove());
     }
   }, []);
 
