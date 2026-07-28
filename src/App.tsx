@@ -15,6 +15,8 @@ import ForOperatorsPage from './ForOperatorsPage';
 import PartnersPage from './PartnersPage';
 import ForSuppliersPage from './ForSuppliersPage';
 import InvestorsPage from './InvestorsPage';
+import ContactsPage from './ContactsPage';
+import AuthPage from './AuthPage';
 
 const IS_LOCAL_EDITOR_ENABLED = import.meta.env.DEV;
 
@@ -131,19 +133,58 @@ function getCurrentRoute() {
 
 export default function App() {
   useEffect(() => {
-    const replaceBrand = (root: Node) => {
-      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-      const nodes: Text[] = [];
-      let current: Node | null;
-      while ((current = walker.nextNode())) nodes.push(current as Text);
-      nodes.forEach((node) => {
-        node.nodeValue = node.nodeValue?.replace(/CATALON|Catalon/g, 'Каталон').replace(/Marketplace/g, 'Маркетплейс').replace(/marketplace/g, 'маркетплейс').replace(/service catalog/gi, 'каталог сервисов').replace(/online/gi, 'онлайн').replace(/operator/gi, 'оператор').replace(/finance/gi, 'финансирование').replace(/support/gi, 'поддержка') ?? node.nodeValue;
-      });
+    const replacements: Array<[RegExp, string]> = [
+      [/ОПЕРАТОРСКАЯ/g, 'ЭКСПЕДИТОРСКАЯ'],
+      [/ОПЕРАТОРСКОЕ/g, 'ЭКСПЕДИТОРСКОЕ'],
+      [/ОПЕРАТОРСКИЙ/g, 'ЭКСПЕДИТОРСКИЙ'],
+      [/ОПЕРАТОРОВ/g, 'ЭКСПЕДИТОРОВ'],
+      [/ОПЕРАТОРУ/g, 'ЭКСПЕДИТОРУ'],
+      [/ОПЕРАТОРОМ/g, 'ЭКСПЕДИТОРОМ'],
+      [/ОПЕРАТОР/g, 'ЭКСПЕДИТОР'],
+      [/операторская/g, 'экспедиторская'],
+      [/операторское/g, 'экспедиторское'],
+      [/операторский/g, 'экспедиторский'],
+      [/операторов/g, 'экспедиторов'],
+      [/оператору/g, 'экспедитору'],
+      [/оператором/g, 'экспедитором'],
+      [/оператора/g, 'экспедитора'],
+      [/оператор/g, 'экспедитор'],
+    ];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes: Text[] = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode as Text);
+    nodes.forEach((node) => {
+      node.nodeValue = replacements.reduce((value, [pattern, replacement]) => value.replace(pattern, replacement), node.nodeValue || '');
+    });
+    if (window.location.pathname.endsWith('/for-operators')) {
+      ['#efficiency', '.operator-request-prep', '.operator-offers', '#team'].forEach((selector) => document.querySelector<HTMLElement>(selector)?.setAttribute('hidden', ''));
+      const documents = document.getElementById('documents');
+      if (documents && !documents.querySelector('[data-etrn-note]')) {
+        const note = document.createElement('div');
+        note.dataset.etrnNote = 'true';
+        note.className = 'operator-etrn-note';
+        note.innerHTML = '<strong>ЭДО и ЭТРН в одной перевозке</strong><span>Документы и электронная транспортная накладная модуля Контур.Диадок привязаны к заявке и доступны участникам без поиска по почте и чатам.</span>';
+        documents.querySelector('.operator-container')?.append(note);
+      }
+    }
+    const path = window.location.pathname;
+    const addEdoCallout = (anchor: Element | null, title: string, text: string) => {
+      if (!anchor || anchor.querySelector('[data-edo-callout]')) return;
+      const callout = document.createElement('div');
+      callout.dataset.edoCallout = 'true';
+      callout.className = 'edo-callout';
+      callout.innerHTML = `<div class="edo-callout-mark">ЭДО</div><div><strong>${title}</strong><p>${text}</p></div>`;
+      anchor.append(callout);
     };
-    replaceBrand(document.body);
-    const observer = new MutationObserver((mutations) => mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => replaceBrand(node))));
-    observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
+    if (path.endsWith('/for-customers')) {
+      addEdoCallout(document.querySelector('#documents .customer-container'), 'ЭДО и ЭТРН Контур.Диадок', 'Электронные документы и транспортная накладная привязаны к конкретной перевозке и доступны участникам в одном цифровом контуре.');
+    } else if (path.endsWith('/for-carriers')) {
+      addEdoCallout(document.querySelector('#documents .carrier-container'), 'ЭДО и ЭТРН Контур.Диадок', 'Передавайте транспортные и закрывающие документы без бумажной путаницы — с историей статусов и привязкой к рейсу.');
+    } else if (path.endsWith('/road-freight-russia')) {
+      addEdoCallout(document.querySelector('#portal-early'), 'ЭДО и ЭТРН Контур.Диадок', 'Электронный документооборот встроен в цифровой контур перевозки и связывает заявку, рейс и закрывающие документы.');
+    } else if (path === '/' || path.endsWith('/catalon2026/') || path.endsWith('/catalon2026')) {
+      addEdoCallout(document.querySelector('#home-safe-deal'), 'ЭДО и ЭТРН Контур.Диадок', 'Документы и электронная транспортная накладная проходят внутри безопасной цифровой сделки.');
+    }
   }, []);
 
   const isEditorMode = IS_LOCAL_EDITOR_ENABLED && new URLSearchParams(window.location.search).get('editor') === '1';
@@ -165,6 +206,12 @@ export default function App() {
     ? <ForSuppliersPage />
     : currentRoute === '/investors'
     ? <InvestorsPage />
+    : currentRoute === '/contacts'
+    ? <ContactsPage />
+    : currentRoute === '/login'
+    ? <AuthPage />
+    : currentRoute === '/registration'
+    ? <AuthPage registration />
     : (currentRoute === '/road-freight-russia' || currentRoute === '/solutions/road-freight-russia')
     ? <RoadFreightPage />
     : (currentRoute === '/multimodal-container' || currentRoute === '/solutions/multimodal-container')

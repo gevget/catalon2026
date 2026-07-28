@@ -17,7 +17,7 @@ export function ProductHeader({ portalHref, startHref }: ProductHeaderProps) {
   const links = [
     ['О платформе', baseUrl('#about')],
     ['Решения', baseUrl('#solutions')],
-    ['Сервисы', baseUrl('#services-visible')],
+    ['Сервисы', baseUrl('#portal')],
     ['Портал', portalHref],
     ['Контакты', '#contacts'],
   ];

@@ -1,0 +1,8 @@
+import { UnifiedHeader } from './components/UnifiedHeader';
+import { UnifiedFooter } from './components/UnifiedFooter';
+import { useState } from 'react';
+
+export default function AuthPage({ registration = false }: { registration?: boolean }) {
+  const [submitted, setSubmitted] = useState(false);
+  return <div className="min-h-screen bg-[#F7F6F3]"><UnifiedHeader /><main className="mx-auto max-w-xl px-5 py-24"><div className="rounded-[28px] bg-white p-8 shadow-sm sm:p-12"><p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#7133D0]">Catalon</p><h1 className="text-4xl font-extrabold tracking-[-0.04em] text-[#121827]">{registration ? 'Регистрация' : 'Войти в кабинет'}</h1><p className="mt-4 leading-7 text-[#675F6F]">{registration ? 'Создайте аккаунт, чтобы работать с заявками, перевозками и документами в одном цифровом контуре.' : 'Войдите в цифровой кабинет Catalon.'}</p><form className="mt-8 grid gap-4" onSubmit={(event) => { event.preventDefault(); setSubmitted(true); }}><label className="grid gap-2 text-sm font-semibold">Email<input className="rounded-xl border border-[#DED9E3] px-4 py-3" type="email" placeholder="you@company.ru" required /></label><label className="grid gap-2 text-sm font-semibold">Пароль<input className="rounded-xl border border-[#DED9E3] px-4 py-3" type="password" placeholder="••••••••" required /></label><button className="mt-2 rounded-full bg-[#440D84] px-5 py-3 font-bold text-white" type="submit">{submitted ? 'Готово' : registration ? 'Создать аккаунт' : 'Войти'}</button>{submitted && <p className="text-sm text-[#7133D0]">Форма принята для демонстрации интерфейса.</p>}</form></div></main><UnifiedFooter /></div>;
+}

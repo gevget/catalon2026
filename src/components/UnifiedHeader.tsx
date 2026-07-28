@@ -6,13 +6,13 @@ const baseUrl = (path = '') => `${import.meta.env.BASE_URL?.replace(/\/$/, '') |
 const audience = [
   ['\u0417\u0430\u043a\u0430\u0437\u0447\u0438\u043a\u0430\u043c', 'for-customers'],
   ['\u041f\u0435\u0440\u0435\u0432\u043e\u0437\u0447\u0438\u043a\u0430\u043c', 'for-carriers'],
-  ['\u041e\u043f\u0435\u0440\u0430\u0442\u043e\u0440\u0430\u043c', 'for-operators'],
+  ['\u042d\u043a\u0441\u043f\u0435\u0434\u0438\u0442\u043e\u0440\u0430\u043c', 'for-operators'],
 ];
 const links = [
   ['\u0413\u043b\u0430\u0432\u043d\u0430\u044f', baseUrl()],
   ['\u0413\u0440\u0443\u0437\u043e\u043f\u0435\u0440\u0435\u0432\u043e\u0437\u043a\u0438 \u043f\u043e \u0420\u0424', baseUrl('road-freight-russia')],
   ['\u041c\u0443\u043b\u044c\u0442\u0438\u043c\u043e\u0434\u0430\u043b\u044c\u043d\u044b\u0435 \u043f\u0435\u0440\u0435\u0432\u043e\u0437\u043a\u0438', baseUrl('multimodal-container')],
-  ['\u0421\u0435\u0440\u0432\u0438\u0441\u044b', baseUrl('#services-visible')],
+  ['\u0421\u0435\u0440\u0432\u0438\u0441\u044b', baseUrl('#portal')],
 ];
 const spotlightLinks = [
   ['\u041f\u043e\u0441\u0442\u0430\u0432\u0449\u0438\u043a\u0430\u043c', baseUrl('for-suppliers')],
