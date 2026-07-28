@@ -134,6 +134,8 @@ function getCurrentRoute() {
 export default function App() {
   useEffect(() => {
     const replacements: Array<[RegExp, string]> = [
+      [/CATALON/g, 'КАТАЛОН'],
+      [/Catalon/g, 'Каталон'],
       [/ОПЕРАТОРСКАЯ/g, 'ЭКСПЕДИТОРСКАЯ'],
       [/ОПЕРАТОРСКОЕ/g, 'ЭКСПЕДИТОРСКОЕ'],
       [/ОПЕРАТОРСКИЙ/g, 'ЭКСПЕДИТОРСКИЙ'],
@@ -155,6 +157,12 @@ export default function App() {
     while (walker.nextNode()) nodes.push(walker.currentNode as Text);
     nodes.forEach((node) => {
       node.nodeValue = replacements.reduce((value, [pattern, replacement]) => value.replace(pattern, replacement), node.nodeValue || '');
+    });
+    document.querySelectorAll<HTMLElement>('[alt], [title], [aria-label], [data-block-title]').forEach((element) => {
+      ['alt', 'title', 'aria-label', 'data-block-title'].forEach((attribute) => {
+        const value = element.getAttribute(attribute);
+        if (value) element.setAttribute(attribute, replacements.reduce((result, [pattern, replacement]) => result.replace(pattern, replacement), value));
+      });
     });
     if (window.location.pathname.endsWith('/for-operators')) {
       ['#efficiency', '.operator-request-prep', '.operator-offers', '#team'].forEach((selector) => document.querySelector<HTMLElement>(selector)?.setAttribute('hidden', ''));

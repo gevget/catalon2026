@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { UnifiedHeader } from './components/UnifiedHeader';
 import { UnifiedFooter } from './components/UnifiedFooter';
+import contactsImage from '../assets/1/image 422.png';
 
 export default function ContactsPage() {
   const [sent, setSent] = useState(false);
-  return <div className="min-h-screen bg-[#FBFAFD] text-[#19131F]">
+  return <div className="min-h-screen bg-white text-[#19131F]" style={{ backgroundColor: '#FFFFFF' }}>
     <UnifiedHeader />
     <main>
-      <section className="mx-auto h-[300px] w-full max-w-[1440px] overflow-hidden bg-[#F0E8FA] px-5 sm:px-8 lg:px-10">
-        <div className="flex h-full items-center justify-center rounded-b-[32px] border-x border-b border-[#DDD3E7] bg-[linear-gradient(135deg,#F6F1FB,#E9DDF8)] text-center text-sm font-semibold text-[#7F42E1]">Место под изображение контактов · 1440 × 300</div>
+      <section className="mx-auto mt-[76px] h-[300px] w-full max-w-[1440px] overflow-hidden bg-white" style={{ backgroundColor: '#FFFFFF' }}>
+        <img src={contactsImage} alt="Контакты Каталон" className="block h-[300px] w-full rounded-b-[32px] object-cover" />
       </section>
-      <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+      <section className="mx-auto max-w-[1440px] px-5 pb-16 pt-8 sm:px-8 lg:px-10 lg:pb-24 lg:pt-12">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7F42E1]">Контакты Catalon</p>

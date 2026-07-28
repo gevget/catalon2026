@@ -1,5 +1,5 @@
-import { Menu } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, Menu } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import headerLogo from '../../Group 3320.svg';
 
 function baseUrl(anchor = '') {
@@ -57,7 +57,12 @@ export function ProductFooter() {
 }
 
 export function ProductAnchorNav({ items }: { items: Array<[string, string]> }) {
-  return <nav className="sticky top-[52px] z-40 overflow-x-auto border-b border-[#E6DFF0] bg-white/95 backdrop-blur" aria-label="Навигация по странице"><div className="mx-auto flex min-w-max max-w-[980px] justify-center gap-5 px-4 py-2 text-xs font-semibold text-[#675F6F] sm:gap-7">{items.map(([label, href]) => <a key={label} href={href} className="whitespace-nowrap border-b border-transparent py-1 transition hover:border-[#B7FF2A] hover:text-[#440D84]">{label}</a>)}</div></nav>;
+  const navRef = useRef<HTMLElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const updateScroll = () => { const element = navRef.current; if (!element) return; setCanScrollLeft(element.scrollLeft > 4); setCanScrollRight(element.scrollLeft + element.clientWidth < element.scrollWidth - 4); };
+  useEffect(() => { const frame = window.requestAnimationFrame(updateScroll); const element = navRef.current; const resizeObserver = element && typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateScroll) : null; element?.addEventListener('scroll', updateScroll); resizeObserver?.observe(element); window.addEventListener('resize', updateScroll); return () => { window.cancelAnimationFrame(frame); element?.removeEventListener('scroll', updateScroll); resizeObserver?.disconnect(); window.removeEventListener('resize', updateScroll); }; }, []);
+  return <div className="product-anchor-nav-wrap"><button type="button" className={`product-anchor-nav-arrow product-anchor-nav-arrow-left ${canScrollLeft ? '' : 'is-hidden'}`} disabled={!canScrollLeft} aria-label="Прокрутить подменю влево" onClick={() => navRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}><ChevronLeft size={18} /></button><nav ref={navRef} className="product-anchor-nav sticky top-[76px] z-40 overflow-x-auto border-b border-[#E6DFF0] bg-white/95 backdrop-blur" aria-label="Навигация по странице"><div className="mx-auto flex min-w-max max-w-[980px] justify-center gap-5 px-4 py-2 text-xs font-semibold text-[#675F6F] sm:gap-7">{items.map(([label, href]) => <a key={label} href={href} className="whitespace-nowrap border-b border-transparent py-1 transition hover:border-[#B7FF2A] hover:text-[#440D84]">{label}</a>)}</div></nav><button type="button" className={`product-anchor-nav-arrow product-anchor-nav-arrow-right ${canScrollRight ? '' : 'is-hidden'}`} disabled={!canScrollRight} aria-label="Прокрутить подменю вправо" onClick={() => navRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}><ChevronRight size={18} /></button></div>;
 }
 
 export function StickyProductCta({ label, href, children }: { label: string; href: string; children: string }) {

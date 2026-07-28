@@ -46,6 +46,8 @@ import multimodalCustomerImage from '../assets/1/multimodal-customers.png';
 import multimodalTransportPartnerImage from '../assets/1/multimodal-transport-partners.png';
 import stageControlImage from '../assets/1/Вся операционная работа в одной системе.png';
 import documentsStageImage from '../assets/1/Документы.png';
+import multimodalDocumentsImage from '../assets/1/Документы связаны с этапами.png';
+import roadFreightSolutionImage from '../assets/1/Нужна автомобильная перевозка по России_.png';
 import { ProductAnchorNav, ProductFooter, ProductHeader } from './components/ProductChrome';
 import { UnifiedFooter } from './components/UnifiedFooter';
 import { UnifiedHeader } from './components/UnifiedHeader';
@@ -62,6 +64,8 @@ function SectionIntro({ eyebrow, title, text, light = false, centered = false }:
 }
 
 function AssetPlaceholder({ name, dark = false }: { name: string; dark?: boolean }) {
+  const suppliedImage = name === 'multimodal-documents.png' ? multimodalDocumentsImage : name === 'road-freight-solution.png' ? roadFreightSolutionImage : null;
+  if (suppliedImage) return <img src={suppliedImage} alt={name === 'multimodal-documents.png' ? 'Документы связаны с этапами перевозки' : 'Автомобильная перевозка по России'} className="block h-auto w-full rounded-2xl object-contain" />;
   return <div className={`grid min-h-64 place-items-center rounded-[28px] border p-8 text-center ${dark ? 'border-white/15 bg-white/5 text-white/45' : 'border-[#DDD3EA] bg-[#F3ECFA] text-[#776887]'}`} role="img" aria-label={`Место для изображения ${name}`}><div><Container className="mx-auto h-12 w-12" strokeWidth={1.2} /><p className="mt-5 text-xs font-semibold">Будущее изображение</p><p className="mt-2 break-all font-mono text-[11px] opacity-70">{name}</p></div></div>;
 }
 
@@ -134,6 +138,8 @@ export default function MultimodalPage() {
     if (operatorSection) operatorSection.style.display = 'none';
     const startSection = document.getElementById('start');
     if (startSection) startSection.style.display = 'none';
+    const portalDemoSection = document.getElementById('portal-demo');
+    if (portalDemoSection) portalDemoSection.style.display = 'none';
     const routeSection = document.getElementById('route');
     if (routeSection && !document.getElementById('mm-digital-cabinet')) {
       routeSection.insertAdjacentHTML('beforebegin', `<section id="mm-digital-cabinet" data-block-id="mm-digital-cabinet" data-block-title="Цифровой кабинет для перевозки" class="bg-white py-16 lg:py-20"><div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><p class="text-xs font-bold uppercase tracking-[0.2em] text-[#7F42E1]">Цифровой кабинет</p><h2 class="mt-4 text-3xl font-bold text-[#19131F] sm:text-4xl">Заявка, тариф и документы — в одном месте</h2><p class="mt-5 max-w-3xl text-base leading-7 text-[#675F6F]">Оформляйте заявку, получайте информацию о перевозке, отслеживайте груз и храните транспортные и закрывающие документы в личном кабинете 24/7. Расчёт тарифа и оформление заявки доступны онлайн.</p><div class="mt-8 grid gap-4 sm:grid-cols-3"><article class="rounded-2xl border border-[#DDD3E7] bg-[#F8F4FC] p-5"><h3 class="font-bold text-[#440D84]">Отслеживание груза</h3><p class="mt-2 text-sm leading-6 text-[#675F6F]">Местонахождение и даты отгрузки доступны онлайн.</p></article><article class="rounded-2xl border border-[#DDD3E7] bg-[#F8F4FC] p-5"><h3 class="font-bold text-[#440D84]">Документы 24/7</h3><p class="mt-2 text-sm leading-6 text-[#675F6F]">Транспортные и закрывающие документы хранятся в кабинете.</p></article><article class="rounded-2xl border border-[#DDD3E7] bg-[#F8F4FC] p-5"><h3 class="font-bold text-[#440D84]">Расчёт тарифа</h3><p class="mt-2 text-sm leading-6 text-[#675F6F]">Параметры груза и маршрута собраны в заявке.</p></article></div></div></section><section id="mm-cargo-types" data-block-id="mm-cargo-types" data-block-title="Типы грузов и контейнеров" class="bg-[#F6F1FB] py-16 lg:py-20"><div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><p class="text-xs font-bold uppercase tracking-[0.2em] text-[#7F42E1]">Грузы и контейнеры</p><h2 class="mt-4 text-3xl font-bold text-[#19131F] sm:text-4xl">Перевозки под разные типы груза</h2><p class="mt-5 max-w-3xl text-base leading-7 text-[#675F6F]">Универсальные и рефрижераторные контейнеры, генеральные и опасные грузы — формат выбирается под задачу и маршрут.</p></div></section><section id="mm-geography" data-block-id="mm-geography" data-block-title="География перевозок" class="bg-white py-16 lg:py-20"><div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10"><p class="text-xs font-bold uppercase tracking-[0.2em] text-[#7F42E1]">География</p><h2 class="mt-4 text-3xl font-bold text-[#19131F] sm:text-4xl">Направления и точки отправки</h2><p class="mt-5 max-w-3xl text-base leading-7 text-[#675F6F]">Дальний Восток, Санкт-Петербург, Новороссийск, сухопутные погранпереходы и другие порты с отправкой грузов по России.</p><div class="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-[#440D84]"><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Владивосток и Восточный</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Санкт-Петербург</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Новороссийск</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Забайкальск</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Достык</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Алтынколь</span><span class="rounded-full bg-[#F1E8FA] px-4 py-2">Наушки</span></div></div></section><section id="mm-partners" data-block-id="mm-partners" data-block-title="Партнёры мультимодальных перевозок" class="bg-[#F6F1FB] py-14 lg:py-16"><div class="mx-auto flex max-w-[1440px] flex-col gap-4 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10"><h2 class="text-2xl font-bold text-[#19131F]">Партнёры мультимодальных перевозок</h2><p class="max-w-2xl text-sm leading-6 text-[#675F6F]">В маршруте могут участвовать FESCO, ТрансКонтейнер и другие транспортные партнёры. Состав цепочки зависит от направления и доступности этапов.</p></div></section>`);
@@ -172,6 +178,13 @@ export default function MultimodalPage() {
           geographySection.querySelector('div')?.appendChild(legend);
         }
       }
+      const documentsSection = document.getElementById('documents');
+      if (documentsSection) {
+        const documentsCard = documentsSection.querySelector<HTMLElement>('article');
+        if (documentsCard) documentsCard.style.backgroundColor = '#511196';
+      }
+      const roadSolutionSection = document.querySelector<HTMLElement>('[data-block-id="mm-road-link"]');
+      if (roadSolutionSection) roadSolutionSection.style.backgroundColor = '#F4EEF8';
       const audienceSection = Array.from(document.querySelectorAll<HTMLElement>('main section')).find((section) => section.textContent?.includes('Для кого создано решение'));
       const duplicateSections = Array.from(document.querySelectorAll<HTMLElement>('main section')).filter((section) => {
         const text = section.textContent || '';
