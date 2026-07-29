@@ -150,7 +150,7 @@ body,
 }
 .customer-page main > section#security {
   color:#fff !important;
-  background:#7F42E1 !important;
+  background:#7938DA !important;
 }
 .customer-page main > section#security .eyebrow,
 .customer-page main > section#security h2,
@@ -168,8 +168,75 @@ body,
 .customer-page main > section#documents .feature-grid > .visual-placeholder {
   margin-right:0 !important;
 }
+.customer-page #documents .documents-visual .edo-callout {
+  margin-top:30px !important;
+}
+.customer-page #documents .feature-list li::before {
+  display:none !important;
+}
+.customer-page #documents .feature-list .feature-list-icon {
+  display:grid !important;
+  flex:0 0 32px;
+  width:32px;
+  height:32px;
+  place-items:center;
+  border-radius:10px;
+  color:#7133D0;
+  background:#F0E8FA;
+}
+.customer-page #documents .feature-list .feature-list-icon svg {
+  display:block;
+  width:17px;
+  height:17px;
+}
+.customer-page .finance .feature-list li::before {
+  display:none !important;
+}
+.customer-page .finance .feature-list .feature-list-icon {
+  display:grid !important;
+  flex:0 0 32px;
+  width:32px;
+  height:32px;
+  place-items:center;
+  border-radius:10px;
+  color:#7133D0;
+  background:#F0E8FA;
+}
+.customer-page .finance .feature-list .feature-list-icon svg {
+  display:block;
+  width:17px;
+  height:17px;
+}
+.customer-page .scenario-grid .scenario-icon {
+  color:#440D84 !important;
+  background:#E8D9F8 !important;
+}
+.customer-page .feature-grid > img,
+.customer-page .integration-grid article > img,
+.customer-page .control-demo > img,
+.customer-page .bento-main > img {
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:28px;
+  object-fit:contain;
+}
+.customer-page .bento-main > img { border-radius:20px; }
+.customer-page .customer-final-image {
+  display:block;
+  width:100%;
+  max-height:300px;
+  border-radius:20px;
+  object-fit:contain;
+}
+.customer-page #final-cta {
+  background:#6722B8 !important;
+}
+@media (max-width:800px) {
+  .customer-page .customer-final-image { max-height:240px; }
+}
 .customer-page .bento-main {
-  background:#A0FF00 !important;
+  background:#A6F908 !important;
 }
 .customer-page .bento-main .visual-placeholder {
   background:rgba(255,255,255,.55) !important;

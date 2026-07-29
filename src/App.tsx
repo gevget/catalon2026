@@ -184,7 +184,7 @@ export default function App() {
       callout.innerHTML = `<div class="edo-callout-mark">ЭДО</div><div><strong>${title}</strong><p>${text}</p></div>`;
       anchor.append(callout);
     };
-    if (path.endsWith('/for-customers')) {
+    if (false && path.endsWith('/for-customers')) {
       addEdoCallout(document.querySelector('#documents .customer-container'), 'ЭДО и ЭТРН Контур.Диадок', 'Электронные документы и транспортная накладная привязаны к конкретной перевозке и доступны участникам в одном цифровом контуре.');
     } else if (path.endsWith('/for-carriers')) {
       addEdoCallout(document.querySelector('#documents .carrier-container'), 'ЭДО и ЭТРН Контур.Диадок', 'Передавайте транспортные и закрывающие документы без бумажной путаницы — с историей статусов и привязкой к рейсу.');
