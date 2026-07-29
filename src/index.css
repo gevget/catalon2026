@@ -1096,3 +1096,97 @@ body,
 .customer-page .task-grid article:nth-child(-n+3) { border-top:2px solid #7133D0 !important; }
 .customer-page .task-grid .card-icon { transform:rotate(45deg); }
 .customer-page .task-grid .card-icon svg { transform:rotate(-45deg); }
+#audience-after-solutions article::after { display: none !important; content: none !important; }
+#audience-after-solutions article a,
+#audience a { position: relative; z-index: 20; pointer-events: auto !important; cursor: pointer; }
+#audience-after-solutions article > div > a {
+  display: inline-flex !important;
+  align-items: center;
+  margin-top: 1.5rem;
+  border-radius: 9999px;
+  background: #440D84 !important;
+  padding: .75rem 1.25rem;
+  color: #fff !important;
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+#audience-after-solutions article > div > a:hover { background: #7133D0 !important; }
+#audience { display: block !important; }
+#audience a {
+  display: inline-flex !important;
+  align-items: center;
+  margin-top: 1.25rem;
+  border-radius: 9999px;
+  background: #440D84 !important;
+  padding: .75rem 1.25rem;
+  color: #fff !important;
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+#audience a:hover { background: #7133D0 !important; }
+#audience-after-solutions,
+#audience { display: none !important; }
+.audience-action-cards { display: block !important; }
+.audience-action-card {
+  display: flex !important;
+  min-height: 120px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid #e2dce8;
+  border-top: 4px solid #440D84;
+  border-radius: 24px;
+  background: #fff;
+  padding: 24px;
+  color: #17141C !important;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+.audience-action-card span {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 9999px;
+  background: #440D84;
+  padding: .7rem 1.15rem;
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 700;
+}
+.audience-action-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(68,13,132,.14); }
+.audience-action-card { overflow: hidden; padding: 0; }
+.audience-action-card img { display: block; width: 100%; height: 220px; object-fit: contain; }
+.audience-action-card > div { padding: 20px 24px 24px; }
+.audience-action-card h3 { margin: 0; color: #17141C; font-size: 1.35rem; }
+.audience-action-card p { margin: 12px 0 0; color: #6F6876; font-size: .875rem; line-height: 1.5; }
+.audience-action-card > div > a { display: inline-flex !important; margin-top: 18px; border-radius: 9999px; background: #440D84 !important; padding: .7rem 1.15rem; color: #fff !important; font-size: .875rem; font-weight: 700; text-decoration: none !important; }
+.audience-action-card > a { display: inline-flex !important; width: fit-content; margin: 0 24px 24px; border-radius: 9999px; background: #440D84 !important; padding: .7rem 1.15rem; color: #fff !important; font-size: .875rem; font-weight: 700; text-decoration: none !important; }
+.investor-page #investor-ecosystem article:nth-child(1) .investor-image-placeholder { background: #561A9D url('../assets/1/%D0%93%D1%80%D1%83%D0%B7%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%B7%D0%BA%D0%B8.png') center/cover no-repeat; }
+.investor-page #investor-ecosystem article:nth-child(2) .investor-image-placeholder { background: #561A9D url('../assets/1/%D0%92%D0%AD%D0%94%20%D0%B8%20%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F%20%D0%BB%D0%BE%D0%B3%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0.png') center/cover no-repeat; }
+.investor-page #investor-ecosystem article:nth-child(3) .investor-image-placeholder { background: #561A9D url('../assets/1/%D0%A4%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%B8%20%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BD%D1%8B%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F.png') center/cover no-repeat; }
+.investor-page #investor-ecosystem .investor-image-placeholder > div { visibility: hidden; }
+.investor-page #investor-logic .border-dashed { background: #A0FF00 url('../assets/1/%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%BD%20%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%81%D1%8F%20%D0%BA%D0%B0%D0%BA%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B0%20%D1%81%20%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%B8%D0%BC%D0%B8%20%D1%82%D0%BE%D1%87%D0%BA%D0%B0%D0%BC%D0%B8%20%D1%80%D0%BE%D1%81%D1%82%D0%B0.png') center/cover no-repeat; border: 0; }
+.investor-page #investor-logic .border-dashed > div { visibility: hidden; }
+.investor-page #investor-logic { background: #B3FB01 !important; }
+.investor-page #investor-logic .border-dashed { border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+.investor-page #investor-logic > div > div:last-child { padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+.investor-page #investor-logic > div > div:last-child .border-dashed { width: 100%; min-height: 520px; }
+.investor-page #investor-partners > div > .investor-image-placeholder { min-height: 520px; border: 0 !important; border-radius: 0 !important; background: #440D84 url('../assets/1/%D0%9D%D0%B0%D0%BC%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%BD%D1%8B%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D1%8B%2C%20%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B5%20%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D0%BD%D1%8B%20%D1%83%D1%81%D0%BA%D0%BE%D1%80%D0%B8%D1%82%D1%8C%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D0%B5%20%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%BD.png') center/cover no-repeat; }
+.investor-page #investor-partners > div > .investor-image-placeholder > div { visibility: hidden; }
+.investor-page #investor-partners > div > .investor-image-placeholder { background-image: url('../assets/1/Нам интересны партнёры, которые способны ускорить развитие Каталон.png'); }
+.investor-page #investor-stage { background: #31106C !important; }
+.investor-page #investor-stage > div > .investor-image-placeholder { min-height: 420px; border: 0 !important; border-radius: 0 !important; background: #31106C url('../assets/1/Frame 568.png') center/cover no-repeat; }
+.investor-page #investor-stage > div > .investor-image-placeholder > div { visibility: hidden; }
+.investor-page #investor-form .mt-10 { min-height: 360px; border: 0 !important; border-radius: 0 !important; background: #F7F7F5 url('../assets/1/Frame 569.png') center/cover no-repeat; }
+.investor-page #investor-form .mt-10 > div { visibility: hidden; }

@@ -26,6 +26,11 @@ function ImagePlaceholder({ label = 'Место для изображения', 
   return <div className={`investor-image-placeholder flex min-h-[220px] items-center justify-center rounded-2xl border border-dashed border-white/30 bg-white/[0.06] p-6 text-center ${className}`}><div><Sparkles className="mx-auto h-7 w-7 text-[#A0FF00]" /><span className="mt-4 block text-xs font-bold uppercase tracking-[0.16em] text-white/70">{label}</span><small className="mt-2 block text-xs leading-5 text-white/45">Иллюстрация Catalon</small></div></div>;
 }
 
+const investorImage = (name: string) => `${import.meta.env.BASE_URL}assets/1/${encodeURIComponent(name)}`;
+function InvestorArt({ name, className = '' }: { name: string; className?: string }) {
+  return <img src={investorImage(name)} alt="" className={`block h-full w-full object-contain ${className}`} />;
+}
+
 const approach = [
   ['Комплексный подход', 'Вместо набора несвязанных сервисов — единая система вокруг перевозки.', Network],
   ['Автоматизация', 'Рутинные операции становятся понятнее и быстрее для всех участников.', CloudCog],
@@ -76,7 +81,7 @@ export default function InvestorsPage() {
     <UnifiedHeader />
     <ProductAnchorNav items={investorNav} />
     <main>
-      <section id="investor-overview" className="relative overflow-hidden bg-[#2A0751] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+      <section id="investor-overview" className="relative overflow-hidden bg-[#24004C] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="pointer-events-none absolute -right-24 top-16 h-80 w-80 rounded-full bg-[#561A9D]/25 blur-3xl" />
         <div className="relative mx-auto grid max-w-[1208px] items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
           <div>
@@ -87,7 +92,7 @@ export default function InvestorsPage() {
             <div className="mt-9 flex flex-wrap gap-3"><a href="#investor-form" className="inline-flex items-center gap-2 rounded-lg bg-[#A0FF00] px-6 py-3.5 text-sm font-bold text-[#1A1A1A] transition hover:bg-[#BA9AF0]">Обсудить партнёрство <ArrowRight className="h-4 w-4" /></a><a href="#investor-form" className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-6 py-3.5 text-sm font-bold text-white transition hover:border-[#A0FF00] hover:text-[#A0FF00]">Оставить заявку</a></div>
             <p className="mt-5 max-w-xl text-xs leading-5 text-white/45">Финансовые показатели, условия участия и инвестиционный пакет предоставляются после первичного контакта.</p>
           </div>
-          <ImagePlaceholder label="Место под изображение" className="investor-hero-art min-h-[420px] rounded-[28px] border-white/10 bg-[#440D84]/40 shadow-[0_24px_80px_rgba(15,0,40,0.3)]" />
+          <div className="investor-hero-art min-h-[420px] overflow-hidden bg-transparent"><InvestorArt name="Инвесторам Главная.png" /></div>
         </div>
       </section>
 

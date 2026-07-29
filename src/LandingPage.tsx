@@ -313,6 +313,13 @@ export default function LandingPage() {
 
         <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="audience-after-solutions" data-block-id="home-audiences" data-block-title="Для участников рынка грузоперевозок"><h2 className="text-center text-3xl font-bold">Для участников рынка грузоперевозок</h2><p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">Заказчики, перевозчики и экспедиторы работают в одном цифровом контуре Catalon.</p><div className="mt-10 grid gap-6 md:grid-cols-3"><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-green-500 bg-white"><img src={portalCards[0].image} alt={portalCards[0].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Заказчикам</h3><p className="mt-4 text-sm text-gray-600">Размещайте заявки, находите перевозчиков, фиксируйте условия и проводите сделки безопаснее.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-customers`}>Подробнее</a></div></article><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-purple-600 bg-white"><img src={portalCards[1].image} alt={portalCards[1].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Перевозчикам</h3><p className="mt-4 text-sm text-gray-600">Получайте рейсы, загружайте транспорт, подключайте финансирование и сервисы.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-carriers`}>Подробнее</a></div></article><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-blue-500 bg-white"><img src={portalCards[2].image} alt={portalCards[2].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Экспедиторам</h3><p className="mt-4 text-sm text-gray-600">Управляйте заявками, маршрутами, документами и участниками перевозки в одном месте.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-operators`}>Подробнее</a></div></article></div></section>
 
+        <section className="audience-action-cards mx-auto max-w-7xl px-4 pb-16 lg:px-8" aria-label="Переходы для участников рынка">
+          <div className="grid gap-6 md:grid-cols-3">
+            <article className="audience-action-card"><div><h3>Заказчикам</h3><p>Интегрируйте с вашей платформой, размещайте грузы и получайте лучшие ценовые предложения. Проводите сделки безопасно и контролируйте перевозки онлайн.</p></div><img src={portalCards[0].image} alt="Заказчикам" /><a href={`${import.meta.env.BASE_URL}for-customers`}>Подробнее</a></article>
+            <article className="audience-action-card"><div><h3>Перевозчикам</h3><p>Получайте рейсы, работайте с прямыми грузовладельцами и проводите сделки через безопасный цифровой контур.</p></div><img src={portalCards[1].image} alt="Перевозчикам" /><a href={`${import.meta.env.BASE_URL}for-carriers`}>Подробнее</a></article>
+            <article className="audience-action-card"><div><h3>Экспедиторам</h3><p>Партнёрская модель работы. Безопасная сделка, понятные сроки, события и ответственность в одном месте.</p></div><img src={portalCards[2].image} alt="Экспедиторам" /><a href={`${import.meta.env.BASE_URL}for-operators`}>Подробнее</a></article>
+          </div>
+        </section>
         <section className="hidden" aria-label="Изображения участников рынка"><div className="grid gap-6 md:grid-cols-3">{portalCards.slice(0, 3).map((card) => <div key={card.title} className="overflow-hidden rounded-[28px] bg-white"><img src={card.image} alt={card.title} className="block h-auto w-full object-contain" /></div>)}</div></section>
 
         <section className="hidden mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24" id="catalog" data-block-id="home-earn-save" data-block-title="Catalon помогает зарабатывать и экономить">
@@ -553,7 +560,7 @@ export default function LandingPage() {
           </p>
 
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {portalCards.map((card) => (
+            {portalCards.map((card, cardIndex) => (
               <div
                 key={card.title}
                 className="rounded-[28px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
@@ -567,6 +574,8 @@ export default function LandingPage() {
                 </div>
                 <a
                   className="mt-5 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]"
+                  style={{ display: 'inline-flex', visibility: 'visible', opacity: 1, position: 'relative', zIndex: 20 }}
+                  onClick={(event) => { event.preventDefault(); window.location.href = [import.meta.env.BASE_URL + 'for-customers', import.meta.env.BASE_URL + 'for-carriers', import.meta.env.BASE_URL + 'for-operators'][cardIndex] ?? import.meta.env.BASE_URL + 'for-customers'; }}
                   href={card.title === 'Заявки' ? `${import.meta.env.BASE_URL}for-customers` : card.title === 'Карточка рейса' ? `${import.meta.env.BASE_URL}for-carriers` : card.title === 'Документооборот' ? `${import.meta.env.BASE_URL}for-customers` : card.title === 'Финансы' ? `${import.meta.env.BASE_URL}investors` : card.title === 'Сервисы' ? `${import.meta.env.BASE_URL}for-suppliers` : `${import.meta.env.BASE_URL}for-operators`}
                 >Подробнее</a>
                 <h4 className="mt-4 text-lg font-bold">{card.title}</h4>
