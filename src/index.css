@@ -125,6 +125,25 @@ body,
 .customer-page .task-grid article:nth-child(-n+3) { border-top:2px solid #7133D0 !important; }
 .customer-page .task-grid .card-icon { transform:rotate(45deg); }
 .customer-page .task-grid .card-icon svg { transform:rotate(-45deg); }
+.carrier-page .carrier-hero { background:#EDDFFC !important; }
+.carrier-page .formula-card > img {
+  display:block;
+  margin-top:32px;
+}
+.carrier-page #benefits .benefit-card {
+  min-height:0 !important;
+  padding-bottom:24px !important;
+}
+.carrier-page .carrier-hero {
+  background:#EDDFFC !important;
+}
+.carrier-page .carrier-final-cta {
+  margin-top:64px !important;
+  background:#7B40DD !important;
+}
+@media (max-width:800px) {
+  .carrier-page .carrier-final-cta { margin-top:40px !important; }
+}
 .customer-page main > section#tasks .task-grid article,
 .customer-page main > section#tasks .task-grid article:hover {
   background:#fff !important;
@@ -316,9 +335,9 @@ body,
   .customer-page #connect > .customer-container > .actions .btn { width:100%; }
 }
 .customer-page .hero-art .hero-status {
-  color:#fff !important;
-  background:rgba(68,13,132,.5) !important;
-  border-color:rgba(255,255,255,.55) !important;
+  color:#440D84 !important;
+  background:rgba(255,255,255,.5) !important;
+  border-color:rgba(255,255,255,.8) !important;
   box-shadow:0 16px 40px rgba(68,13,132,.16), inset 0 1px 0 rgba(255,255,255,.16) !important;
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
