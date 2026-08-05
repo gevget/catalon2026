@@ -1,0 +1,6 @@
+import{j as e}from"./index-Bg_N2-vl.js";import{c as a,U as s,a as n}from"./UnifiedHeader-CTaDi1-0.js";/**
+ * @license lucide-react v0.546.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const r=[["path",{d:"M15 3h6v6",key:"1q9fwt"}],["path",{d:"M10 14 21 3",key:"gplh6r"}],["path",{d:"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6",key:"a6xqqp"}]],l=a("external-link",r);function o({registration:t=!1}){return e.jsxs("div",{className:"min-h-screen bg-[#F7F6F3]",children:[e.jsx(s,{}),e.jsxs("main",{id:"main-content",className:"mx-auto max-w-xl px-5 py-24 text-center",children:[e.jsx("p",{className:"text-xs font-bold uppercase tracking-[0.18em] text-[#7133D0]",children:"Портал Каталон"}),e.jsx("h1",{className:"mt-4 text-4xl font-extrabold tracking-[-0.04em] text-[#121827]",children:t?"Переходим к регистрации":"Переходим ко входу"}),e.jsx("p",{className:"mt-5 leading-7 text-[#675F6F]",children:"Откройте рабочую платформу Каталон по кнопке ниже."}),e.jsxs("a",{href:"https://cargo.catalon.ru/",className:"mt-8 inline-flex items-center gap-2 rounded-full bg-[#440D84] px-6 py-3 font-bold text-white",children:["Открыть платформу ",e.jsx(l,{className:"h-4 w-4"})]})]}),e.jsx(n,{})]})}export{o as default};
