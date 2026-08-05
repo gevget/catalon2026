@@ -1228,6 +1228,19 @@ body,
 .audience-action-card > a { display: inline-flex !important; width: fit-content; margin: 0 24px 24px; border-radius: 9999px; background: #440D84 !important; padding: .7rem 1.15rem; color: #fff !important; font-size: .875rem; font-weight: 700; text-decoration: none !important; }
 .investor-page #investor-logic { background: #B3FB01 !important; }
 .investor-page #investor-stage { background: #31106C !important; }
+
+/* Exact approved background for the customers hero. Keep this after legacy overrides. */
+.customer-page main > section.customer-hero,
+.customer-page main > section:nth-of-type(1).customer-hero {
+  background: #E7D9F8 !important;
+  background-color: #E7D9F8 !important;
+  background-image: none !important;
+}
+.customer-page .customer-hero .hero-visual {
+  background: transparent !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
 /* Базовая доступность и системное поведение интерфейса. */
 html {
   scroll-behavior: smooth;
