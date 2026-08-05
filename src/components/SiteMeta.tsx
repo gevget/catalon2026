@@ -59,19 +59,6 @@ const metadata: Record<string, RouteMeta> = {
     title: 'Политика в отношении обработки персональных данных — Каталон',
     description: 'Страница документа о порядке обработки персональных данных на сайте Каталон.',
     canonicalPath: '/privacy',
-    index: false,
-  },
-  '/personal-data-consent': {
-    title: 'Согласие на обработку персональных данных — Каталон',
-    description: 'Страница согласия на обработку персональных данных для форм сайта Каталон.',
-    canonicalPath: '/personal-data-consent',
-    index: false,
-  },
-  '/terms': {
-    title: 'Пользовательское соглашение — Каталон',
-    description: 'Условия использования сайта и цифровых сервисов Каталон.',
-    canonicalPath: '/terms',
-    index: false,
   },
 };
 

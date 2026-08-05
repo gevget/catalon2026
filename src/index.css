@@ -831,6 +831,12 @@ body,
 .legal-content p { margin:0 0 16px; }
 .legal-content ul { margin:20px 0 0; padding-left:22px; }
 .legal-content li + li { margin-top:8px; }
+.legal-table-wrap { margin:24px 0; overflow-x:auto; border:1px solid #E4DCEB; border-radius:18px; background:#fff; }
+.legal-table-wrap table { width:100%; min-width:620px; border-collapse:collapse; }
+.legal-table-wrap th,.legal-table-wrap td { padding:18px 20px; border-bottom:1px solid #E4DCEB; vertical-align:top; text-align:left; font-size:14px; line-height:1.6; }
+.legal-table-wrap tr:last-child th,.legal-table-wrap tr:last-child td { border-bottom:0; }
+.legal-table-wrap th { width:32%; color:#440D84; background:#F6F0FC; font-weight:800; }
+.legal-table-wrap td { color:#675F6F; }
 @media (max-width:800px) {
   .footer-legal-links { display:grid; gap:10px; }
   .legal-hero { padding:96px 18px 48px; }

@@ -27,7 +27,7 @@ npm run build
 - `/multimodal-container` — мультимодальные перевозки;
 - `/for-customers`, `/for-carriers`, `/for-operators` — страницы для участников рынка;
 - `/for-suppliers`, `/investors`, `/contacts` — поставщики, инвесторы и контакты;
-- `/privacy`, `/personal-data-consent`, `/terms` — юридические документы.
+- `/privacy` — Политика в отношении обработки персональных данных.
 
 ## Переменные окружения
 

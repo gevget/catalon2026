@@ -83,7 +83,7 @@ export default function AppRouter() {
 
   const knownRoutes = new Set([
     '/', '/for-carriers', '/for-operators', '/for-customers', '/for-suppliers', '/investors',
-    '/contacts', '/login', '/registration', '/privacy', '/personal-data-consent', '/terms',
+    '/contacts', '/login', '/registration', '/privacy',
     '/road-freight-russia', '/multimodal-container',
   ]);
   const notFound = !knownRoutes.has(currentRoute);
@@ -105,12 +105,8 @@ export default function AppRouter() {
                 : currentRoute === '/registration'
                   ? <AuthPage registration />
                   : currentRoute === '/privacy'
-                    ? <LegalPage kind="privacy" />
-                    : currentRoute === '/personal-data-consent'
-                      ? <LegalPage kind="consent" />
-                      : currentRoute === '/terms'
-                        ? <LegalPage kind="terms" />
-                        : currentRoute === '/road-freight-russia'
+                    ? <LegalPage />
+                    : currentRoute === '/road-freight-russia'
                           ? <RoadFreightPage />
                           : currentRoute === '/multimodal-container'
                             ? <MultimodalPage />

@@ -53,9 +53,7 @@ export function UnifiedFooter() {
         </div>
 
         <nav aria-label="Юридические документы" className="footer-legal-links">
-          <a href={baseUrl('privacy')}>Политика конфиденциальности</a>
-          <a href={baseUrl('personal-data-consent')}>Согласие на обработку персональных данных</a>
-          <a href={baseUrl('terms')}>Пользовательское соглашение</a>
+          <a href={baseUrl('privacy')}>Политика в отношении обработки персональных данных</a>
         </nav>
         <div className="flex flex-col gap-3 py-5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <span>Каталон, все права защищены</span>

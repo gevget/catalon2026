@@ -47,25 +47,13 @@ export function FormConsentGuard() {
       });
 
       const text = document.createElement('span');
-      text.append('Я даю согласие на ');
-      const consent = document.createElement('a');
-      consent.href = baseUrl('personal-data-consent');
-      consent.target = '_blank';
-      consent.rel = 'noopener noreferrer';
-      consent.textContent = 'обработку персональных данных';
-      text.append(consent, ' и подтверждаю, что ознакомился с ');
+      text.append('Я ознакомился с ');
       const privacy = document.createElement('a');
       privacy.href = baseUrl('privacy');
       privacy.target = '_blank';
       privacy.rel = 'noopener noreferrer';
-      privacy.textContent = 'Политикой конфиденциальности';
-      text.append(privacy, ' и ');
-      const terms = document.createElement('a');
-      terms.href = baseUrl('terms');
-      terms.target = '_blank';
-      terms.rel = 'noopener noreferrer';
-      terms.textContent = 'Пользовательским соглашением';
-      text.append(terms, '.');
+      privacy.textContent = 'Политикой в отношении обработки персональных данных';
+      text.append(privacy, ' и даю согласие на обработку персональных данных.');
 
       label.htmlFor = checkboxId;
       label.append(checkbox, text);
