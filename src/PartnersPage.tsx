@@ -83,7 +83,7 @@ const partnerLinks = [
 
 const quickBenefits: [string, string, string][] = [
   ['01', 'В момент потребности', 'Предложение появляется внутри реального рабочего сценария пользователя.'],
-  ['02', 'Три аудитории', 'Заказчики, перевозчики и операторы взаимодействуют в одной экосистеме.'],
+  ['02', 'Три аудитории', 'Заказчики, перевозчики и экспедиторы взаимодействуют в одной экосистеме.'],
   ['03', 'Разная глубина', 'От карточки сервиса до встроенного продукта и технологической интеграции.'],
   ['04', 'Индивидуальная модель', 'Формат, экономика и показатели определяются под конкретное партнёрство.'],
 ];
@@ -91,12 +91,12 @@ const quickBenefits: [string, string, string][] = [
 const processRoles: { icon: Icon; role: string; title: string; text: string; items: string[] }[] = [
   { icon: BriefcaseBusiness, role: 'Заказчику', title: 'Финансы и контроль', text: 'Партнёрский продукт помогает управлять расходами и принимать решения в конкретной перевозке.', items: ['Финансирование', 'Страхование', 'Документы', 'Юридическая поддержка'] },
   { icon: Truck, role: 'Перевозчику', title: 'Ресурсы в пути', text: 'Сервис подключается там, где он нужен автопарку: до рейса, на маршруте или после выгрузки.', items: ['Топливо', 'Обслуживание', 'Шины и лизинг', 'Помощь в пути'] },
-  { icon: Network, role: 'Оператору', title: 'Рабочий контур', text: 'Оператор видит предложение в связанном сценарии и может сопровождать его без разрыва процесса.', items: ['Проверка', 'Коммуникация', 'ЭДО', 'Контроль статусов'] },
+  { icon: Network, role: 'Экспедитору', title: 'Рабочий контур', text: 'Экспедитор видит предложение в связанном сценарии и может сопровождать его без разрыва процесса.', items: ['Проверка', 'Коммуникация', 'ЭДО', 'Контроль статусов'] },
 ];
 
 const collaborationFormats: { number: string; title: string; text: string; items: string[]; cta: string; icon: Icon; variant: string }[] = [
   { number: '01', title: 'Подключить сервис', text: 'Для компаний с готовым продуктом, который полезен участникам логистики.', items: ['Карточка в экосистеме', 'Целевые точки входа', 'Заявка из кабинета', 'Отслеживание результата'], cta: 'Подключить сервис', icon: Wrench, variant: '' },
-  { number: '02', title: 'Создать совместный продукт', text: 'Для партнёров, готовых адаптировать предложение под сценарии Catalon.', items: ['Совместная механика', 'Специальный тариф', 'Обмен статусами', 'Единая аналитика'], cta: 'Создать продукт', icon: Boxes, variant: 'is-purple' },
+  { number: '02', title: 'Создать совместный продукт', text: 'Для партнёров, готовых адаптировать предложение под сценарии Каталон.', items: ['Совместная механика', 'Специальный тариф', 'Обмен статусами', 'Единая аналитика'], cta: 'Создать продукт', icon: Boxes, variant: 'is-purple' },
   { number: '03', title: 'Запустить уникальное партнёрство', text: 'Для задач, которые не помещаются в готовую категорию.', items: ['Региональные программы', 'Новые финансовые продукты', 'Совместная инфраструктура', 'Отдельные направления'], cta: 'Обсудить особый проект', icon: HeartHandshake, variant: 'is-featured' },
 ];
 
@@ -131,14 +131,14 @@ const integrationPoints: { icon: Icon; title: string; text: string; badge: strin
   { icon: CircleDollarSign, title: 'Раздел финансов', text: 'Финансовые и страховые продукты в соответствующем контексте.', badge: 'Расчёты' },
   { icon: FileText, title: 'Раздел документов', text: 'ЭДО, подпись, проверка и юридические сервисы.', badge: 'ЭДО' },
   { icon: Map, title: 'Маршрут', text: 'Заправки, стоянки, обслуживание и помощь в пути.', badge: 'География' },
-  { icon: LifeBuoy, title: 'Поддержка оператора', text: 'Релевантное предложение по прозрачным правилам.', badge: 'Поддержка' },
+  { icon: LifeBuoy, title: 'Поддержка экспедитора', text: 'Релевантное предложение по прозрачным правилам.', badge: 'Поддержка' },
   { icon: BellRing, title: 'Уведомления', text: 'Сообщение о сервисе при наступлении конкретного события.', badge: 'Событие' },
-  { icon: PlugZap, title: 'Технологическая интеграция', text: 'Заявка, оформление и статусы без выхода из Catalon.', badge: 'API' },
+  { icon: PlugZap, title: 'Технологическая интеграция', text: 'Заявка, оформление и статусы без выхода из Каталон.', badge: 'API' },
 ];
 
 const integrationLevels: { number: string; title: string; text: string; result: string; icon: Icon; variant: string }[] = [
   { number: '01', title: 'Представление', text: 'Карточка партнёра, описание предложения и переход во внешний сервис.', result: 'Понятная точка входа', icon: MonitorSmartphone, variant: '' },
-  { number: '02', title: 'Заявка', text: 'Пользователь оставляет структурированный запрос через Catalon.', result: 'Переданный запрос', icon: FileInput, variant: '' },
+  { number: '02', title: 'Заявка', text: 'Пользователь оставляет структурированный запрос через Каталон.', result: 'Переданный запрос', icon: FileInput, variant: '' },
   { number: '03', title: 'Встроенный сценарий', text: 'Расчёт, выбор предложения, оформление или статус проходят внутри платформы.', result: 'Единый рабочий путь', icon: WorkflowIcon, variant: 'is-deep' },
   { number: '04', title: 'Совместный продукт', text: 'Общая механика, бренд, экономика и интеграция данных.', result: 'Новая клиентская ценность', icon: Network, variant: 'is-featured' },
 ];
@@ -198,31 +198,31 @@ const commercialModels: { icon: Icon; title: string; text: string; fit: string }
 
 const analyticsMetrics = ['Релевантные показы', 'Переходы', 'Заявки', 'Подключения', 'Конверсия', 'Повторное использование', 'Среднее время решения', 'Распределение по сегментам', 'География спроса', 'Финансовый результат', 'Качество поддержки', 'Удовлетворённость пользователей'];
 
-const partnerCriteria = ['Реальная польза', 'Прозрачные условия', 'Способность выполнить обязательства', 'Качество поддержки', 'Юридическая и финансовая надёжность', 'Готовность к интеграции', 'Работа с обратной связью', 'Защита данных', 'Возможность масштабирования', 'Соответствие ценностям Catalon'];
+const partnerCriteria = ['Реальная польза', 'Прозрачные условия', 'Способность выполнить обязательства', 'Качество поддержки', 'Юридическая и финансовая надёжность', 'Готовность к интеграции', 'Работа с обратной связью', 'Защита данных', 'Возможность масштабирования', 'Соответствие ценностям Каталон'];
 
 const teamRoles = [{ icon: BriefcaseBusiness, title: 'Бизнес', text: 'Цель и экономика' }, { icon: Boxes, title: 'Продукт', text: 'Пользовательский сценарий' }, { icon: Code2, title: 'Технология', text: 'Интерфейсы и данные' }, { icon: Network, title: 'Операции', text: 'Заявки и поддержка' }, { icon: BarChart3, title: 'Аналитика', text: 'Результат и развитие' }];
 
 const partnerFormats = ['Подключить готовый сервис', 'Создать совместный продукт', 'Запустить интеграцию', 'Предложить специальный проект', 'Пока не знаю — хочу обсудить'];
 
 const partnerFaq = [
-  ['Какие компании могут стать партнёрами Catalon?', 'Компании, чьи продукты, технологии или инфраструктура могут приносить пользу заказчикам, перевозчикам и операторам.'],
+  ['Какие компании могут стать партнёрами Каталон?', 'Компании, чьи продукты, технологии или инфраструктура могут приносить пользу заказчикам, перевозчикам и экспедиторам.'],
   ['Обязательно ли работать только в логистике?', 'Нет. Банки, страховые, IT-компании и другие организации могут иметь продукты, применимые в логистическом процессе.'],
   ['Можно ли подключить готовый сервис без сложной интеграции?', 'Да. Пилот может начаться с карточки, перехода или передачи структурированной заявки.'],
   ['Обязательно ли иметь API?', 'Нет. Глубокая интеграция возможна позже, если пилот подтвердит ценность.'],
   ['Сколько стоит размещение?', 'Коммерческая модель зависит от продукта, сценария и глубины интеграции.'],
-  ['Можно ли создать совместный продукт?', 'Да. Catalon рассматривает co-branded продукты и совместные пользовательские сценарии.'],
+  ['Можно ли создать совместный продукт?', 'Да. Каталон рассматривает co-branded продукты и совместные пользовательские сценарии.'],
   ['Возможна ли эксклюзивность?', 'Она обсуждается индивидуально и зависит от категории, условий и ценности для пользователей.'],
   ['Какие данные получает партнёр?', 'Только данные, необходимые для согласованного сценария и передаваемые на законном основании.'],
   ['Можно ли запустить пилот в одном регионе?', 'Да. Ограниченная география или аудитория может использоваться для проверки гипотезы.'],
-  ['Кто поддерживает пользователя?', 'Зоны ответственности Catalon и партнёра определяются до запуска.'],
+  ['Кто поддерживает пользователя?', 'Зоны ответственности Каталон и партнёра определяются до запуска.'],
   ['Как оценивается результат?', 'Для каждого проекта заранее устанавливаются продуктовые, операционные и коммерческие показатели.'],
   ['Можно ли предложить проект, которого нет в списке?', 'Да. Для этого предусмотрен формат уникального сотрудничества.'],
-  ['Может ли Catalon отказать в подключении?', 'Да. Предложение должно соответствовать требованиям качества, прозрачности и пользы для пользователей.'],
+  ['Может ли Каталон отказать в подключении?', 'Да. Предложение должно соответствовать требованиям качества, прозрачности и пользы для пользователей.'],
   ['Можно ли подключить несколько продуктов?', 'Да, если для каждого продукта существует понятный пользовательский сценарий.'],
 ];
 
 function PartnerPlaceholder({ label, variant = '' }: { label: string; variant?: string }) {
-  return <div className={`partners-placeholder ${variant}`} aria-label={label}><div className="partners-placeholder-orbit" /><div className="partners-placeholder-card"><span>CATALON</span><b>PARTNER<br />SYSTEM</b><i /></div><div className="partners-placeholder-label">{label}</div></div>;
+  return <div className={`partners-placeholder ${variant}`} aria-label={label}><div className="partners-placeholder-orbit" /><div className="partners-placeholder-card"><span>КАТАЛОН</span><b>PARTNER<br />SYSTEM</b><i /></div><div className="partners-placeholder-label">{label}</div></div>;
 }
 
 export default function PartnersPage() {
@@ -288,9 +288,9 @@ export default function PartnersPage() {
       <section id="capabilities" className="partners-hero">
         <div className="partners-container partners-hero-grid">
           <div className="partners-hero-copy">
-            <p className="partners-kicker">ПАРТНЁРСКАЯ ЭКОСИСТЕМА CATALON</p>
+            <p className="partners-kicker">ПАРТНЁРСКАЯ ЭКОСИСТЕМА КАТАЛОН</p>
             <h1>Станьте частью инфраструктуры, на которой движется бизнес</h1>
-            <p className="partners-lead">Catalon объединяет заказчиков, перевозчиков и операторов в едином логистическом процессе. Мы подключаем продукты партнёров в тот момент, когда они действительно нужны: при подготовке, финансировании, выполнении и закрытии перевозки.</p>
+            <p className="partners-lead">Каталон объединяет заказчиков, перевозчиков и экспедиторов в едином логистическом процессе. Мы подключаем продукты партнёров в тот момент, когда они действительно нужны: при подготовке, финансировании, выполнении и закрытии перевозки.</p>
             <p className="partners-lead partners-lead-short">А если готового формата ещё нет — создаём совместный продукт с нуля.</p>
             <div className="partners-actions"><a className="partners-btn partners-btn-primary" href="#form">Предложить партнёрство <ArrowUpRight size={17} /></a><a className="partners-btn partners-btn-secondary" href="#formats">Подключить сервис</a></div>
             <a className="partners-text-link" href="#special-projects">Обсудить особый проект <ArrowRight size={16} /></a>
@@ -317,7 +317,7 @@ export default function PartnersPage() {
       </section>
 
       <section id="integrations" className="partners-integration-section">
-        <div className="partners-container"><div className="partners-section-intro"><div><p className="partners-kicker">ТОЧКИ ИНТЕГРАЦИИ</p><h2>От витрины сервисов до встроенного действия внутри рейса</h2></div><p>Партнёрский продукт выглядит как полезная функция, а не рекламный баннер. Его точка входа зависит от задачи участника.</p></div><div className="partners-integration-layout"><div className="partners-integration-tabs">{integrationPoints.map(({ icon: IconComponent, title, badge }, index) => <button type="button" className={activeIntegration === index ? 'active' : ''} key={title} onClick={() => setActiveIntegration(index)}><IconComponent size={18} strokeWidth={1.5} /><span>{title}</span><small>{badge}</small></button>)}</div><div className="partners-integration-browser"><div className="partners-browser-top"><span /><span /><span /><b>CATALON / {integrationPoints[activeIntegration].title.toUpperCase()}</b></div><div className="partners-browser-body"><div className="partners-browser-sidebar"><i /><i /><i /><i /><i /></div><div className="partners-browser-content"><p className="partners-browser-kicker">ПОДХОДЯЩЕЕ ПРЕДЛОЖЕНИЕ</p><h3>{integrationPoints[activeIntegration].title}</h3><p>{integrationPoints[activeIntegration].text}</p><div className="partners-offer-card"><div><ShieldCheck size={18} /><div><b>Партнёрский продукт</b><span>Показывается в релевантном сценарии</span></div></div><strong>Открыть условия <ArrowUpRight size={14} /></strong></div><div className="partners-browser-meta"><span>Условия сохранены</span><span>Можно отказаться</span></div></div></div></div></div></div>
+        <div className="partners-container"><div className="partners-section-intro"><div><p className="partners-kicker">ТОЧКИ ИНТЕГРАЦИИ</p><h2>От витрины сервисов до встроенного действия внутри рейса</h2></div><p>Партнёрский продукт выглядит как полезная функция, а не рекламный баннер. Его точка входа зависит от задачи участника.</p></div><div className="partners-integration-layout"><div className="partners-integration-tabs">{integrationPoints.map(({ icon: IconComponent, title, badge }, index) => <button type="button" className={activeIntegration === index ? 'active' : ''} key={title} onClick={() => setActiveIntegration(index)}><IconComponent size={18} strokeWidth={1.5} /><span>{title}</span><small>{badge}</small></button>)}</div><div className="partners-integration-browser"><div className="partners-browser-top"><span /><span /><span /><b>КАТАЛОН / {integrationPoints[activeIntegration].title.toUpperCase()}</b></div><div className="partners-browser-body"><div className="partners-browser-sidebar"><i /><i /><i /><i /><i /></div><div className="partners-browser-content"><p className="partners-browser-kicker">ПОДХОДЯЩЕЕ ПРЕДЛОЖЕНИЕ</p><h3>{integrationPoints[activeIntegration].title}</h3><p>{integrationPoints[activeIntegration].text}</p><div className="partners-offer-card"><div><ShieldCheck size={18} /><div><b>Партнёрский продукт</b><span>Показывается в релевантном сценарии</span></div></div><strong>Открыть условия <ArrowUpRight size={14} /></strong></div><div className="partners-browser-meta"><span>Условия сохранены</span><span>Можно отказаться</span></div></div></div></div></div></div>
       </section>
 
       <section id="depth" className="partners-levels-section">
@@ -325,7 +325,7 @@ export default function PartnersPage() {
       </section>
 
       <section id="special-projects" className="partners-special-section">
-        <div className="partners-container partners-special-panel"><div className="partners-special-copy"><p className="partners-kicker">ЗА ПРЕДЕЛАМИ ГОТОВЫХ ФОРМАТОВ</p><h2>Если подходящей модели ещё нет — спроектируем её вместе</h2><p>У партнёра может быть технология, инфраструктура, финансовый ресурс, экспертиза или доступ к отдельной аудитории. Catalon объединит эти возможности с логистическим процессом и создаст новый продукт.</p><a className="partners-btn partners-btn-primary" href="#form">Обсудить особый проект <ArrowUpRight size={17} /></a></div><div className="partners-special-visual"><PartnerPlaceholder label="Область под Союзика за рабочим столом" variant="partners-special-placeholder" /><div className="partners-special-chip chip-one">Финансовый продукт</div><div className="partners-special-chip chip-two">Технологический модуль</div></div><div className="partners-project-list">{uniqueProjects.map((project, index) => <span key={project}><b>{String(index + 1).padStart(2, '0')}</b>{project}</span>)}</div><blockquote>Уникальное партнёрство начинается не с рекламного пакета, а с общей бизнес-задачи.</blockquote></div>
+        <div className="partners-container partners-special-panel"><div className="partners-special-copy"><p className="partners-kicker">ЗА ПРЕДЕЛАМИ ГОТОВЫХ ФОРМАТОВ</p><h2>Если подходящей модели ещё нет — спроектируем её вместе</h2><p>У партнёра может быть технология, инфраструктура, финансовый ресурс, экспертиза или доступ к отдельной аудитории. Каталон объединит эти возможности с логистическим процессом и создаст новый продукт.</p><a className="partners-btn partners-btn-primary" href="#form">Обсудить особый проект <ArrowUpRight size={17} /></a></div><div className="partners-special-visual"><PartnerPlaceholder label="Область под Союзика за рабочим столом" variant="partners-special-placeholder" /><div className="partners-special-chip chip-one">Финансовый продукт</div><div className="partners-special-chip chip-two">Технологический модуль</div></div><div className="partners-project-list">{uniqueProjects.map((project, index) => <span key={project}><b>{String(index + 1).padStart(2, '0')}</b>{project}</span>)}</div><blockquote>Уникальное партнёрство начинается не с рекламного пакета, а с общей бизнес-задачи.</blockquote></div>
       </section>
 
       <section id="models" className="partners-models-section">
@@ -337,7 +337,7 @@ export default function PartnersPage() {
       </section>
 
       <section id="user-value" className="partners-user-value-section">
-        <div className="partners-container partners-user-value-panel"><div className="partners-user-copy"><p className="partners-kicker">ПОЛЕЗНОСТЬ ПРЕЖДЕ ВСЕГО</p><h2>Каждое партнёрское предложение должно улучшать работу участника</h2><p>Каталог Catalon не должен превращаться в рекламную ленту. В экосистему входят продукты, создающие измеримую пользу.</p></div><div className="partners-user-principles">{userValuePrinciples.map(({ icon: IconComponent, text }) => <div key={text}><span className="partners-user-principle-icon"><IconComponent size={16} strokeWidth={1.6} /></span><p>{text}</p></div>)}</div></div>
+        <div className="partners-container partners-user-value-panel"><div className="partners-user-copy"><p className="partners-kicker">ПОЛЕЗНОСТЬ ПРЕЖДЕ ВСЕГО</p><h2>Каждое партнёрское предложение должно улучшать работу участника</h2><p>Каталог Каталон не должен превращаться в рекламную ленту. В экосистему входят продукты, создающие измеримую пользу.</p></div><div className="partners-user-principles">{userValuePrinciples.map(({ icon: IconComponent, text }) => <div key={text}><span className="partners-user-principle-icon"><IconComponent size={16} strokeWidth={1.6} /></span><p>{text}</p></div>)}</div></div>
       </section>
 
       <section id="launch" className="partners-launch-section">
@@ -357,7 +357,7 @@ export default function PartnersPage() {
       </section>
 
       <section id="team" className="partners-team-section">
-        <div className="partners-container partners-team-panel"><div className="partners-team-copy"><p className="partners-kicker">ОДИН КОНТУР ВЗАИМОДЕЙСТВИЯ</p><h2>От бизнес-модели до технического запуска</h2><p>Единый ответственный и понятные зоны взаимодействия снижают риск, что партнёрство потеряется в ежедневной работе.</p><div className="partners-team-list"><span>Ответственный со стороны Catalon</span><span>Ответственный со стороны партнёра</span><span>Порядок обработки заявок</span><span>Формат отчётности</span></div></div><div className="partners-team-visual"><PartnerPlaceholder label="Область под композицию Союзика, Бланка и Кэшика" variant="partners-team-placeholder" /><div className="partners-team-node node-main">Партнёрство</div><div className="partners-team-node node-ops">Операции</div><div className="partners-team-node node-finance">Экономика</div></div><div className="partners-team-roles">{teamRoles.map(({ icon: IconComponent, title, text }) => <div key={title}><IconComponent size={17} strokeWidth={1.5} /><b>{title}</b><span>{text}</span></div>)}</div></div>
+        <div className="partners-container partners-team-panel"><div className="partners-team-copy"><p className="partners-kicker">ОДИН КОНТУР ВЗАИМОДЕЙСТВИЯ</p><h2>От бизнес-модели до технического запуска</h2><p>Единый ответственный и понятные зоны взаимодействия снижают риск, что партнёрство потеряется в ежедневной работе.</p><div className="partners-team-list"><span>Ответственный со стороны Каталон</span><span>Ответственный со стороны партнёра</span><span>Порядок обработки заявок</span><span>Формат отчётности</span></div></div><div className="partners-team-visual"><PartnerPlaceholder label="Область под композицию Союзика, Бланка и Кэшика" variant="partners-team-placeholder" /><div className="partners-team-node node-main">Партнёрство</div><div className="partners-team-node node-ops">Операции</div><div className="partners-team-node node-finance">Экономика</div></div><div className="partners-team-roles">{teamRoles.map(({ icon: IconComponent, title, text }) => <div key={title}><IconComponent size={17} strokeWidth={1.5} /><b>{title}</b><span>{text}</span></div>)}</div></div>
       </section>
 
       <section id="form" className="partners-form-section">
@@ -372,7 +372,7 @@ export default function PartnersPage() {
         <div className="partners-container partners-final-panel"><div className="partners-final-copy"><p className="partners-kicker">СИЛЬНЫЕ ПАРТНЁРСТВА МЕНЯЮТ ЦЕЛЫЕ РЫНКИ</p><h2>Давайте создадим то, чего логистике сейчас не хватает</h2><p>Подключите готовый сервис, разработайте совместный продукт или предложите идею, для которой ещё не существует стандартного формата.</p><div className="partners-actions"><a className="partners-btn partners-btn-primary" href="#form">Предложить партнёрство <ArrowUpRight size={17} /></a><a className="partners-btn partners-btn-secondary" href="#special-projects">Обсудить особый проект</a></div></div><div className="partners-final-visual"><PartnerPlaceholder label="Область под финальную композицию котиков" variant="partners-final-placeholder" /><div className="partners-final-line" /></div></div>
       </section>
 
-      <footer id="footer" className="partners-footer"><div className="partners-container"><div className="partners-footer-top"><div><span className="partners-footer-brand">CATALON</span><p>Catalon объединяет участников, сервисы и технологии вокруг реальной перевозки.</p></div><div className="partners-footer-column"><b>Партнёрство</b><a href="#formats">Подключить сервис</a><a href="#formats">Совместный продукт</a><a href="#integrations">Интеграция</a></div><div className="partners-footer-column"><b>Проекты</b><a href="#special-projects">Специальный проект</a><a href="#selection">Требования</a><a href="#form">Контакты</a></div></div><div className="partners-footer-bottom"><span>© Catalon</span><span>Партнёрская экосистема</span></div></div></footer>
+      <footer id="footer" className="partners-footer"><div className="partners-container"><div className="partners-footer-top"><div><span className="partners-footer-brand">КАТАЛОН</span><p>Каталон объединяет участников, сервисы и технологии вокруг реальной перевозки.</p></div><div className="partners-footer-column"><b>Партнёрство</b><a href="#formats">Подключить сервис</a><a href="#formats">Совместный продукт</a><a href="#integrations">Интеграция</a></div><div className="partners-footer-column"><b>Проекты</b><a href="#special-projects">Специальный проект</a><a href="#selection">Требования</a><a href="#form">Контакты</a></div></div><div className="partners-footer-bottom"><span>© Каталон</span><span>Партнёрская экосистема</span></div></div></footer>
     </main>
     <UnifiedFooter />
   </div>;

@@ -22,7 +22,6 @@ import carrierFreeLoadsScreen from '../Перевозчик Свободные �
 import marketCustomerImage from '../b1.png';
 import marketCarrierImage from '../b2.png';
 import marketOperatorImage from '../b3.png';
-import headerLogo from '../Group 3320.svg';
 import {
   BarChart2,
   ClipboardList,
@@ -32,7 +31,6 @@ import {
   Fuel,
   HelpCircle,
   Map,
-  Menu,
   Shield,
   ShieldCheck,
   ShoppingBag,
@@ -64,14 +62,6 @@ export default function LandingPage() {
       if (text) text.textContent = copy[index];
     });
   }, []);
-  const navItems = [
-    { label: 'О платформе', href: '#about' },
-    { label: 'Решения', href: '#solutions' },
-    { label: 'Сервисы', href: '#safe-deal' },
-    { label: 'Портал', href: '#portal' },
-    { label: 'Контакты', href: '#contacts' },
-  ];
-
   const activeSolutions = [
     {
       title: 'Автомобильные перевозки по РФ',
@@ -100,7 +90,7 @@ export default function LandingPage() {
     {
       title: 'Мультимодальные / контейнерные перевозки',
       description:
-        'Контейнерные и мультимодальные маршруты с управлением заявкой, документами и этапами перевозки через Catalon.',
+        'Контейнерные и мультимодальные маршруты с управлением заявкой, документами и этапами перевозки через Каталон.',
       points: [
         'Контейнерные перевозки',
         'Комбинированные маршруты',
@@ -181,7 +171,7 @@ export default function LandingPage() {
       image: portalServicesImage,
     },
     {
-      title: 'Рабочее место оператора',
+      title: 'Рабочее место экспедитора',
       desc: 'Сопровождение заявок, статусов, документов и коммуникации.',
       image: portalOperatorImage,
     },
@@ -190,51 +180,11 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900">
       <UnifiedHeader />
-      <header className="hidden sticky top-0 z-50 border-b border-white/10 bg-[#440D84] backdrop-blur">
-        <div className="flex h-14 w-full items-center justify-between px-6 lg:px-10">
-          <a href="#" className="flex items-center">
-            <img src={headerLogo} alt="Catalon" className="h-7 w-auto" />
-          </a>
-
-          <nav className="hidden items-center gap-8 xl:gap-10 lg:flex">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="whitespace-nowrap text-sm font-medium text-white transition-colors hover:text-[#B7FF2A]"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden items-center gap-2.5 lg:flex">
-            <a href={`${import.meta.env.BASE_URL}login`} className="rounded-full border border-[#B7FF2A] bg-transparent px-5 py-2.5 text-sm font-semibold text-[#B7FF2A] transition-colors hover:bg-[#B7FF2A] hover:text-[#440D84]">
-              Войти
-            </a>
-            <a
-              href="#contacts"
-              className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#440D84] transition-colors hover:bg-white/90"
-            >
-              Регистрация
-            </a>
-          </div>
-
-          <button
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#B7FF2A]/40 text-[#B7FF2A] lg:hidden"
-            aria-label="Открыть меню"
-            type="button"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
-        </div>
-      </header>
-
-      <main>
+      <main id="main-content">
         <section
           className="relative mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24"
           id="about"
-          data-block-id="home-hero" data-block-title="Главный экран Catalon"
+          data-block-id="home-hero" data-block-title="Главный экран Каталон"
         >
           <div className="absolute inset-0 -z-10 rounded-[36px] bg-gradient-to-tr from-purple-main/5 to-transparent" />
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
@@ -246,7 +196,7 @@ export default function LandingPage() {
                 Marketplace логистических решений для B2B-грузоперевозок
               </h1>
               <p className="mt-6 text-sm text-gray-600">
-                Catalon помогает находить грузы и перевозчиков, проводить безопасные сделки,
+                Каталон помогает находить грузы и перевозчиков, проводить безопасные сделки,
                 получать финансирование рейсов и экономить через сервисы экосистемы.
               </p>
               <div className="mt-8 flex flex-wrap gap-2">
@@ -278,7 +228,7 @@ export default function LandingPage() {
                   height={668}
                   fetchPriority="high"
                   decoding="async"
-                  alt="Главный экран Catalon"
+                  alt="Главный экран Каталон"
                   className="block h-full w-full object-contain"
                 />
               </div>
@@ -299,10 +249,10 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="solutions" data-block-id="home-active-solutions" data-block-title="Активные решения Catalon">
-          <h2 className="text-3xl font-bold">Активные решения Catalon</h2>
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="solutions" data-block-id="home-active-solutions" data-block-title="Активные решения Каталон">
+          <h2 className="text-3xl font-bold">Активные решения Каталон</h2>
           <p className="mt-4 text-gray-600">
-            Рабочие направления, с которых начинается marketplace Catalon.
+            Рабочие направления, с которых начинается marketplace Каталон.
           </p>
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
             {activeSolutions.map((solution) => (
@@ -311,7 +261,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="audience-after-solutions" data-block-id="home-audiences" data-block-title="Для участников рынка грузоперевозок"><h2 className="text-center text-3xl font-bold">Для участников рынка грузоперевозок</h2><p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">Заказчики, перевозчики и экспедиторы работают в одном цифровом контуре Catalon.</p><div className="mt-10 grid gap-6 md:grid-cols-3"><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-green-500 bg-white"><img src={portalCards[0].image} alt={portalCards[0].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Заказчикам</h3><p className="mt-4 text-sm text-gray-600">Размещайте заявки, находите перевозчиков, фиксируйте условия и проводите сделки безопаснее.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-customers`}>Подробнее</a></div></article><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-purple-600 bg-white"><img src={portalCards[1].image} alt={portalCards[1].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Перевозчикам</h3><p className="mt-4 text-sm text-gray-600">Получайте рейсы, загружайте транспорт, подключайте финансирование и сервисы.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-carriers`}>Подробнее</a></div></article><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-blue-500 bg-white"><img src={portalCards[2].image} alt={portalCards[2].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Экспедиторам</h3><p className="mt-4 text-sm text-gray-600">Управляйте заявками, маршрутами, документами и участниками перевозки в одном месте.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-operators`}>Подробнее</a></div></article></div></section>
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="audience-after-solutions" data-block-id="home-audiences" data-block-title="Для участников рынка грузоперевозок"><h2 className="text-center text-3xl font-bold">Для участников рынка грузоперевозок</h2><p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">Заказчики, перевозчики и экспедиторы работают в одном цифровом контуре Каталон.</p><div className="mt-10 grid gap-6 md:grid-cols-3"><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-green-500 bg-white"><img src={portalCards[0].image} alt={portalCards[0].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Заказчикам</h3><p className="mt-4 text-sm text-gray-600">Размещайте заявки, находите перевозчиков, фиксируйте условия и проводите сделки безопаснее.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-customers`}>Подробнее</a></div></article><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-purple-600 bg-white"><img src={portalCards[1].image} alt={portalCards[1].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Перевозчикам</h3><p className="mt-4 text-sm text-gray-600">Получайте рейсы, загружайте транспорт, подключайте финансирование и сервисы.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-carriers`}>Подробнее</a></div></article><article className="overflow-hidden rounded-[28px] border border-gray-200 border-t-4 border-t-blue-500 bg-white"><img src={portalCards[2].image} alt={portalCards[2].title} className="block h-auto w-full object-contain" /><div className="p-8"><h3 className="text-2xl font-bold">Экспедиторам</h3><p className="mt-4 text-sm text-gray-600">Управляйте заявками, маршрутами, документами и участниками перевозки в одном месте.</p><a className="mt-6 inline-flex rounded-full bg-[#440D84] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#7133D0]" href={`${import.meta.env.BASE_URL}for-operators`}>Подробнее</a></div></article></div></section>
 
         <section className="audience-action-cards mx-auto max-w-7xl px-4 pb-16 lg:px-8" aria-label="Переходы для участников рынка">
           <div className="grid gap-6 md:grid-cols-3">
@@ -322,8 +272,8 @@ export default function LandingPage() {
         </section>
         <section className="hidden" aria-label="Изображения участников рынка"><div className="grid gap-6 md:grid-cols-3">{portalCards.slice(0, 3).map((card) => <div key={card.title} className="overflow-hidden rounded-[28px] bg-white"><img src={card.image} alt={card.title} className="block h-auto w-full object-contain" /></div>)}</div></section>
 
-        <section className="hidden mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24" id="catalog" data-block-id="home-earn-save" data-block-title="Catalon помогает зарабатывать и экономить">
-          <h2 className="text-center text-3xl font-bold">Catalon помогает зарабатывать и экономить</h2>
+        <section className="hidden mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24" id="catalog" data-block-id="home-earn-save" data-block-title="Каталон помогает зарабатывать и экономить">
+          <h2 className="text-center text-3xl font-bold">Каталон помогает зарабатывать и экономить</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">
             Решения открывают новые направления для заработка, а сервисы помогают снижать
             расходы на перевозки, транспорт и обслуживание бизнеса.
@@ -333,7 +283,7 @@ export default function LandingPage() {
               <h3 className="text-2xl font-bold text-gray-900">Решения помогают зарабатывать</h3>
               <p className="mt-4 text-sm text-gray-600">
                 Получайте грузы, выходите на новые направления, загружайте транспорт и
-                работайте с заказами через цифровой портал Catalon.
+                работайте с заказами через цифровой портал Каталон.
               </p>
               <ul className="mt-6 space-y-2">
                 {[
@@ -386,8 +336,8 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-solution-catalog" data-block-title="Каталог решений Catalon">
-          <h2 className="text-3xl font-bold">Каталог решений Catalon</h2>
+        <section className="mx-auto max-w-7xl rounded-[36px] bg-gray-50 px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-solution-catalog" data-block-title="Каталог решений Каталон">
+          <h2 className="text-3xl font-bold">Каталог решений Каталон</h2>
           <p className="mt-4 text-sm text-gray-600">
             Сейчас доступны два активных направления. Остальные решения находятся в разработке
             и будут постепенно подключаться к marketplace.
@@ -403,12 +353,12 @@ export default function LandingPage() {
         <section
           className="hidden mx-auto max-w-7xl rounded-[36px] bg-[#7133D0] px-4 py-16 text-white lg:px-8 lg:py-24"
           id="safe-deal"
-          data-block-id="home-safe-deal" data-block-title="Безопасная сделка — ключевое отличие Catalon"
+          data-block-id="home-safe-deal" data-block-title="Безопасная сделка — ключевое отличие Каталон"
         >
-              <h2 className="text-center text-3xl font-bold sm:text-4xl"><span className="text-[#B7FF2A]">Безопасная сделка</span> - ключевое отличие Catalon</h2>
+              <h2 className="text-center text-3xl font-bold sm:text-4xl"><span className="text-[#B7FF2A]">Безопасная сделка</span> - ключевое отличие Каталон</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-white/70">
             На рынке грузоперевозок многое до сих пор держится на звонках, переписках и личных
-            договоренностях. Catalon переводит сделку в прозрачный онлайн-контур.
+            договоренностях. Каталон переводит сделку в прозрачный онлайн-контур.
           </p>
           <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -430,7 +380,7 @@ export default function LandingPage() {
                 },
                 {
                   title: 'Меньше рисков',
-                  desc: 'Catalon помогает снизить риск неоплаты, срыва перевозки и потери документов.',
+                  desc: 'Каталон помогает снизить риск неоплаты, срыва перевозки и потери документов.',
                   icon: Shield,
                 },
               ].map((item) => (
@@ -445,7 +395,7 @@ export default function LandingPage() {
             <div className="flex items-center justify-center">
               <img
                 src={safeDealImage}
-                alt="Безопасная сделка Catalon"
+                alt="Безопасная сделка Каталон"
                 className="block h-auto w-full object-contain"
               />
             </div>
@@ -464,7 +414,7 @@ export default function LandingPage() {
               </div>
               <h2 className="text-3xl font-bold sm:text-4xl"><span className="text-[#241047]">Финансирование поездки</span> <span className="text-white">под конкретный рейс</span></h2>
               <p className="mt-6 text-sm text-white/80">
-                Перевозчику не всегда удобно ждать оплату неделями. Catalon помогает закрывать
+                Перевозчику не всегда удобно ждать оплату неделями. Каталон помогает закрывать
                 расходы на рейс: топливо, дорогу, обслуживание и другие операционные затраты.
               </p>
               <ul className="mt-8 space-y-4">
@@ -495,50 +445,50 @@ export default function LandingPage() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="portal" data-block-id="home-portal" data-block-title="Все управление перевозками — онлайн">
-          <h2 className="text-center text-3xl font-bold">Сервисы Catalon помогают экономить</h2>
+          <h2 className="text-center text-3xl font-bold">Сервисы Каталон помогают экономить</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">
             Подключайте сервисы экосистемы, чтобы снижать расходы на рейсы, транспорт,
             обслуживание и сопровождение бизнеса.
           </p>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <ServiceCard
-              title="Catalon Топливо"
+              title="Каталон Топливо"
               description="Снижайте расходы на топливо и контролируйте затраты на рейсы."
               gradient="from-[#FFD43B] to-[#F59E0B]"
               badge="Экономия"
             />
             <ServiceCard
-              title="Catalon Финанс"
+              title="Каталон Финанс"
               description="Закрывайте кассовые разрывы и получайте поддержку под поездки."
               gradient="from-[#4B1D8B] to-[#B7FF2A]"
               badge="Поддержка"
             />
             <ServiceCard
-              title="Catalon Страхование"
+              title="Каталон Страхование"
               description="Защищайте грузы, транспорт и ответственность участников сделки."
               gradient="from-[#2F7DFF] to-[#20D6FF]"
               badge="Защита"
             />
             <ServiceCard
-              title="Catalon Лизинг"
+              title="Каталон Лизинг"
               description="Расширяйте автопарк и обновляйте транспорт под реальные задачи."
               gradient="from-[#4B1D8B] to-[#FF8A00]"
               badge="Экономия"
             />
             <ServiceCard
-              title="Catalon Шины, запчасти и масла"
+              title="Каталон Шины, запчасти и масла"
               description="Закупайте расходники и комплектующие для транспорта."
               gradient="from-[#19151F] to-[#B7FF2A]"
               badge="Сервис"
             />
             <ServiceCard
-              title="Catalon Торговый дом"
+              title="Каталон Торговый дом"
               description="Получайте доступ к B2B-закупкам и партнерским предложениям."
               gradient="from-[#FF5BAA] to-[#FF8A00]"
               badge="Партнерство"
             />
             <ServiceCard
-              title="Catalon Автосервис / мойки / шиномонтажи"
+              title="Каталон Автосервис / мойки / шиномонтажи"
               description="Обслуживайте транспорт через партнерскую сервисную сеть."
               gradient="from-[#FF8A00] to-[#FF3B30]"
               badge="Сервис"
@@ -555,7 +505,7 @@ export default function LandingPage() {
         <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" id="audience" data-block-id="home-audiences" data-block-title="Для участников рынка грузоперевозок">
           <h2 className="text-center text-3xl font-bold">Все управление перевозками - онлайн</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600">
-            Catalon собирает заявки, сделки, документы, статусы, финансирование и сервисы в
+            Каталон собирает заявки, сделки, документы, статусы, финансирование и сервисы в
             одном цифровом портале.
           </p>
 
@@ -589,7 +539,7 @@ export default function LandingPage() {
             <div className="pointer-events-none absolute inset-x-12 bottom-6 h-14 rounded-full bg-black/35 blur-3xl" />
             <img
               src={carrierFreeLoadsScreen}
-              alt="Скрин платформы Catalon"
+              alt="Скрин платформы Каталон"
               className="relative z-10 block h-auto w-full object-contain drop-shadow-[0_40px_80px_rgba(15,23,42,0.45)]"
             />
           </div>
@@ -627,7 +577,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="rounded-[28px] border border-gray-200 border-t-4 border-t-blue-400 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-              <h3 className="text-2xl font-bold">Операторам</h3>
+              <h3 className="text-2xl font-bold">Экспедиторам</h3>
               <p className="mt-4 text-sm text-gray-600">
                 Сопровождайте заявки, документы, статусы и коммуникацию между участниками
                 перевозки.
@@ -635,7 +585,7 @@ export default function LandingPage() {
               <div className="mt-6 flex items-center justify-center">
                 <img
                   src={marketOperatorImage}
-                  alt="Операторам"
+                  alt="Экспедиторам"
                   className="block h-auto w-full object-contain"
                 />
               </div>
@@ -643,14 +593,14 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-digital-ecosystem" data-block-title="Catalon строит цифровую экосистему грузоперевозок">
+        <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-digital-ecosystem" data-block-title="Каталон строит цифровую экосистему грузоперевозок">
           <div className="grid grid-cols-1 items-center gap-12 rounded-[48px] bg-[#350375] p-12 text-white lg:grid-cols-2 lg:p-16">
             <div>
               <h2 className="text-3xl font-bold sm:text-4xl">
                 <span className="text-[#B7FF2A]">Возможности</span> больших компаний - для малого и среднего бизнеса
               </h2>
               <p className="mt-6 text-sm text-white/80">
-                Catalon помогает небольшим перевозчикам и компаниям получать доступ к
+                Каталон помогает небольшим перевозчикам и компаниям получать доступ к
                 инструментам, которые обычно доступны крупным игрокам: финансированию, сервисам,
                 безопасным сделкам, топливным программам и цифровому документообороту.
               </p>
@@ -680,12 +630,12 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl bg-white px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-ai-operator" data-block-title="Интеллектуальный оператор Catalon">
+        <section className="mx-auto max-w-7xl bg-white px-4 py-16 lg:px-8 lg:py-24" data-block-id="home-ai-operator" data-block-title="Интеллектуальный помощник Каталон">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="text-3xl font-bold">Catalon строит цифровую экосистему грузоперевозок</h2>
+              <h2 className="text-3xl font-bold">Каталон строит цифровую экосистему грузоперевозок</h2>
               <p className="mt-6 text-sm text-gray-600">
-                Catalon объединяет логистические решения, сервисы, участников рынка и цифровые
+                Каталон объединяет логистические решения, сервисы, участников рынка и цифровые
                 инструменты в одном marketplace. Мы помогаем бизнесу зарабатывать на
                 перевозках, снижать расходы через сервисы и проводить сделки прозрачнее.
               </p>
@@ -706,7 +656,7 @@ export default function LandingPage() {
             <div className="flex items-center justify-center">
               <img
                 src={digitalEcosystemImage}
-                alt="Catalon строит цифровую экосистему грузоперевозок"
+                alt="Каталон строит цифровую экосистему грузоперевозок"
                 className="block h-auto w-full object-contain"
               />
             </div>
@@ -760,13 +710,13 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="relative mx-auto my-16 max-w-7xl overflow-hidden rounded-[48px] bg-[#2F0A63] px-4 py-24 text-white" data-block-id="home-final-cta" data-block-title="Начните работать в Catalon">
+        <section className="relative mx-auto my-16 max-w-7xl overflow-hidden rounded-[48px] bg-[#2F0A63] px-4 py-24 text-white" data-block-id="home-final-cta" data-block-title="Начните работать в Каталон">
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(185,122,255,0.18)_0%,rgba(47,10,99,0)_38%,rgba(183,255,42,0.12)_100%)]" />
           <div className="absolute -left-24 top-8 h-64 w-64 rounded-full bg-[#B7FF2A]/10 blur-3xl" />
           <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[#8B5CF6]/20 blur-3xl" />
           <div className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-white/8 blur-3xl" />
           <div className="relative text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">Начните работать в Catalon</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl">Начните работать в Каталон</h2>
             <p className="mx-auto mt-6 max-w-xl text-sm text-white/80">
               Выберите решение, зарегистрируйтесь в портале и подключайте сервисы для
               заработка, безопасности и экономии.
@@ -798,69 +748,6 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="bg-[#12071F] pt-18 text-white" id="contacts" data-block-id="home-footer-contacts" data-block-title="Контакты и интеллектуальный оператор">
-        <div className="mx-auto max-w-7xl px-4 pb-14">
-          <div className="grid grid-cols-1 gap-12 border-b border-white/10 pb-14 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
-            <div>
-              <img src={headerLogo} alt="Catalon" className="h-10 w-auto" />
-              <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/65">
-                Цифровой marketplace логистических решений для грузоперевозок, безопасных
-                сделок, финансирования рейсов и сервисов для экономии бизнеса.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/70">
-                <a href="mailto:catalontech@yandex.ru" className="rounded-full border border-white/10 px-4 py-2 transition hover:border-[#B7FF2A] hover:text-[#B7FF2A]">
-                  catalontech@yandex.ru
-                </a>
-                <a href="tel:+78000000000" className="rounded-full border border-white/10 px-4 py-2 transition hover:border-[#B7FF2A] hover:text-[#B7FF2A]">
-                  +7 800 000-00-00
-                </a>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">Навигация</h4>
-              <ul className="mt-6 space-y-3 text-sm text-white/70">
-                <li><a href="#about" className="transition hover:text-[#B7FF2A]">О платформе</a></li>
-                <li><a href="#solutions" className="transition hover:text-[#B7FF2A]">Активные решения</a></li>
-                <li><a href="#catalog" className="transition hover:text-[#B7FF2A]">Каталог решений</a></li>
-                <li><a href="#portal" className="transition hover:text-[#B7FF2A]">Портал</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">Решения и сервисы</h4>
-              <ul className="mt-6 space-y-3 text-sm text-white/70">
-                <li><a href="#safe-deal" className="transition hover:text-[#B7FF2A]">Безопасная сделка</a></li>
-                <li><a href="#services-visible" className="transition hover:text-[#B7FF2A]">Финансирование рейса</a></li>
-                <li><a href="#services-visible" className="transition hover:text-[#B7FF2A]">Сервисы экосистемы</a></li>
-                <li><a href="#audience" className="transition hover:text-[#B7FF2A]">Для участников рынка</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">Контакты</h4>
-              <ul className="mt-6 space-y-3 text-sm text-white/70">
-                <li>г. Нижний Новгород, Электровозная ул., д. 7б, пом. 10</li>
-                <li>Пн-Пт, 09:00-18:00</li>
-                <li><a href="mailto:catalontech@yandex.ru" className="transition hover:text-[#B7FF2A]">catalontech@yandex.ru</a></li>
-                <li><a href="tel:+78000000000" className="transition hover:text-[#B7FF2A]">+7 800 000-00-00</a></li>
-                <li><a href="https://t.me/" target="_blank" rel="noreferrer" className="transition hover:text-[#B7FF2A]">Telegram</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="flex flex-col items-start justify-between gap-4 py-5 text-sm text-white/55 md:flex-row md:items-center">
-            <div className="flex items-center gap-3">
-              <img src={headerLogo} alt="Catalon" className="h-7 w-auto opacity-90" />
-              <span>Catalon, все права защищены</span>
-            </div>
-            <a
-              href="https://tolk-usite.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-white"
-            >
-              TOLK+Usite
-            </a>
-          </div>
-        </div>
-      </footer>
       <UnifiedFooter />
     </div>
   );

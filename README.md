@@ -1,20 +1,40 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Сайт «Каталон»
 
-# Run and deploy your AI Studio app
+Маркетинговый сайт цифровой платформы грузоперевозок. Проект собран на React, TypeScript и Vite.
 
-This contains everything you need to run your app locally.
+## Локальный запуск
 
-View your app in AI Studio: https://ai.studio/apps/dfb55dee-b45e-4a54-84e2-47f91020fd92
+Требуется Node.js 20 или новее.
 
-## Run Locally
+```bash
+npm install
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+По умолчанию Vite запускает сайт на `http://localhost:3000`. Если порт занят, адрес будет указан в терминале.
 
+## Проверки
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm run lint
+npm run build
+```
+
+## Основные маршруты
+
+- `/` — главная;
+- `/road-freight-russia` — автомобильные грузоперевозки по России;
+- `/multimodal-container` — мультимодальные перевозки;
+- `/for-customers`, `/for-carriers`, `/for-operators` — страницы для участников рынка;
+- `/for-suppliers`, `/investors`, `/contacts` — поставщики, инвесторы и контакты;
+- `/privacy`, `/personal-data-consent`, `/terms` — юридические документы.
+
+## Переменные окружения
+
+Скопируйте `.env.example` в `.env.local` и при необходимости измените `VITE_SITE_URL`.
+
+Формы отправляются через FormSubmit на `catalontech@yandex.ru`. При первом подключении адрес необходимо подтвердить письмом от сервиса. Не отправляйте тестовые заявки в продакшен без согласования.
+
+## Публикация
+
+Сборка создаётся в каталоге `dist`. GitHub Actions публикует её в GitHub Pages после обновления ветки `main`.

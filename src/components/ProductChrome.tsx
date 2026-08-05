@@ -25,7 +25,7 @@ export function ProductHeader({ portalHref, startHref }: ProductHeaderProps) {
   return (
     <header className="sticky top-0 z-50 h-14 bg-[#440D84] text-white shadow-[0_8px_30px_rgba(36,8,67,0.15)]">
       <div className="flex h-full w-full items-center justify-between px-4 sm:px-6 lg:px-10">
-        <a href={baseUrl()} aria-label="Catalon — на главную"><img src={headerLogo} alt="Catalon" className="h-7 w-auto" /></a>
+        <a href={baseUrl()} aria-label="Каталон — на главную"><img src={headerLogo} alt="Каталон" className="h-7 w-auto" /></a>
         <nav className="hidden items-center gap-8 text-sm font-semibold lg:flex" aria-label="Основная навигация">
           {links.map(([label, href]) => <a key={label} href={href} className="transition hover:text-[#B7FF2A]">{label}</a>)}
         </nav>
@@ -45,12 +45,12 @@ export function ProductFooter() {
     <footer className="bg-[#12071F] px-4 pb-6 pt-16 text-white sm:px-6 lg:px-10" id="contacts">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          <div><img src={headerLogo} alt="Catalon" className="h-9 w-auto" /><p className="mt-5 max-w-md text-sm leading-6 text-white/55">Marketplace логистических решений для управления перевозками, безопасных сделок и сервисов транспортного бизнеса.</p></div>
+          <div><img src={headerLogo} alt="Каталон" className="h-9 w-auto" /><p className="mt-5 max-w-md text-sm leading-6 text-white/55">Marketplace логистических решений для управления перевозками, безопасных сделок и сервисов транспортного бизнеса.</p></div>
           <div><h3 className="text-xs font-bold uppercase tracking-[0.18em] text-white/40">Навигация</h3><div className="mt-5 grid gap-3 text-sm text-white/70"><a href={baseUrl()}>Главная</a><a href={baseUrl('#solutions')}>Решения</a><a href={baseUrl('#services-visible')}>Сервисы</a><a href={baseUrl('#portal')}>Портал</a></div></div>
           <div><h3 className="text-xs font-bold uppercase tracking-[0.18em] text-white/40">Перевозки</h3><div className="mt-5 grid gap-3 text-sm text-white/70"><a href={baseUrl('road-freight-russia')}>По России</a><a href={baseUrl('multimodal-container')}>Мультимодальные</a><a href={baseUrl('#solutions')}>Все решения</a><a href={baseUrl('#start')}>Регистрация</a></div></div>
-          <div><h3 className="text-xs font-bold uppercase tracking-[0.18em] text-white/40">Связаться</h3><div className="mt-5 grid gap-3 text-sm text-white/70"><a href="mailto:catalontech@yandex.ru">catalontech@yandex.ru</a><a href="tel:+78000000000">+7 800 000-00-00</a><span>г. Нижний Новгород, Электровозная ул., д. 7б, пом. 10</span></div></div>
+          <div><h3 className="text-xs font-bold uppercase tracking-[0.18em] text-white/40">Связаться</h3><div className="mt-5 grid gap-3 text-sm text-white/70"><a href="mailto:catalontech@yandex.ru">catalontech@yandex.ru</a><span>г. Нижний Новгород, Электровозная ул., д. 7б, пом. 10</span></div></div>
         </div>
-        <div className="flex flex-col gap-3 py-5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"><span>Catalon, все права защищены</span><a href="https://tolk-usite.com/" target="_blank" rel="noreferrer" className="hover:text-white">TOLK+Usite</a></div>
+        <div className="flex flex-col gap-3 py-5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"><span>Каталон, все права защищены</span><a href="https://tolk-usite.com/" target="_blank" rel="noreferrer" className="hover:text-white">TOLK+Usite</a></div>
       </div>
     </footer>
   );
