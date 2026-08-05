@@ -57,6 +57,7 @@ import {
 } from 'lucide-react';
 import { UnifiedHeader } from './components/UnifiedHeader';
 import { UnifiedFooter } from './components/UnifiedFooter';
+import { submitLeadForm } from './lib/submitLeadForm';
 
 type Icon = ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
 
@@ -257,6 +258,18 @@ export default function PartnersPage() {
     observer?.observe(element);
     window.addEventListener('resize', update);
     return () => { window.cancelAnimationFrame(frame); element.removeEventListener('scroll', update); observer?.disconnect(); window.removeEventListener('resize', update); };
+  }, []);
+
+  useEffect(() => {
+    const handle = (event: SubmitEvent) => {
+      const form = event.target as HTMLFormElement;
+      if (!form.matches('form.partners-form')) return;
+      event.preventDefault();
+      event.stopPropagation();
+      void submitLeadForm(form, 'Партнёрам').then(() => setFormSent(true)).catch(() => setFormSent(false));
+    };
+    document.addEventListener('submit', handle, true);
+    return () => document.removeEventListener('submit', handle, true);
   }, []);
 
   const scrollSubmenu = (amount: number) => submenuRef.current?.scrollBy({ left: amount, behavior: 'smooth' });

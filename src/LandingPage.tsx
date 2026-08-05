@@ -808,8 +808,8 @@ export default function LandingPage() {
                 сделок, финансирования рейсов и сервисов для экономии бизнеса.
               </p>
               <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/70">
-                <a href="mailto:info@catalon.ru" className="rounded-full border border-white/10 px-4 py-2 transition hover:border-[#B7FF2A] hover:text-[#B7FF2A]">
-                  info@catalon.ru
+                <a href="mailto:catalontech@yandex.ru" className="rounded-full border border-white/10 px-4 py-2 transition hover:border-[#B7FF2A] hover:text-[#B7FF2A]">
+                  catalontech@yandex.ru
                 </a>
                 <a href="tel:+78000000000" className="rounded-full border border-white/10 px-4 py-2 transition hover:border-[#B7FF2A] hover:text-[#B7FF2A]">
                   +7 800 000-00-00
@@ -837,9 +837,9 @@ export default function LandingPage() {
             <div>
               <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">Контакты</h4>
               <ul className="mt-6 space-y-3 text-sm text-white/70">
-                <li>Россия, Москва</li>
+                <li>г. Нижний Новгород, Электровозная ул., д. 7б, пом. 10</li>
                 <li>Пн-Пт, 09:00-18:00</li>
-                <li><a href="mailto:info@catalon.ru" className="transition hover:text-[#B7FF2A]">info@catalon.ru</a></li>
+                <li><a href="mailto:catalontech@yandex.ru" className="transition hover:text-[#B7FF2A]">catalontech@yandex.ru</a></li>
                 <li><a href="tel:+78000000000" className="transition hover:text-[#B7FF2A]">+7 800 000-00-00</a></li>
                 <li><a href="https://t.me/" target="_blank" rel="noreferrer" className="transition hover:text-[#B7FF2A]">Telegram</a></li>
               </ul>

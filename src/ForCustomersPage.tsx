@@ -1,5 +1,6 @@
 import { UnifiedHeader } from './components/UnifiedHeader';
 import { UnifiedFooter } from './components/UnifiedFooter';
+import { submitLeadForm } from './lib/submitLeadForm';
 import { useEffect, useRef, useState, type ComponentProps } from 'react';
 import { Archive, BarChart3, BriefcaseBusiness, Calculator, CheckCircle2, ChevronLeft, ChevronRight, Clock3, FileCheck2, FileText, Gauge, HandCoins, Headphones, History, Route, ShieldCheck, Truck, Users, WalletCards, Workflow } from 'lucide-react';
 import customerHeroImage from '../assets/1/Заказчикам Главная.png';
@@ -84,7 +85,7 @@ export default function ForCustomersPage() {
     if (!meta) { meta = document.createElement('meta'); meta.setAttribute('name', 'description'); document.head.appendChild(meta); }
     meta.setAttribute('content', description);
   }, []);
-  return <div className="customer-page"><UnifiedHeader />
+  return <div className="customer-page" onSubmitCapture={(event) => { const form = event.target as HTMLFormElement; if (form.matches('form.connect-form')) void submitLeadForm(form, 'Заказчикам — быстрый старт').catch(() => undefined); }}><UnifiedHeader />
     <div className="customer-subnav-wrap"><button type="button" className={`customer-subnav-arrow customer-subnav-arrow-left ${canScrollLeft ? '' : 'is-hidden'}`} disabled={!canScrollLeft} onClick={() => submenuRef.current?.scrollBy({ left: -260, behavior: 'smooth' })} aria-label="Прокрутить подменю влево"><ChevronLeft size={17} /></button><nav ref={submenuRef} className="customer-subnav">{submenu.map(([label, id]) => <a key={id} className={activeSection === id ? 'active' : ''} href={`#${id}`}>{label}</a>)}</nav><button type="button" className={`customer-subnav-arrow customer-subnav-arrow-right ${canScrollRight ? '' : 'is-hidden'}`} disabled={!canScrollRight} onClick={() => submenuRef.current?.scrollBy({ left: 260, behavior: 'smooth' })} aria-label="Прокрутить подменю вправо"><ChevronRight size={17} /></button></div>
     <main>
       <section id="overview" className="customer-hero"><div className="customer-container hero-grid"><div><p className="eyebrow">ДЛЯ ЗАКАЗЧИКОВ И ГРУЗООТПРАВИТЕЛЕЙ</p><h1>Перевозки под контролем — от заявки до закрывающих документов</h1><p className="lead">Экономьте на каждой перевозке, автоматизируйте работу команды и проводите сделки безопасно. Размещайте заявки вручную или подключайте Catalon к вашим бизнес-процессам.</p><div className="actions"><a className="btn btn-purple" href="#connect">Разместить заявку</a><a className="btn btn-light" href="#tasks">Посмотреть возможности</a></div><div className="hero-tags"><span>Экономия и автоматизация</span><span>Безопасная сделка</span><span>Интеграция с ERP</span><span>ЭДО и ЭТРН Контур.Диадок</span></div><p className="hero-note">Для небольших команд — кабинет. Для крупного бизнеса — API и персональные доработки.</p></div><div className="hero-art"><Placeholder label="Боксик с планшетом и грузом" className="hero-visual" />{['Получено 5 предложений', 'Условия согласованы', 'Погрузка подтверждена', 'Документы готовы'].map((label, i) => <div key={label} className={`hero-status status-${i + 1}`}>{label}</div>)}</div></div></section>

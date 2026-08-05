@@ -20,9 +20,9 @@ export function UnifiedFooter() {
           <div>
             <h3 className="footer-label">Контакты</h3>
             <div className="mt-5 grid gap-3 text-sm text-white/70">
-              <a className="flex items-center gap-2 transition hover:text-[#B7FF2A]" href="mailto:info@catalon.ru"><Mail className="h-4 w-4 shrink-0" />info@catalon.ru</a>
+              <a className="flex items-center gap-2 transition hover:text-[#B7FF2A]" href="mailto:catalontech@yandex.ru"><Mail className="h-4 w-4 shrink-0" />catalontech@yandex.ru</a>
               <a className="flex items-center gap-2 transition hover:text-[#B7FF2A]" href="tel:+78000000000"><Phone className="h-4 w-4 shrink-0" />+7 800 000-00-00</a>
-              <span className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" />Москва, Россия</span>
+              <span className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" />г. Нижний Новгород, Электровозная ул., д. 7б, пом. 10</span>
               <div className="mt-2 flex flex-wrap items-center gap-3">
                 <a aria-label="Telegram" title="Telegram" href="https://t.me/catalon" target="_blank" rel="noreferrer" className={socialLinkClass}><Send className="h-4 w-4 -rotate-12" /></a>
                 <a aria-label="VK" title="VK" href="https://vk.com/" target="_blank" rel="noreferrer" className={`${socialLinkClass} text-xs font-bold`}>VK</a>
@@ -31,6 +31,7 @@ export function UnifiedFooter() {
             </div>
           </div>
         </div>
+        <div className="footer-legal-links"><a href={baseUrl('privacy')}>Политика конфиденциальности</a><a href={baseUrl('personal-data-consent')}>Согласие на обработку персональных данных</a><a href={baseUrl('terms')}>Пользовательское соглашение</a></div>
         <div className="flex flex-col gap-3 py-5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"><span>Каталон, все права защищены</span><a href="https://tolk-usite.com/" target="_blank" rel="noreferrer" className="transition hover:text-white">Сделано TOLK+Usite</a></div>
       </div>
     </footer>

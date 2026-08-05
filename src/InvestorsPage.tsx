@@ -7,6 +7,7 @@ import {
 import { UnifiedHeader } from './components/UnifiedHeader';
 import { UnifiedFooter } from './components/UnifiedFooter';
 import { ProductAnchorNav } from './components/ProductChrome';
+import { submitLeadForm } from './lib/submitLeadForm';
 
 const investorNav: Array<[string, string]> = [
   ['Обзор', '#investor-overview'], ['Экосистема', '#investor-ecosystem'], ['Подход', '#investor-approach'],
@@ -75,7 +76,7 @@ const faqs = [
 export default function InvestorsPage() {
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSubmitted(true); };
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); try { await submitLeadForm(event.currentTarget, 'Инвесторам'); setSubmitted(true); } catch { setSubmitted(false); } };
 
   return <div className="investor-page min-h-screen bg-[#2A0751] text-white">
     <UnifiedHeader />

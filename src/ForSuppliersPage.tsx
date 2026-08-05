@@ -20,6 +20,7 @@ import { ProductAnchorNav } from './components/ProductChrome';
 import supplierHeroImage from '../assets/1/Frame 566.png';
 import supplierDemandImage from '../assets/1/image 413.png';
 import supplierPartnershipImage from '../assets/1/supplier-partnership.png';
+import { submitLeadForm } from './lib/submitLeadForm';
 
 const directions = [
   { title: 'Банковские решения', text: 'Расчётные счета, финансирование, факторинг, эквайринг и другие финансовые продукты.', icon: Landmark },
@@ -56,9 +57,9 @@ const supplierNav = [
 
 export default function ForSuppliersPage() {
   const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    try { await submitLeadForm(event.currentTarget, 'Поставщикам'); setSubmitted(true); } catch { setSubmitted(false); }
   };
 
   return (

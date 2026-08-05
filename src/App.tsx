@@ -17,6 +17,8 @@ import ForSuppliersPage from './ForSuppliersPage';
 import InvestorsPage from './InvestorsPage';
 import ContactsPage from './ContactsPage';
 import AuthPage from './AuthPage';
+import LegalPage from './LegalPage';
+import { FormConsentGuard } from './components/FormConsentGuard';
 
 const IS_LOCAL_EDITOR_ENABLED = import.meta.env.DEV;
 
@@ -221,6 +223,12 @@ export default function App() {
     ? <AuthPage />
     : currentRoute === '/registration'
     ? <AuthPage registration />
+    : currentRoute === '/privacy'
+    ? <LegalPage kind="privacy" />
+    : currentRoute === '/personal-data-consent'
+    ? <LegalPage kind="consent" />
+    : currentRoute === '/terms'
+    ? <LegalPage kind="terms" />
     : (currentRoute === '/road-freight-russia' || currentRoute === '/solutions/road-freight-russia')
     ? <RoadFreightPage />
     : (currentRoute === '/multimodal-container' || currentRoute === '/solutions/multimodal-container')
@@ -229,6 +237,7 @@ export default function App() {
 
   return (
     <div className="relative">
+      <FormConsentGuard />
       {page}
       {IS_LOCAL_EDITOR_ENABLED ? (
         <div className="fixed bottom-6 right-6 z-[70] flex gap-3">
